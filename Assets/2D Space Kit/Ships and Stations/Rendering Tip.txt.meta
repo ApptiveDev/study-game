@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3b0780736a12e654eb11264e4db73818
+labels:
+- SpaceShip
+- Ship
+- Station
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 27662
+  packageName: 2D Space Kit
+  packageVersion: Initial 2
+  assetPath: Assets/2D Space Kit/Ships and Stations/Rendering Tip.txt
+  uploadId: 46238

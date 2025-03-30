@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f9a721ff2cbff264582c8b7c20202d55
+labels:
+- Particles
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 27662
+  packageName: 2D Space Kit
+  packageVersion: Initial 2
+  assetPath: Assets/2D Space Kit/Particles (Sprites)/Note on Flares.txt
+  uploadId: 46238

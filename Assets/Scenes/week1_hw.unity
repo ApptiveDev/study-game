@@ -267,9 +267,9 @@ GameObject:
   - component: {fileID: 664087594}
   - component: {fileID: 664087593}
   - component: {fileID: 664087592}
-  - component: {fileID: 664087595}
   - component: {fileID: 664087596}
   - component: {fileID: 664087597}
+  - component: {fileID: 664087598}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -361,28 +361,6 @@ Transform:
   - {fileID: 902864304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &664087595
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664087591}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 21966915fa25a3842947131afdb85cb3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &664087596
 Rigidbody2D:
   serializedVersion: 5
@@ -447,6 +425,28 @@ CapsuleCollider2D:
   m_Offset: {x: -0.018635869, y: 0}
   m_Size: {x: 0.6894028, y: 1.1111112}
   m_Direction: 0
+--- !u!95 &664087598
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664087591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 21966915fa25a3842947131afdb85cb3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &902864303
 GameObject:
   m_ObjectHideFlags: 0

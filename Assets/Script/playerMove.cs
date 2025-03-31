@@ -6,6 +6,7 @@ public class playerMove : MonoBehaviour
     public float moveSpeed = 1f;
 
     Rigidbody2D rigid;
+    SpriteRenderer render;
 
     // 게임이 작동하기 시작할 때 함수 실행.
     private void Awake()
@@ -17,6 +18,7 @@ public class playerMove : MonoBehaviour
     void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
+        render = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // 그래픽 & 인풋 업데이트.
@@ -34,31 +36,21 @@ public class playerMove : MonoBehaviour
     // 이동 함수.
     void Move()
     {
-        Vector3 dirVector = Vector3.zero;
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-        // X축 이동.
-        if (Input.GetAxisRaw("Horizontal") < 0)
+        Vector3 dirVector = new Vector3(h, v, 0);
+
+        if (h < 0)
         {
-            dirVector = Vector3.left;
+            render.flipX = true;
         }
-
-        else if (Input.GetAxisRaw("Horizontal") > 0)
+        else if (h > 0)
         {
-            dirVector = Vector3.right;
-        }
-
-        // Y축 이동.
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            dirVector = Vector3.down;
-        }
-
-        else if (Input.GetAxisRaw("Vertical") > 0)
-        {
-            dirVector = Vector3.up;
+            render.flipX = false;
         }
 
         // Transform에 이동방향*속도 할당. detaTime을 곱해줘 자연스러운 움직임 구현.
-        transform.position += dirVector * moveSpeed * Time.deltaTime;
+        transform.position += dirVector.normalized * moveSpeed * Time.deltaTime;
     }
 }

@@ -11,16 +11,10 @@ public class EnemyMovement : MonoBehaviour
         this.target = target;
     }
 
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.transform.position - transform.position;
-        direction = direction / direction.magnitude;
+        Vector3 direction = (target.transform.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
     }
 }

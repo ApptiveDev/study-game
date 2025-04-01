@@ -5175,7 +5175,7 @@ GameObject:
   - component: {fileID: 1247365328}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5209,7 +5209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyObject: {fileID: 6072671293041297104, guid: d7d6a5c0c2b17da4d9bc8ec4a1e8568d, type: 3}
   player: {fileID: 1816308094}
-  speed: 1
+  prefabList: []
 --- !u!1 &1324452270
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,7 +5273,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.066667
+  orthographic size: 8.033334
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5732,7 +5732,7 @@ GameObject:
   - component: {fileID: 1816308099}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

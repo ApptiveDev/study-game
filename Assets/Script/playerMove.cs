@@ -5,26 +5,13 @@ public class playerMove : MonoBehaviour
     // 변수 선언.
     public float moveSpeed = 1f;
 
-    Rigidbody2D rigid;
-    SpriteRenderer render;
+    private SpriteRenderer render;
 
     // 게임이 작동하기 시작할 때 함수 실행.
     private void Awake()
     {
         transform.position = Vector3.zero;
-    }
-
-    // 게임 시작 함수.
-    void Start()
-    {
-        rigid = gameObject.GetComponent<Rigidbody2D>();
         render = gameObject.GetComponent<SpriteRenderer>();
-    }
-
-    // 그래픽 & 인풋 업데이트.
-    void Update()
-    {
-
     }
 
     // 물리 엔진 업데이트.

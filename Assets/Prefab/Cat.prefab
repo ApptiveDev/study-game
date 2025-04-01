@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182150025787728453}
   - component: {fileID: 133001665334150242}
+  - component: {fileID: 480042816596953743}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6072671293041297104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.448042, y: 0.97605217, z: 0}
+  m_LocalPosition: {x: -0.110535145, y: 1.8099697, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 7221746745864628104, guid: d7160cd9578c3ae4f98303b2c32faa32, type: 3}
-  m_Color: {r: 0.07734072, g: 0.03859079, b: 0.30044264, a: 1}
+  m_Color: {r: 0.7500584, g: 0.4442845, b: 0.8770982, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,3 +88,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &480042816596953743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072671293041297104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeebe4ae297b4ec43bdcccf53cea89de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  spawner: {fileID: 0}
+  cloneList: []
+  speed: 1

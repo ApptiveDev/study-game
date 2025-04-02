@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 04a0c3673b152e3428eb3cf3443bc37f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 170650
+  packageName: Sleek essential UI pack
+  packageVersion: 1.0
+  assetPath: Assets/UI pack/Scripts/FillValueNumber.cs
+  uploadId: 372817

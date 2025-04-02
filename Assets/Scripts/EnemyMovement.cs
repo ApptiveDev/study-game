@@ -1,20 +1,48 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private float speed = 1.0f;
+    [SerializeField] private float MaxHealth = 10f;
+    [SerializeField] private float health = 10f;
     private GameObject target;
-    private float speed = 1.0f;
+    private Rigidbody2D rb;
+    
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+        rb.linearVelocity = direction * speed;
+    }
 
     public void SetTarget(GameObject target)
     {
         this.target = target;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Damaged(float damage)
     {
-        Vector3 direction = (target.transform.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
+        this.health -= damage;
+        if (this.health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public float GetHealth()
+    {
+        return this.health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return this.MaxHealth;
     }
 }

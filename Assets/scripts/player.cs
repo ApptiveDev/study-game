@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 3f;
     private SpriteRenderer spriteRenderer;
-    Animator animator;
+    private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

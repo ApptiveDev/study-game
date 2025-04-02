@@ -5,6 +5,7 @@ public class enemyAI : MonoBehaviour
     public float moveSpeed = 2f; // 적의 이동 속도
     private Transform playerTransform; // 플레이어의 Transform 참조
     private SpriteRenderer spriteRenderer;
+    public float health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,6 +13,7 @@ public class enemyAI : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        health = 10f;
     }
 
     // Update is called once per frame

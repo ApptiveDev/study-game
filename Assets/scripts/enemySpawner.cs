@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class enemySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] enemyPrefabs; 
-
+    [SerializeField] private GameObject[] enemyPrefabs; 
+    private Vector3 spawnPosition; // 적 소환 위치
+    private float curTime = 0;
     void Start()
     {
-        // 각 적 종류마다 5마리씩 소환
+        // 각 적 종류마다 3마리씩 소환
         foreach (GameObject enemyPrefab in enemyPrefabs)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 1; i++)
             {
-                Vector3 spawnPosition = PickRandomPosition();
+                spawnPosition = PickRandomPosition();
                 Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             }
         }
@@ -21,7 +22,14 @@ public class enemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        curTime += Time.deltaTime;
+        if (curTime >= 1f) // 1초마다 적 소환
+        {
+            curTime = 0;
+            spawnPosition = PickRandomPosition();
+            int randomIndex = Random.Range(0, enemyPrefabs.Length);
+            Instantiate(enemyPrefabs[randomIndex], spawnPosition, Quaternion.identity);
+        }
     }
 
     Vector3 PickRandomPosition() 

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: da5c9613e894d704ca8911b7ea192f86
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 228568
+  packageName: Slime Enemy - Pixel Art
+  packageVersion: 1.0
+  assetPath: Assets/War/Slime Enemy - Pixel Art/Animation/Jump/Blue/Blue Jump Land
+    - Animation.anim
+  uploadId: 531930

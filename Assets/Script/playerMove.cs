@@ -3,7 +3,7 @@ using UnityEngine;
 public class playerMove : MonoBehaviour
 {
     // 변수 선언.
-    public float moveSpeed = 1f;
+    public static float moveSpeed = 3f;
 
     private SpriteRenderer render;
 

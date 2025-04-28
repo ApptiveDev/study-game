@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemyObject;
+    [SerializeField] GameObject player;
 
     float curTime = 0;
 
     private void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             MakeRandomEnemy();
         }
@@ -29,15 +30,15 @@ public class EnemySpawner : MonoBehaviour
     void MakeRandomEnemy()
     {
         GameObject newEnemy = Instantiate(enemyObject);
-
+        newEnemy.GetComponent<Enemy>().SetTarget(player);
         enemyObject.transform.position = PickRandomPosition();
         enemyObject.GetComponent<SpriteRenderer>().color = PickRandomColor();
     }
 
     Vector3 PickRandomPosition() // 랜덤 위치 반환
     {
-        float x = Random.Range(-3f, 3f);
-        float y = Random.Range(-3f, 3f);
+        float x = Random.Range(-4f, 4f);
+        float y = Random.Range(-4f, 4f);
 
         return new Vector3(x, y, 0);
     }

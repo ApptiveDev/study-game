@@ -19,6 +19,7 @@ public class Bomb : MonoBehaviour
         //목표위치에 도착시
         if (Vector3.Distance(transform.position, targetPos) < 0.1f)
         {
+            //firezone 활성화
             Instantiate(fireZone, transform.position, Quaternion.identity);
             Destroy(gameObject); // 화염병 삭제
         }

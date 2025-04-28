@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //적과 충돌했는지 확인
+        //적과 충돌했는지 확인, 적과 충돌하면 player 의 health 감소
         if (collision.CompareTag("Enemy"))
         {
             health -= damage;

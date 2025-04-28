@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//무기를 랜덤으로 선택해 일정시간이 지나면 생성한다.
 public class WeaponSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] weapons; //무기 배열
@@ -15,7 +15,6 @@ public class WeaponSpawner : MonoBehaviour
             currentDelay = 0f;
         }
     }
-
     void ShootWeapon()
     {
         //랜덤 선택

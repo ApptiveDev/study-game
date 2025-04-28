@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//회전하면서 날아가는 검, 검과 닿은 적들의 health 가 감소됨.
+//검은 사라지지 않고 중력의 영향을 받아 떨어진다.
 public class Sword : MonoBehaviour
 {
     Rigidbody2D rb;

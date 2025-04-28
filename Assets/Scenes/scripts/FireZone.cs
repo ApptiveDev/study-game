@@ -10,6 +10,7 @@ public class FireZone : MonoBehaviour
     }
 
     //유니티 자동호출함수 사용
+    //fire zone 에 들어온 enemy 의 health 를 초당 감소시킨다.
     private void OnTriggerStay2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();

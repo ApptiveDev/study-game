@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Projectile
+  - Enemy
   - Target
   layers:
   - Default
@@ -45,6 +46,9 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 3270466357
+    locked: 0
+  - name: AddOn
+    uniqueID: 359300903
     locked: 0
   m_RenderingLayers:
   - Default

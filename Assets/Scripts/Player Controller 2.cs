@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerController2 : MonoBehaviour
 {
-    public float thrustForce = 5f;
-    public float turnSpeed = 200f;
-    public float maxSpeed = 8f;
+    private Rigidbody2D rb;
 
-    Rigidbody2D rb;
+    //ì´ë™
+    public float maxSpeed = 100f;
+    public float acceleration = 50f;
+    public float deceleration = 30f;
+    private float currentSpeed = 0f;
 
-    [SerializeField] GameObject Spawned;
-    float curTime = 0;
-    public float spwanSec = 0.2f;
+    private float moveInput;
+    private float turnInput;
+
+    //íšŒì „
+    public float turnSpeed = 300f;
+    public float turnLerpSpeed = 5f;
+    private float currentTurnSpeed = 0f;
 
     void Start()
     {
@@ -21,45 +25,41 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
-        float moveInput = Input.GetAxis("Vertical");
-        float turnInput = Input.GetAxis("Horizontal");
-
-        transform.Rotate(0, 0, -turnInput * turnSpeed * Time.deltaTime);
-
-        rb.AddForce(transform.up * moveInput * thrustForce);
-
-        curTime += Time.deltaTime;
-        if (curTime >= spwanSec)
-        {
-            GameObject newObj = Instantiate(Spawned);
-
-            Vector3 spawnPos = PickRandomPosition();
-            newObj.transform.position = spawnPos;
-            newObj.transform.rotation = GetRotation(spawnPos);
-            curTime = 0;
-        }
-
-        Vector3 PickRandomPosition()
-        {
-            float x = transform.position.x + Random.Range(-1f, 1f);
-            float y = transform.position.y + Random.Range(-1f, 1f);
-
-            return new Vector3(x, y, 0);
-        }
-
-        Quaternion GetRotation(Vector3 spawnPos)//½ºÆ÷³Ê ¹ÛÀ» ÇâÇÏµµ·Ï È¸Àü
-        {
-            Vector3 toSpawner = transform.position - spawnPos;
-            float angle = Mathf.Atan2(toSpawner.y, toSpawner.x) * Mathf.Rad2Deg;
-            return Quaternion.Euler(0, 0, angle + 90);
-        }
+        moveInput = Input.GetAxisRaw("Vertical");
+        turnInput = Input.GetAxis("Horizontal");
     }
+
     void FixedUpdate()
     {
-        if (rb.linearVelocity.magnitude > maxSpeed)
-        {
-            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
-        }
+        HandleMovement();
+        HandleRotation();
     }
 
+    void HandleMovement()
+    {
+        if (moveInput > 0)
+        {
+            currentSpeed += acceleration * Time.fixedDeltaTime;
+        }
+        else if (moveInput < 0)
+        {
+            currentSpeed -= acceleration * Time.fixedDeltaTime;
+        }
+        else
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, deceleration * Time.fixedDeltaTime);
+        }
+
+        currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
+
+        rb.linearVelocity = transform.up * currentSpeed;
+    }
+
+    void HandleRotation()
+    {
+        float targetTurnSpeed = -turnInput * turnSpeed;
+        currentTurnSpeed = Mathf.Lerp(currentTurnSpeed, targetTurnSpeed, turnLerpSpeed * Time.fixedDeltaTime);
+
+        rb.MoveRotation(rb.rotation + currentTurnSpeed * Time.fixedDeltaTime);
+    }
 }

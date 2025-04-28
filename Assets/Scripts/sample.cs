@@ -39,6 +39,7 @@ public class sample : MonoBehaviour
             for (int i = 0; i < spwanNum; i++)
             {
                 GameObject newObj = Instantiate(Spawned);
+                newObj.tag = "Enemy";
 
                 Vector3 spawnPos = PickRandomPosition();
                 newObj.transform.position = spawnPos;

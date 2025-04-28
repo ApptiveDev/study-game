@@ -5,10 +5,9 @@ using UnityEngine.Diagnostics;
 
 public class arrow : MonoBehaviour
 {
-    private GameObject target; // 타겟의 게임 오브젝트
+    private Transform target; // 타겟의 트랜스폼
     public GameObject player;
     private Vector3 moveDir; // 이동 방향 벡터
-    private Vector3 rotateDir;
     public float moveSpeed = 3f; // 화살의 이동 속도
     private float damage = 10f; // 화살의 데미지
 
@@ -17,12 +16,16 @@ public class arrow : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = 7;
         player = GameObject.Find("Player");
         transform.position = player.transform.position;
-        enemyAI enemy = FindObjectOfType<enemyAI>();
-        if (enemy != null)
+        FindClosestEnemy(); // 가장 가까운 적을 찾습니다.
+
+        if (target != null)
         {
-            target = enemy.gameObject; // 타겟을 적의 오브젝트로 설정
-            moveDir = target.transform.position - transform.position; // 이동 방향 벡터를 계산
-            moveDir.Normalize(); // 이동 방향 벡터 정규화
+            moveDir = (target.position - transform.position).normalized; // 초기 이동 방향 벡터를 계산하고 정규화합니다.
+        }
+        else
+        {
+            // 적이 없다면 즉시 화살을 제거하거나 다른 동작을 수행할 수 있습니다.
+            Destroy(gameObject);
         }
     }
 
@@ -30,53 +33,45 @@ public class arrow : MonoBehaviour
     {
         if (target == null) // 타겟이 없다면, 화살을 지운다.
         {
-            //gameObject.SetActive(false);
+            Destroy(gameObject);
+            return; // 더 이상 업데이트할 내용이 없으므로 함수를 종료합니다.
+        }
+
+        // 타겟 방향으로 이동
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+        // 오브젝트가 목표 적을 바라보도록 회전
+        float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f); // 이미지가 위를 향하고 있으므로 -90도 보정
+
+        // 일정 거리 이상 이동하면 화살을 제거 (선택 사항)
+        float distanceToStart = Vector3.Distance(transform.position, player.transform.position);
+        if (distanceToStart > 50f) // 예시 거리: 20
+        {
             Destroy(gameObject);
         }
-
-        //rotateDir = target.transform.position - transform.position;
-        //transform.rotation = Quaternion.LookRotation(rotateDir).normalized;
-        transform.position += moveDir * moveSpeed * Time.deltaTime; // 화살을 진행방향 만큼 이동시킨다.
-                                                                    // 타겟 방향으로 회전함
-        float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, -(CalculateAngle(transform.position, target.transform.position)));
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision) // 충돌했을 때
-    //{
-    //    Debug.Log("충돌한 오브젝트: " + collision.gameObject.name);
-    //    enemyAI enemy = collision.GetComponent<enemyAI>(); // 적의 Enemy 스크립트를 참조한다.
-    //    if (enemy.gameObject == target) // 충돌한 상대가 내가 목표하는 적일 때,
-    //    {
-    //        enemy.health -= damage; // 충돌한 적의 체력을 데미지만큼 감소시키는 코드
-    //        if (enemy.health <= 0) // 적 체력이 0 이하인 경우
-    //        {
-    //            Destroy(collision.gameObject); // 적 게임 오브젝트를 지운다.
-    //             // 적 게임 오브젝트를 지운다.
-    //            //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끈다.
-    //            //gameObject.SetActive(false); // 본인 오브젝트도 끈다.
-    //        }
-    //        Destroy(gameObject);
-    //    }
-
-    //}
-
-    public static float CalculateAngle(Vector2 currentObjectPosition, Vector2 targetObjectPosition)
+    private void FindClosestEnemy()
     {
-        // 두 점 간의 차이를 계산
-        Vector2 direction = targetObjectPosition - currentObjectPosition;
+        enemyAI[] enemies = FindObjectsOfType<enemyAI>();
+        float closestDistanceSqr = Mathf.Infinity;
+        Transform closestEnemy = null;
 
-        // Atan2 함수를 사용하여 아크탄젠트 값을 계산
-        float radians = Mathf.Atan2(direction.x, direction.y);
-
-        // 라디안 값을 각도로 변환
-        float degrees = radians * Mathf.Rad2Deg;
-
-        // 결과 각도가 음수인 경우 360을 더하여 양수로 변환
-        if (degrees < 0)
+        // 현재 위치에서 가장 가까운 적을 찾습니다.
+        foreach (enemyAI enemy in enemies)
         {
-            degrees += 360;
+            Vector3 directionToTarget = enemy.transform.position - transform.position;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                closestEnemy = enemy.transform;
+            }
         }
-        return degrees;
+
+        target = closestEnemy;
     }
+
+    // 충돌 처리는 이제 다른 스크립트에서 담당합니다.
 }

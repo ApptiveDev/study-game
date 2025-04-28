@@ -16,7 +16,7 @@ public class arrow : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = 7;
         player = GameObject.Find("Player");
         transform.position = player.transform.position;
-        FindClosestEnemy(); // 가장 가까운 적을 찾습니다.
+        target = FindClosestEnemy(); // 가장 가까운 적을 찾습니다.
 
         if (target != null)
         {
@@ -52,7 +52,7 @@ public class arrow : MonoBehaviour
         }
     }
 
-    private void FindClosestEnemy()
+    private Transform FindClosestEnemy()
     {
         enemyAI[] enemies = FindObjectsOfType<enemyAI>();
         float closestDistanceSqr = Mathf.Infinity;
@@ -69,9 +69,6 @@ public class arrow : MonoBehaviour
                 closestEnemy = enemy.transform;
             }
         }
-
-        target = closestEnemy;
+        return closestEnemy;
     }
-
-    // 충돌 처리는 이제 다른 스크립트에서 담당합니다.
 }

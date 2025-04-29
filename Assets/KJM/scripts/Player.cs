@@ -1,30 +1,34 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace KJM
 {
-    public static Player Instance { get; private set; }
-
-    private void Awake()
+    public class Player : MonoBehaviour
     {
-        if (Instance == null)
+        public static Player Instance { get; private set; }
+
+        private void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); //신이 바껴도 오브젝트 유지
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject); //신이 바껴도 오브젝트 유지
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-        else
+        //외부에서 읽을수만 있고 수정은 하지 못한다.
+        public PlayerMovement Movement { get; private set; }
+        public PlayerHealth Health { get; private set; }
+        public SpriteRenderer Renderer { get; private set; }
+
+        private void Start()
         {
-            Destroy(gameObject);
+            Renderer = GetComponent<SpriteRenderer>();
+            Movement = GetComponent<PlayerMovement>();
+            Health = GetComponent<PlayerHealth>();
         }
     }
-    //외부에서 읽을수만 있고 수정은 하지 못한다.
-    public PlayerMovement Movement { get; private set; }
-    public PlayerHealth Health { get; private set; }
-    public SpriteRenderer Renderer { get; private set; }
 
-    private void Start()
-    {
-        Renderer = GetComponent<SpriteRenderer>();
-        Movement = GetComponent<PlayerMovement>();
-        Health = GetComponent<PlayerHealth>();
-    }
 }

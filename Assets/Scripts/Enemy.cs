@@ -14,7 +14,7 @@ public class Enemy : EnemyBase
 
     private void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = Player.Instance.gameObject;
         if (player != null)
         {
             transform.position += (player.transform.position - transform.position).normalized * speed * Time.deltaTime;

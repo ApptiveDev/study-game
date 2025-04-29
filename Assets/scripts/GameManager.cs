@@ -1,15 +1,16 @@
 using UnityEngine;
+namespace AJH{
 
-public class GameManager : MonoBehaviour
-{
-    public static GameManager instance;
-    public Player player;
-
-    void Awake()
+    public class GameManager : MonoBehaviour
     {
-        instance = this;
+        public static GameManager instance;
+        public player player;
+
+        void Awake()
+        {
+            instance = this;
+        }
+
     }
 
 }
-
-

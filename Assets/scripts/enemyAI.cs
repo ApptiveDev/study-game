@@ -1,53 +1,57 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemyAI : MonoBehaviour
-{
-    [Header("추격 속도")]
-    public float moveSpeed = 2f;
-    [Header("체력")]
-    public float health = 5f;
-    [Header("넉백 감쇠 속도")]
-    [SerializeField] private float knockbackDecay = 5f;
-
-    private Transform playerTransform;
-    private SpriteRenderer spriteRenderer;
-    private Vector2 knockback;   // 현재 남아 있는 넉백 벡터
-
-    void Start()
+namespace AJH{
+    public class enemyAI : MonoBehaviour
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-            playerTransform = player.transform;
+        [Header("추격 속도")]
+        public float moveSpeed = 2f;
+        [Header("체력")]
+        public float health = 5f;
+        [Header("넉백 감쇠 속도")]
+        [SerializeField] private float knockbackDecay = 5f;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        private Transform playerTransform;
+        private SpriteRenderer spriteRenderer;
+        private Vector2 knockback;   // 현재 남아 있는 넉백 벡터
 
-    void Update()
-    {
-        if (playerTransform == null) return;
+        void Start()
+        {
+            //싱글톤으로 찾기
 
-        // 1) 플레이어를 향한 추격 벡터
-        Vector2 chaseDir = (playerTransform.position - transform.position).normalized;
+            if (player.Instance != null)
+                playerTransform = player.Instance.transform; // 플레이어의 Transform을 가져옴
 
-        // 2) 최종 이동 벡터 = 추격 + 넉백
-        Vector2 velocity = chaseDir * moveSpeed + knockback;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
-        // 3) 이동
-        transform.position += (Vector3)(velocity * Time.deltaTime);
+        void Update()
+        {
+            if (playerTransform == null) return;
 
-        // 4) 넉백을 서서히 감쇠
-        knockback = Vector2.MoveTowards(knockback, Vector2.zero, knockbackDecay * Time.deltaTime);
+            // 1) 플레이어를 향한 추격 벡터
+            Vector2 chaseDir = (playerTransform.position - transform.position).normalized;
 
-        // 5) 스프라이트 좌우 반전
-        if (velocity.x < 0) spriteRenderer.flipX = true;
-        else if (velocity.x > 0) spriteRenderer.flipX = false;
-    }
+            // 2) 최종 이동 벡터 = 추격 + 넉백
+            Vector2 velocity = chaseDir * moveSpeed + knockback;
 
-    /// <summary>
-    /// 외부에서 넉백을 추가할 때 호출
-    /// </summary>
-    public void AddKnockback(Vector2 force)
-    {
-        knockback += force;
+            // 3) 이동
+            transform.position += (Vector3)(velocity * Time.deltaTime);
+
+            // 4) 넉백을 서서히 감쇠
+            knockback = Vector2.MoveTowards(knockback, Vector2.zero, knockbackDecay * Time.deltaTime);
+
+            // 5) 스프라이트 좌우 반전
+            if (velocity.x < 0) spriteRenderer.flipX = true;
+            else if (velocity.x > 0) spriteRenderer.flipX = false;
+        }
+
+        /// <summary>
+        /// 외부에서 넉백을 추가할 때 호출
+        /// </summary>
+        public void AddKnockback(Vector2 force)
+        {
+            knockback += force;
+        }
     }
 }

@@ -20,16 +20,18 @@ public class Arrow : MonoBehaviour
             moveDir = target.transform.position - transform.position; // 이동 방향 벡터를 계산
             moveDir.Normalize();
         }
+        StartCoroutine(MovePosition());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator MovePosition()
     {
-        if (target == null)
+        while (target != null)
         {
-            Destroy(gameObject);
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+            yield return null;
         }
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) // 충돌했을 때

@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemyObject;
-    [SerializeField] GameObject player;
 
     float curTime = 0;
 
@@ -15,22 +14,21 @@ public class EnemySpawner : MonoBehaviour
         {
             MakeRandomEnemy();
         }
+        StartCoroutine(MakeRandomEnemy2());
     }
-    //2초마다 적을 만든다
-    private void Update()
+
+    private IEnumerator MakeRandomEnemy2()
     {
-        curTime += Time.deltaTime;
-        if (curTime >= 2f)
+        while (true)
         {
+            yield return new WaitForSeconds(2f);
             MakeRandomEnemy();
-            curTime = 0;
         }
     }
 
     void MakeRandomEnemy()
     {
         GameObject newEnemy = Instantiate(enemyObject);
-        newEnemy.GetComponent<Enemy>().SetTarget(player);
         enemyObject.transform.position = PickRandomPosition();
         enemyObject.GetComponent<SpriteRenderer>().color = PickRandomColor();
     }

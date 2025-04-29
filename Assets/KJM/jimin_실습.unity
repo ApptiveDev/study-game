@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyObject: {fileID: 5407154429859040325, guid: 6bcb80f91da94a448b49598d6b89f048, type: 3}
-  player: {fileID: 2050495187}
 --- !u!4 &764614925
 Transform:
   m_ObjectHideFlags: 0
@@ -405,6 +404,7 @@ GameObject:
   - component: {fileID: 2050495193}
   - component: {fileID: 2050495195}
   - component: {fileID: 2050495194}
+  - component: {fileID: 2050495196}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -544,6 +544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bc9776522a12c468e52f80df689dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleSprite: {fileID: 21300000, guid: 72e8962db63a09143a3939c930367db2, type: 3}
+  deadSprite: {fileID: 21300000, guid: 0e5b5eda3ff6d39418149746659dfb5e, type: 3}
   health: 100
 --- !u!61 &2050495194
 BoxCollider2D:
@@ -618,6 +620,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2050495196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050495187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265f9221c88fa6b418698934a4547793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

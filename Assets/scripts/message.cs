@@ -13,12 +13,14 @@ namespace AJH{
         {
             _myCollider = GetComponent<Collider2D>();
 
-            var player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-                _playerCollider = player.GetComponent<Collider2D>();
+            var _player = player.Instance;
+            if (_player != null)
+                _playerCollider = _player.GetComponent<Collider2D>();
 
             if (_playerCollider != null)
                 Physics2D.IgnoreCollision(_myCollider, _playerCollider);
+
+            
         }
 
         private void OnCollisionEnter2D(Collision2D col)

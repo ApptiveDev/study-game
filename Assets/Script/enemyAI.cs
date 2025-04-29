@@ -42,7 +42,7 @@ public class enemyAI : MonoBehaviour
                                     //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끈다.
                                     //gameObject.SetActive(false); // 본인 오브젝트도 끈다.
             }
-            if (weapon.name != "Weapon2")
+            if (weapon.name != "Weapon2" && weapon.name != "Laser")
             {
                 Destroy(collision.gameObject);
             }

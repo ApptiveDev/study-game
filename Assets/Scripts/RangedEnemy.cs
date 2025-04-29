@@ -14,7 +14,7 @@ public class RangedEnemy : EnemyBase
 
     private void Update()
     {
-        player = GameObject.Find("Player") ? GameObject.Find("Player") : null;
+        player = Player.Instance?.gameObject;
         if (player != null)
         {
             curTime += Time.deltaTime;

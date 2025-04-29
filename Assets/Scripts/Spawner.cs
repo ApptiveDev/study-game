@@ -1,20 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> enemy;
     
     float curTime = 0;
-    
-    private void Update()
+
+    private void Start()
     {
-        curTime += Time.deltaTime;
-        if (curTime >= 2) 
+        StartCoroutine(MakeRandomEnemy2());
+    }
+
+    // private void Update()
+    // {
+    //     curTime += Time.deltaTime;
+    //     if (curTime >= 2) 
+    //     {
+    //         MakeRandomEnemy();
+    //         curTime = 0;
+    //     }
+    // }
+    
+    private IEnumerator MakeRandomEnemy2()
+    {
+        while (true)
         {
+            //yield return new WaitForSeconds(2f);
+
+            yield return new WaitForSecondsRealtime(2f);
             MakeRandomEnemy();
-            curTime = 0;
         }
     }
 

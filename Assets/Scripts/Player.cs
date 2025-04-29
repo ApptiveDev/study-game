@@ -1,5 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+namespace KHJ
+{
+    
+}
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
@@ -36,6 +41,11 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
+            Time.timeScale = 0;
+        }
+        
+        if (Input.GetMouseButtonDown(1))
+        {
             Time.timeScale = 0;
         }
     }

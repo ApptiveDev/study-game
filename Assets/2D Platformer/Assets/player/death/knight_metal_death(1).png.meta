@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5111ca53d14fe0c41b98ffeb4a1ccbae
+guid: 0e5b5eda3ff6d39418149746659dfb5e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -99,5 +99,5 @@ AssetOrigin:
   productId: 229878
   packageName: 2D Platformer
   packageVersion: 1.0
-  assetPath: Assets/assets/player&enemy/enemy_idle(2).png
+  assetPath: Assets/2D Platformer/Assets/player/death/knight_metal_death(1).png
   uploadId: 519265

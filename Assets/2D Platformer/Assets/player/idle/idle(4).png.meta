@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5111ca53d14fe0c41b98ffeb4a1ccbae
+guid: 094aa802aa6133541bd5c7f8be076904
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -99,5 +99,5 @@ AssetOrigin:
   productId: 229878
   packageName: 2D Platformer
   packageVersion: 1.0
-  assetPath: Assets/assets/player&enemy/enemy_idle(2).png
+  assetPath: Assets/2D Platformer/Assets/player/idle/idle(4).png
   uploadId: 519265

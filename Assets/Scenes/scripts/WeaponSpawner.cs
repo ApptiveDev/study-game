@@ -3,7 +3,7 @@ using UnityEngine;
 public class WeaponSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] weapons; //무기 배열
-    float spawnDelay = 2f;
+    float spawnDelay = 1.5f;
     float currentDelay = 0f;
 
     void Update()

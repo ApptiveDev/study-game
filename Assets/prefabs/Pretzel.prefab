@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: -919447456479289227}
   m_Layer: 0
   m_Name: Pretzel
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,7 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70449e68275eb14dbbb8b12071ae949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  spawnInterval: 0
+  moveSpeed: 3
+  health: 5
 --- !u!50 &7658277170202943718
 Rigidbody2D:
   serializedVersion: 5

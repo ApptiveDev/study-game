@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4137698467500910623}
   m_Layer: 0
   m_Name: Bread
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70449e68275eb14dbbb8b12071ae949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInterval: 0
   moveSpeed: 2
+  health: 10
 --- !u!50 &-8757165748566213351
 Rigidbody2D:
   serializedVersion: 5
@@ -165,8 +167,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: -0.10141316, y: 0}
+  m_Size: {x: 0.78621, y: 1.0493363}
   m_Direction: 0
 --- !u!1 &5821173469012327772
 GameObject:

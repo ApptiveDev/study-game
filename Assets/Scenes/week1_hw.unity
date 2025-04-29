@@ -316,7 +316,6 @@ GameObject:
   - component: {fileID: 664087596}
   - component: {fileID: 664087597}
   - component: {fileID: 664087598}
-  - component: {fileID: 664087599}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -500,19 +499,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &664087599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664087591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3a5b5ec89b8394b85c7b0d540c9d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPrefabs: []
 --- !u!1 &884938736
 GameObject:
   m_ObjectHideFlags: 0
@@ -13785,8 +13771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messagePrefab: {fileID: 1255695101123667388, guid: ef5c32e1e8e94ed4383a7846293dd7ef, type: 3}
   throwInterval: 1
-  initialSpeedX: 5
-  initialSpeedY: 5
+  initialSpeedX: 3
+  initialSpeedY: 7
   projectileLifetime: 3
 --- !u!1001 &2035621512
 PrefabInstance:

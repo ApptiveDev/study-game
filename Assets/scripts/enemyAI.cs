@@ -2,35 +2,52 @@ using UnityEngine;
 
 public class enemyAI : MonoBehaviour
 {
-    [SerializeField] public float spawnInterval; // 플레이어 오브젝트
-    public float moveSpeed; // 적의 이동 속도
-    private Transform playerTransform; // 플레이어의 Transform 참조
-    private SpriteRenderer spriteRenderer;
-    private Vector3 direction; // 적의 이동 방향
-    public float health;
+    [Header("추격 속도")]
+    public float moveSpeed = 2f;
+    [Header("체력")]
+    public float health = 5f;
+    [Header("넉백 감쇠 속도")]
+    [SerializeField] private float knockbackDecay = 5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Transform playerTransform;
+    private SpriteRenderer spriteRenderer;
+    private Vector2 knockback;   // 현재 남아 있는 넉백 벡터
+
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = player.transform;
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            playerTransform = player.transform;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (playerTransform != null)
-        {
-            // 플레이어 방향 계산 (정규화하여 일정한 속도로 이동)
-            direction = (playerTransform.position - transform.position).normalized;
-            // 적 위치 업데이트
-            transform.position += direction * moveSpeed * Time.deltaTime;
-            if (direction.x < 0) spriteRenderer.flipX = true;
-            else if (direction.x > 0) spriteRenderer.flipX = false;
-            
-        }
-        
+        if (playerTransform == null) return;
+
+        // 1) 플레이어를 향한 추격 벡터
+        Vector2 chaseDir = (playerTransform.position - transform.position).normalized;
+
+        // 2) 최종 이동 벡터 = 추격 + 넉백
+        Vector2 velocity = chaseDir * moveSpeed + knockback;
+
+        // 3) 이동
+        transform.position += (Vector3)(velocity * Time.deltaTime);
+
+        // 4) 넉백을 서서히 감쇠
+        knockback = Vector2.MoveTowards(knockback, Vector2.zero, knockbackDecay * Time.deltaTime);
+
+        // 5) 스프라이트 좌우 반전
+        if (velocity.x < 0) spriteRenderer.flipX = true;
+        else if (velocity.x > 0) spriteRenderer.flipX = false;
     }
 
+    /// <summary>
+    /// 외부에서 넉백을 추가할 때 호출
+    /// </summary>
+    public void AddKnockback(Vector2 force)
+    {
+        knockback += force;
+    }
 }

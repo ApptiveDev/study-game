@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3359837405949046983}
   - component: {fileID: 1681531716291950371}
   - component: {fileID: 9113770471527298420}
+  - component: {fileID: 6564916730265577246}
   m_Layer: 0
   m_Name: jumprope
   m_TagString: Untagged
@@ -100,3 +101,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde638b0c5c6fd9458785a9ec67e79e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 360
+  damagePerTick: 1
+  tickInterval: 1
+  bounceStrength: 3
+--- !u!58 &6564916730265577246
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237298733914972708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.27

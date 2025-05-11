@@ -46,9 +46,6 @@ namespace AJH{
             else if (velocity.x > 0) spriteRenderer.flipX = false;
         }
 
-        /// <summary>
-        /// 외부에서 넉백을 추가할 때 호출
-        /// </summary>
         public void AddKnockback(Vector2 force)
         {
             knockback += force;

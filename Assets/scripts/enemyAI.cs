@@ -50,5 +50,17 @@ namespace AJH{
         {
             knockback += force;
         }
+
+        public void TakeDamage(float damage)
+        {
+            health -= damage;
+
+            if (health <= 0)
+            {
+                GameManager.instance.kill++; // 적 처치 수 증가
+                GameManager.instance.GetExp(); // 경험치 증가
+                Destroy(gameObject); // 적이 죽으면 오브젝트 삭제
+            }
+        }
     }
 }

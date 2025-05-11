@@ -17,7 +17,7 @@ namespace AJH{
             instance = this;
         }
 
-        void GetExp() {
+        public void GetExp() {
             exp++;
             if (exp >= nextExp[level]) {
                 level++;

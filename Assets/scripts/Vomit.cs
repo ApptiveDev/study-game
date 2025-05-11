@@ -37,12 +37,7 @@ namespace AJH {
             enemyAI enemy = collision.GetComponent<enemyAI>();
             if (enemy != null)
             {
-                enemy.health -= damage; // 적의 체력 감소
-                if (enemy.health <= 0)
-                {
-                    Destroy(collision.gameObject); // 적이 죽으면 오브젝트 삭제
-                }
-                Destroy(gameObject); // 이 오브젝트 삭제
+                enemy.TakeDamage(damage); // 이 오브젝트 삭제
             }
         }
     }

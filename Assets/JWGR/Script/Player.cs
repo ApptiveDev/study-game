@@ -16,9 +16,9 @@ namespace JWGR
         [SerializeField] int Level = 0;
         [SerializeField] Slider expBar;
         [SerializeField] GameObject gameOverPanel;
-        private int minExp = 0;
-        private int maxExp = 5;
-        private int tempExp = 0;
+        public int minExp = 0;
+        public int maxExp = 0;
+        public int tempExp = 0;
         private GameObject collisionObject;
         private SpriteRenderer render;
 
@@ -63,8 +63,9 @@ namespace JWGR
             if (tempExp >= maxExp) 
             {
                 Level += 1;
+                tempExp -= maxExp;
                 maxExp = 5 * (int)Math.Pow(2, Level);
-                tempExp = tempExp - maxExp;
+                expBar.maxValue = maxExp;
             }
             expBar.value = tempExp;
         }

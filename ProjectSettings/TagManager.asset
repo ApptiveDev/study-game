@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Enemy
   - Target
+  - ExpObj
   layers:
   - Default
   - TransparentFX

@@ -16,17 +16,17 @@ MonoBehaviour:
   itemId: 2
   itemName: "\uC904\uB118\uAE30"
   itemDescription: "\uC904\uB118\uAE30\uB97C \uB3CC\uB9BD\uB2C8\uB2E4."
-  itemIcon: {fileID: 752672252, guid: 9b08db40a52faa841af4b3b44b1bbcd0, type: 3}
-  baseDamage: 2
-  baseCount: 0
-  baseSpeed: 0
+  itemIcon: {fileID: -5867331941366042073, guid: 23fe4eedc7635d94da46c01b6954c548, type: 3}
+  baseDamage: 1
+  baseCount: 1
+  baseSpeed: 1
   damages:
-  - 5
-  - 10
-  - 20
-  counts: 010000000200000003000000
+  - 1
+  - 2
+  - 3
+  counts: 010000000100000001000000
   speeds:
-  - 2
-  - 2
-  - 4
-  projectile: {fileID: 5996847182863808560, guid: 1a08f48a871a99b49969ac2c9dd1c389, type: 3}
+  - 1
+  - 1
+  - 1
+  projectile: {fileID: 237298733914972708, guid: 2cdee6f5a81f5d24e9e8c12c3ac5279e, type: 3}

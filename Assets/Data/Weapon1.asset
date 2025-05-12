@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f46aa7aa3f0254bb18b64d668547ce, type: 3}
   m_Name: Weapon1
   m_EditorClassIdentifier: 
-  itemType: 1
-  itemId: 0
-  itemName: "\uD1A0\uC0AC\uBB3C"
-  itemDescription: "\uC74C\uC2DD\uC744 \uD5A5\uD574 \uD1A0\uC0AC\uBB3C\uC744 \uBC1C\uC0AC\uD574
-    \uBA39\uC744 \uC218 \uC5C6\uAC8C \uD569\uB2C8\uB2E4."
+  itemType: 0
+  itemId: 1
+  itemName: "PT\uC324\uC758 \uCE74\uD1A1"
+  itemDescription: "PT\uC324\uC758 \uCE74\uD1A1\uCC3D\uC774 \uC74C\uC2DD\uC744 \uCE58\uC6C1\uB2C8\uB2E4."
   itemIcon: {fileID: 752672252, guid: 9b08db40a52faa841af4b3b44b1bbcd0, type: 3}
-  baseDamage: 2
-  baseCount: 0
+  baseDamage: 5
+  baseCount: 1
   baseSpeed: 0
   damages:
   - 5
@@ -27,7 +26,7 @@ MonoBehaviour:
   - 20
   counts: 010000000200000003000000
   speeds:
+  - 3
   - 2
-  - 2
-  - 4
-  projectile: {fileID: 5996847182863808560, guid: 1a08f48a871a99b49969ac2c9dd1c389, type: 3}
+  - 1
+  projectile: {fileID: 1255695101123667388, guid: ef5c32e1e8e94ed4383a7846293dd7ef, type: 3}

@@ -30,9 +30,7 @@ namespace AJH{
             if (enemy != null)
             {
                 // 체력 차감
-                enemy.health -= damage;
-                if (enemy.health <= 0f)
-                    Destroy(enemy.gameObject);
+                enemy.TakeDamage(damage);
             }
         }
     }

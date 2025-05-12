@@ -56,13 +56,7 @@ namespace AJH{
         private void DealDamageAndBounce(enemyAI enemy)
         {
             // 데미지 적용
-            enemy.health -= damagePerTick;
-            if (enemy.health <= 0f)
-            {
-                Destroy(enemy.gameObject);
-                _nextDamageTime.Remove(enemy);
-                return;
-            }
+            enemy.TakeDamage(damagePerTick);
 
             // 넉백 적용: 방향 계산 후 enemyAI 내부로 전달
             Vector2 dir = (enemy.transform.position - transform.position).normalized;

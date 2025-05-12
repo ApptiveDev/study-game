@@ -13,6 +13,7 @@ namespace AJH{
         public int exp;
         public int kill;
         public int[] nextExp = {3, 5, 10, 30, 60, 100, 150};
+        public GameObject[] expPrefab;
 
         void Awake()
         {
@@ -24,11 +25,11 @@ namespace AJH{
             weight = 45;
         }
 
-        public void GetExp() {
-            exp++;
+        public void GetExp(int expAmount) {
+            exp+= expAmount;
             if (exp >= nextExp[level]) {
+                exp = nextExp[level] - exp;
                 level++;
-                exp = 0;
             }
         }
 

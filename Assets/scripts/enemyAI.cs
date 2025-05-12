@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace AJH{
         public float health = 5f;
         [Header("넉백 감쇠 속도")]
         [SerializeField] private float knockbackDecay = 5f;
+        [SerializeField] private int expIdx;
+        
 
         private Transform playerTransform;
         private SpriteRenderer spriteRenderer;
@@ -57,9 +60,10 @@ namespace AJH{
 
             if (health <= 0)
             {
-                GameManager.instance.kill++; // 적 처치 수 증가
-                GameManager.instance.GetExp(); // 경험치 증가
+                GameManager.instance.kill++; // 경험치 증가
+                Instantiate(GameManager.instance.expPrefab[expIdx], transform.position, Quaternion.identity);
                 Destroy(gameObject); // 적이 죽으면 오브젝트 삭제
+
             }
         }
     }

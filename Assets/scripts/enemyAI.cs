@@ -11,6 +11,8 @@ namespace AJH{
         public float health = 5f;
         [Header("넉백 감쇠 속도")]
         [SerializeField] private float knockbackDecay = 5f;
+        [Header("몹 데미지")]
+        [SerializeField] private float damage = 1f;
         [SerializeField] private int expIdx;
         
 
@@ -64,6 +66,13 @@ namespace AJH{
                 Instantiate(GameManager.instance.expPrefab[expIdx], transform.position, Quaternion.identity);
                 Destroy(gameObject); // 적이 죽으면 오브젝트 삭제
 
+            }
+        }
+
+        public void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Player")) {
+                GameManager.instance.GetWeight(damage); // 플레이어에게 데미지
             }
         }
     }

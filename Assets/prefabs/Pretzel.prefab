@@ -193,6 +193,7 @@ MonoBehaviour:
   moveSpeed: 3
   health: 5
   knockbackDecay: 5
+  damage: 5
   expIdx: 1
 --- !u!50 &7658277170202943718
 Rigidbody2D:

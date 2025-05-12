@@ -7,8 +7,8 @@ namespace AJH{
         public player player;
 
         [Header("Player Info")]  
-        public int weight;
-        public int maxWeight = 100;
+        public float weight = 45f;
+        public float maxWeight = 100f;
         public int level;
         public int exp;
         public int kill;
@@ -20,17 +20,17 @@ namespace AJH{
             instance = this;
         }
 
-        void Start()
-        {
-            weight = 45;
-        }
 
         public void GetExp(int expAmount) {
             exp+= expAmount;
             if (exp >= nextExp[level]) {
-                exp = nextExp[level] - exp;
+                exp = 0;
                 level++;
             }
+        }
+
+        public void GetWeight(float damage) {
+            weight += damage;
         }
 
     }

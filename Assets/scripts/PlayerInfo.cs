@@ -34,17 +34,17 @@ public class PlayerInfo : MonoBehaviour
             case InfoType.Time:
                 break;
             case InfoType.Health:
+                float curWeight = GameManager.instance.weight;
                 if (mySlider != null)
                 {
-                    float curWeight = GameManager.instance.weight;
                     float maxWeight = GameManager.instance.maxWeight;
-                    mySlider.value = (curWeight-45) / maxWeight;
+                    mySlider.value = (curWeight-45) / (maxWeight-45);
                 }
 
                 if (myText != null)
                 {
-                    float curWeight = GameManager.instance.weight;
-                    myText.text = $"{curWeight}kg";
+                    curWeight = GameManager.instance.weight;
+                    myText.text = $"{curWeight:0.0}kg";
                 }
                 break;
         }

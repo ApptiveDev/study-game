@@ -4,6 +4,7 @@ namespace AJH{
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance;
+        public PoolManager pool;
         public player player;
 
         [Header("Player Info")]  

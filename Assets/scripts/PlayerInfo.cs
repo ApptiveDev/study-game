@@ -21,14 +21,23 @@ public class PlayerInfo : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        float curExp = GameManager.instance.exp;
+        float maxExp = GameManager.instance.nextExp[GameManager.instance.level];
         switch (type) {
             case InfoType.Exp:
-                float curExp = GameManager.instance.exp;
-                float maxExp = GameManager.instance.nextExp[GameManager.instance.level];
-                mySlider.value = curExp / maxExp;
+                if (mySlider != null) {
+                    mySlider.value = curExp / maxExp;
+                }
                 break;
+
             case InfoType.Level:
+                int curLevel = GameManager.instance.level;
+                if (myText != null)
+                {
+                    myText.text = $"Level {curLevel} - {curExp}/{maxExp}";
+                }
                 break;
+
             case InfoType.kill:
                 break;
             case InfoType.Time:

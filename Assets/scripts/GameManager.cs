@@ -25,6 +25,8 @@ namespace AJH{
             exp+= expAmount;
             if (exp >= nextExp[level]) {
                 exp = 0;
+                // exp가 0이아니라 넘친 만큼 되어야할거같은데 
+                // 그렇게 하니까 뭔가 이상하게 동작함...
                 level++;
             }
         }

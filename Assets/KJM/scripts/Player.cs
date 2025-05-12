@@ -6,7 +6,8 @@ namespace KJM
     {
         public static Player Instance { get; private set; }
         public int level = 0;
-        public float exp = 0;
+        public int exp = 0;
+        public int max_exp = 10;
 
         private void Awake()
         {

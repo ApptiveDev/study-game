@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e049d3f78e48d4d8d4efc0ea9f3dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawned: {fileID: 2322413112627398784, guid: 35cfbf336bf6e1540b54ca241a01e4f5, type: 3}
+  bulletPrefab: {fileID: 2322413112627398784, guid: 35cfbf336bf6e1540b54ca241a01e4f5, type: 3}
   castTime: 0.2
   rotationSpeed: 5
 --- !u!1 &338522087
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e049d3f78e48d4d8d4efc0ea9f3dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawned: {fileID: 2322413112627398784, guid: 35cfbf336bf6e1540b54ca241a01e4f5, type: 3}
+  bulletPrefab: {fileID: 2322413112627398784, guid: 35cfbf336bf6e1540b54ca241a01e4f5, type: 3}
   castTime: 0.2
   rotationSpeed: 5
 --- !u!1 &1113663554
@@ -1282,6 +1282,10 @@ MonoBehaviour:
   deceleration: 10
   turnSpeed: 200
   turnLerpSpeed: 5
+  baseExpToNextLevel: 5
+  expGrowthFactor: 1.5
+  levelUpPanel: {fileID: 0}
+  weaponUIManager: {fileID: 0}
 --- !u!50 &1527712130
 Rigidbody2D:
   serializedVersion: 5

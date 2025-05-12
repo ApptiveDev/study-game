@@ -5,6 +5,7 @@ namespace KJM
 {
     public class Enemy : MonoBehaviour
     {
+        [SerializeField]GameObject Coin;
         public float health = 50f;
         float moveDistance = 0.003f;
         float enemySpeed = 1f;
@@ -27,7 +28,10 @@ namespace KJM
                 }
                 yield return null;
             }
+            /*MakeCoin();*/
+            Vector3 deathPosition = transform.position;
             Destroy(gameObject); // 적 게임 오브젝트를 지운다.
+            Instantiate(Coin, deathPosition, Quaternion.identity);
         }
     }
 }

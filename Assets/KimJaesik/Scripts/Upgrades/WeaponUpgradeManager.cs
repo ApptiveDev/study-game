@@ -14,6 +14,11 @@ namespace KJS
 
         private List<WeaponData> allWeapons;
 
+        [Header("발사체 프리팹")]
+        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private GameObject missilePrefab;
+        [SerializeField] private GameObject energyWavePrefab;
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -28,6 +33,23 @@ namespace KJS
         {
             allWeapons = new List<WeaponData>
             {
+                new WeaponData {
+                    weaponName = "turretAddOn",
+                    description = "Deploys auto-aiming turrets that shoot bullets at the nearest enemy.",
+                    weaponObject = turretAddOn,
+                    upgradeAction = () => {
+                        if (turretAddOn == null)
+                        {
+                            Debug.LogWarning("turretAddOn is null. Upgrade skipped.");
+                            return;
+                        }
+                        var turrets = turretAddOn.GetComponentsInChildren<KJS.Turret_AddOn>();
+                        foreach (var turret in turrets)
+                        {
+                            turret.castTime *= 0.9f;
+                        }
+                    }
+                },
                 new WeaponData {
                     weaponName = "energyWaveCannon",
                     description = "Fires a powerful straight-line wave that pierces through enemies.",
@@ -50,23 +72,14 @@ namespace KJS
                         {
                             launcher.castTime *= 0.8f;
                         }
-                    }
-                },
-                new WeaponData {
-                    weaponName = "turretAddOn",
-                    description = "Deploys auto-aiming turrets that shoot bullets at the nearest enemy.",
-                    weaponObject = turretAddOn,
-                    upgradeAction = () => {
-                        if (turretAddOn == null)
+                        if (missilePrefab != null)
                         {
-                            Debug.LogWarning("turretAddOn is null. Upgrade skipped.");
-                            return;
+                            var missile = missilePrefab.GetComponent<KJS.Missile>();
+                            if (missile != null)
+                            {
+                                missile.homingSpeed *= 1.2f;
+                            }
                         }
-                        var turrets = turretAddOn.GetComponentsInChildren<KJS.Turret_AddOn>();
-                        foreach (var turret in turrets)
-                        {
-                            turret.castTime *= 0.9f;
-                        }               
                     }
                 }
             };

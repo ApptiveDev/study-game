@@ -7,6 +7,8 @@ namespace AJH{
         public player player;
 
         [Header("Player Info")]  
+        public int weight;
+        public int maxWeight = 100;
         public int level;
         public int exp;
         public int kill;
@@ -15,6 +17,11 @@ namespace AJH{
         void Awake()
         {
             instance = this;
+        }
+
+        void Start()
+        {
+            weight = 45;
         }
 
         public void GetExp() {

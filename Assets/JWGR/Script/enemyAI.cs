@@ -8,8 +8,10 @@ namespace JWGR
 {
     public class enemyAI : MonoBehaviour
     {
-        public GameObject player;
+        [SerializeField] GameObject player;
+        [SerializeField] GameObject exp;
         private GameObject weapon;
+        private GameObject clone;
         private Vector3 dirVector;
 
         public float health = 100f;
@@ -49,6 +51,8 @@ namespace JWGR
                     health -= weapon.GetComponent<weaponInfo>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
                     if (health <= 0) // 체력이 0 이하인 경우
                     {
+                        clone = Instantiate(exp, transform.position, Quaternion.identity);
+                        clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
                         Destroy(gameObject); //오브젝트를 지운다.
                                              //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끈다.
                                              //gameObject.SetActive(false); // 본인 오브젝트도 끈다.
@@ -56,6 +60,15 @@ namespace JWGR
                     if (weapon.name != "Weapon2")
                     {
                         Destroy(collision.gameObject);
+                    }
+                }
+                if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때
+                {
+                    health -= weapon.GetComponent<weaponInfo>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
+                    if (health <= 0) // 체력이 0 이하인 경우
+                    {
+                        Instantiate(exp);
+                        exp.GetComponent<SpriteRenderer>().sortingOrder = 6;
                     }
                 }
             }

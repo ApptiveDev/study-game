@@ -31,9 +31,9 @@ namespace JWGR
         private GameObject MakeRandomEnemy()
         {
             GameObject clone = Instantiate(enemyObject);
-            enemyObject.transform.position = PickRandomPosition();
-            enemyObject.GetComponent<SpriteRenderer>().color = PickRandomColor();
-            enemyObject.GetComponent<SpriteRenderer>().sortingOrder = 6;
+            clone.transform.position = PickRandomPosition();
+            // clone.GetComponent<SpriteRenderer>().color = PickRandomColor();
+            clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
 
             return clone;
         }

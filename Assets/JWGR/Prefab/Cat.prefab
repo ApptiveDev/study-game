@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1182150025787728453}
   - component: {fileID: 133001665334150242}
   - component: {fileID: 480042816596953743}
+  - component: {fileID: 6150560827888666435}
   - component: {fileID: -3205817418739383067}
   - component: {fileID: 757323518800119451}
   m_Layer: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6072671293041297104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.039949417, y: -1.5011493, z: 0}
+  m_LocalPosition: {x: -1.9408722, y: 2.9195952, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 7221746745864628104, guid: d7160cd9578c3ae4f98303b2c32faa32, type: 3}
-  m_Color: {r: 0.12629199, g: 0.09201324, b: 0.51078874, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,8 +104,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  exp: {fileID: 807998154566193832, guid: a29d190a4446f9a49959dbb78d487760, type: 3}
   health: 100
   speed: 1
+--- !u!114 &6150560827888666435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072671293041297104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae60b4d86a087574690e8d1b046e4389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  damage: 10
 --- !u!50 &-3205817418739383067
 Rigidbody2D:
   serializedVersion: 5

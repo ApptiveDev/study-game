@@ -6,6 +6,8 @@ TagManager:
   tags:
   - weapon
   - Enemy
+  - piercingWeapon
+  - Exp
   layers:
   - Default
   - TransparentFX

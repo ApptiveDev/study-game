@@ -35,8 +35,11 @@ namespace JWGR
 
         private IEnumerator Summon()
         {
-            FireLaser();
-            yield return new WaitForSeconds(fireRate);
+            while (true)
+            {
+                FireLaser();
+                yield return new WaitForSeconds(fireRate);
+            }
         }
 
         private void FireLaser()

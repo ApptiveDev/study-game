@@ -7,12 +7,16 @@ namespace JWGR
     public class arrowSpawner : MonoBehaviour
     {
         [SerializeField] GameObject arrowObject;
-
         public float spawnDelay = 2f;
 
         private void Start()
         {
             StartCoroutine(Spawn());
+        }
+
+        private void Update()
+        {
+            spawnDelay = arrowObject.GetComponent<ItemData>().speed;
         }
 
         private IEnumerator Spawn()

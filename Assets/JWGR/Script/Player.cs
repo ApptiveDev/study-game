@@ -11,11 +11,11 @@ namespace JWGR
         public static Player Instance { get; private set; }
 
         // 변수 선언.
-        [SerializeField] float moveSpeed = 3f;
-        [SerializeField] float health = 100f;
-        [SerializeField] int Level = 0;
         [SerializeField] Slider expBar;
         [SerializeField] GameObject gameOverPanel;
+        public float moveSpeed = 3f;
+        public float health = 100f;
+        public int Level = 0;
         public int minExp = 0;
         public int maxExp = 0;
         public int tempExp = 0;
@@ -88,6 +88,7 @@ namespace JWGR
                 if (health <= 0)
                 {
                     gameOverPanel.SetActive(true);
+                    Time.timeScale = 1f;
                 }
             }
         }

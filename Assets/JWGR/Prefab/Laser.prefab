@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5847167874352010844}
   - component: {fileID: 545783013067510054}
-  - component: {fileID: 4723073793605035468}
+  - component: {fileID: 5714279175523829130}
   - component: {fileID: 9021103872732403030}
   - component: {fileID: 3004166836579047355}
   m_Layer: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4723073793605035468
+--- !u!114 &5714279175523829130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,8 +102,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043ca97de7507004899038d0ef052958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 3
-  damage: 50
+  itemType: 1
+  itemId: 2
+  itemName: "\uB808\uC774\uC800 \uAC74"
+  itemDesc: 
+  itemIcon: {fileID: 6406610894217221568, guid: 0554a0e3d58ac2445b200bf4ec8ecb89, type: 3}
+  damage: 20
+  count: 0
+  speed: 1
+  damages: []
+  counts: 
+  speeds:
+  - 1.5
+  - 1
+  - 0.6
+  - 0.3
 --- !u!50 &9021103872732403030
 Rigidbody2D:
   serializedVersion: 5

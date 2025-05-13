@@ -33,6 +33,11 @@ namespace JWGR
             }
         }
 
+        private void Update()
+        {
+            fireRate = laserObj.GetComponent<ItemData>().speed;
+        }
+
         private IEnumerator Summon()
         {
             while (true)

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f46aa7aa3f0254bb18b64d668547ce, type: 3}
+  m_Name: Weapon2
+  m_EditorClassIdentifier: 
+  itemType: 2
+  itemId: 2
+  itemName: "\uC904\uB118\uAE30"
+  itemDescription: "\uC904\uB118\uAE30\uB97C \uB3CC\uB9BD\uB2C8\uB2E4."
+  itemIcon: {fileID: -5867331941366042073, guid: 23fe4eedc7635d94da46c01b6954c548, type: 3}
+  baseDamage: 1
+  baseCount: 1
+  baseSpeed: 1
+  damages:
+  - 1
+  - 2
+  - 3
+  counts: 010000000100000001000000
+  speeds:
+  - 1
+  - 1
+  - 1
+  projectile: {fileID: 237298733914972708, guid: 2cdee6f5a81f5d24e9e8c12c3ac5279e, type: 3}

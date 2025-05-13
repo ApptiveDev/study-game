@@ -46,3 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefabs:
   - {fileID: 5996847182863808560, guid: 1a08f48a871a99b49969ac2c9dd1c389, type: 3}
+  - {fileID: 5996847182863808560, guid: 74cd8bbb8d5600340b63a75092253a31, type: 3}
+  - {fileID: 5996847182863808560, guid: f5b45facfb938884bb4c913bcd831673, type: 3}
+  spawnInterval: 8
+  curTime: 0
+  level: 0
+  count: 1

@@ -15,10 +15,10 @@ namespace AJH{
         [Header("Level data")]
         public float baseDamage;
         public int baseCount;
-        public float baseSpeed;
+        public float baseInterval;
         public float[] damages;
         public int[] counts;
-        public float[] speeds;
+        public float[] intervals;
 
 
         [Header("Weapon")]

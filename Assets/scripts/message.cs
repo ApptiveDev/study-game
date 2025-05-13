@@ -4,7 +4,7 @@ namespace AJH{
     public class message : MonoBehaviour
     {
         [Header("데미지")]
-        public int damage = 5;
+        public float damage = 5;
 
 
         private Collider2D _myCollider;

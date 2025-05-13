@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 namespace AJH{
 
     public class GameManager : MonoBehaviour
@@ -34,8 +35,9 @@ namespace AJH{
 
         public void GetWeight(float damage) {
             weight += damage;
+            // player.GetComponent
+            // 이거 무게 늘면 커지는거 추후 구현 예정
         }
-
     }
 
 }

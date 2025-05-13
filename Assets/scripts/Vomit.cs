@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace AJH {
 
-    public class NewMonoBehaviourScript1 : MonoBehaviour
+    public class Vomit : MonoBehaviour
     {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private GameObject target;
@@ -12,13 +12,22 @@ namespace AJH {
 
         void Start()
         {
-            enemyAI enemy = FindObjectOfType<enemyAI>();
-            if (enemy != null)
-            {
-                target = enemy.gameObject; // enemyAI 스크립트가 붙은 오브젝트를 찾음
-                moveDirection = (target.transform.position - transform.position).normalized; // 이동 방향 계산
-            }
+            chooseTarget(); // 타겟 선택
+            
+        }
 
+        void chooseTarget() {
+            enemyAI[] enemy = FindObjectsOfType<enemyAI>();
+            if (enemy.Length != 0)
+            {
+                int index = Random.Range(0, enemy.Length);
+                target = enemy[index].gameObject; // enemyAI 스크립트가 붙은 오브젝트를 찾음
+                moveDirection = (target.transform.position - transform.position).normalized; // 이동 방향 계산
+                
+            }
+            else {
+                moveDirection = Vector2.right;
+            }
         }
 
         // Update is called once per frame
@@ -38,6 +47,7 @@ namespace AJH {
             if (enemy != null)
             {
                 enemy.TakeDamage(damage); // 이 오브젝트 삭제
+                Destroy(gameObject); // 적에게 닿으면 오브젝트 삭제
             }
         }
     }

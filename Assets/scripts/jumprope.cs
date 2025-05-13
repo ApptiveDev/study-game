@@ -9,9 +9,9 @@ namespace AJH{
         [Header("회전 속도 (도/초)")]
         [SerializeField] private float rotationSpeed = 360f;
         [Header("틱당 데미지")]
-        [SerializeField] private int damagePerTick = 1;
+        [SerializeField] public float damagePerTick = 1;
         [Header("데미지 간격 (초)")]
-        [SerializeField] private float tickInterval = 1f;
+        [SerializeField] public float tickInterval = 1f;
         [Header("넉백 세기")]
         [SerializeField] private float bounceStrength = 2f;
 

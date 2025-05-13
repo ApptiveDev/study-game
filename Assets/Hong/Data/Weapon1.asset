@@ -19,14 +19,14 @@ MonoBehaviour:
   itemIcon: {fileID: 752672252, guid: 9b08db40a52faa841af4b3b44b1bbcd0, type: 3}
   baseDamage: 5
   baseCount: 1
-  baseSpeed: 0
+  baseInterval: 0
   damages:
   - 5
   - 10
   - 20
   counts: 010000000200000003000000
-  speeds:
-  - 3
+  intervals:
+  - 8
+  - 4
   - 2
-  - 1
   projectile: {fileID: 1255695101123667388, guid: ef5c32e1e8e94ed4383a7846293dd7ef, type: 3}

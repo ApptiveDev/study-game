@@ -5,7 +5,7 @@ namespace KJM
 {
     public class WeaponSpawner : MonoBehaviour
     {
-        [SerializeField] GameObject[] weapons; //무기 배열
+        [SerializeField] public GameObject[] weapons; //무기 배열
         float spawnDelay = 1.5f;
         float currentDelay = 0f;
 

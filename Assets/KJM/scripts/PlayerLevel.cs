@@ -19,7 +19,7 @@ namespace KJM
                 {
                     Player.Instance.level++;
                     Player.Instance.exp = 0;
-                    Inventory.Instance.ShowInventory();
+                    Inventory.Instance.RandomWeaponSelect();
                     //StartCoroutine(Levelup());
                 }
                 yield return null;

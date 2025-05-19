@@ -8,7 +8,7 @@ namespace AJH{
         public ItemType itemType;
         public int itemId;
         public string itemName;
-        public string itemDescription;
+        public string[] itemDescription;
         public Sprite itemIcon;
         
         

@@ -11,6 +11,7 @@ namespace AJH{
         public int level;
 
         Text textLevel;
+        Text textDiscription;
         Transform player;
 
         void Start()
@@ -22,6 +23,7 @@ namespace AJH{
         {
             Text[] texts = GetComponentsInChildren<Text>();
             textLevel = texts[0];
+            textDiscription = texts[2];
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             player = playerObj.transform;
         
@@ -30,14 +32,20 @@ namespace AJH{
         void LateUpdate()
         {
             textLevel.text = $"Lv.{level+1}";
+            if (level >= data.itemDescription.Length) {
+                textDiscription.text = "최대 레벨입니다.";
+                return;
+            }
+            else textDiscription.text = data.itemDescription[level];
         }
 
         public void OnClick()
         {
             if (level == 0) {
                 weapon = Instantiate(weapon, player.position, Quaternion.identity, player);
+                level++;
             }
-            else {
+            else if (level < data.damages.Length) {
                 switch (data.itemType) {
                     case WeaponData.ItemType.Range:
                         WeaponSpawner vomitSpawner = weapon.GetComponent<WeaponSpawner>();
@@ -59,9 +67,9 @@ namespace AJH{
                         rope.tickInterval = data.intervals[level];
                         break;
                 }
+                level++;
             }
                
-            level++;
             if (level == data.damages.Length) {
                 GetComponent<Button>().interactable = false;
             }

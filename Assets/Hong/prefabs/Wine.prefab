@@ -133,8 +133,10 @@ MonoBehaviour:
   health: 5
   knockbackDecay: 5
   damage: 3
+  spawnInterval: 2
   expIdx: 0
   attackRange: 3
+  attackPrefab: {fileID: 6104182270131002860, guid: bd38d59b8d9b3b04486aaa956c939644, type: 3}
 --- !u!70 &1998066335651888346
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

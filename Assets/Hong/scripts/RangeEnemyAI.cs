@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 namespace AJH{
     public class RangeEnemyAI : MonoBehaviour
     {
@@ -18,8 +19,11 @@ namespace AJH{
         [SerializeField] private float knockbackDecay = 5f;
         [Header("몹 데미지")]
         [SerializeField] private float damage = 3f;
+        [Header("스폰 간격")]
+        [SerializeField] private float spawnInterval = 2f; // 공격 간격
         [SerializeField] private int expIdx;
         [SerializeField] private float attackRange = 4f; // 공격 범위
+        [SerializeField] private GameObject attackPrefab; // 공격 프리팹
         
 
         private Transform playerTransform;
@@ -35,17 +39,15 @@ namespace AJH{
 
             spriteRenderer = GetComponent<SpriteRenderer>();
             currentState = EnemyState.Chase;
-            StartCoroutine(checkState()); // 상태 체크 코루틴 시작
-        }
+            StartCoroutine(checkState());
+            StartCoroutine(AttackPlayer());       
+            }
 
 
         void Update()
         {
             if (currentState == EnemyState.Chase) {
                 ChasePlayer();
-            }
-            else if (currentState == EnemyState.Attack) {
-                AttackPlayer();
             }
         }
 
@@ -65,7 +67,7 @@ namespace AJH{
         }
 
 
-        void ChasePlayer() {
+        private void ChasePlayer() {
             Vector2 chaseDir = (playerTransform.position - transform.position).normalized;
             Vector2 velocity = chaseDir * moveSpeed + knockback;
             transform.position += (Vector3)(velocity * Time.deltaTime);
@@ -76,8 +78,17 @@ namespace AJH{
         }
 
 
-        void AttackPlayer() {
+        private IEnumerator AttackPlayer() {
+            while(true) {
+                if (currentState == EnemyState.Attack) {
+                    SpawnCheese();
+                }
+                yield return new WaitForSeconds(spawnInterval);
+            }
+        }
 
+        private void SpawnCheese() {
+            Instantiate(attackPrefab, transform.position, Quaternion.identity);
         }
 
         public void TakeDamage(float damage)

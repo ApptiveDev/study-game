@@ -7,7 +7,7 @@ namespace KJM
         private SpriteRenderer spriteRenderer;
         [SerializeField] private Sprite idleSprite;
         [SerializeField] public Sprite deadSprite;
-        [SerializeField] float health = 500f;
+        [SerializeField] public float health = 500f;
         float damage = 10f;
 
         private void Start()

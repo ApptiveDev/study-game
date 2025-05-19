@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8144376087804867917}
   - component: {fileID: -8416642370507442188}
   - component: {fileID: 1785169506556664419}
+  - component: {fileID: 4713827457562090737}
   m_Layer: 0
-  m_Name: crystal1
+  m_Name: enemyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,3 +186,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4713827457562090737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6268318930547392359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca76ed720d6903447a4df96c7dfcd620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  lifetime: 10

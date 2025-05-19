@@ -5,9 +5,24 @@ namespace KJM
 {
     public class WeaponSpawner : MonoBehaviour
     {
+        public static WeaponSpawner Instance { get; private set; }
         [SerializeField] public GameObject[] weapons; //무기 배열
         float spawnDelay = 1.5f;
         float currentDelay = 0f;
+        public int weaponCnt = 1;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject); //신이 바껴도 오브젝트 유지
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
@@ -26,8 +41,11 @@ namespace KJM
             //랜덤 선택
             int randomIndex = Random.Range(0, weapons.Length);
             GameObject weapon = weapons[randomIndex];
-
-            GameObject shootWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+            for (int i = 0; i < weaponCnt; i++)
+            {
+                GameObject shootWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+            }
+            
         }
     }
 

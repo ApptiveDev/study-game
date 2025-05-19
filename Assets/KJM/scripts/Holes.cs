@@ -15,7 +15,7 @@ namespace KJM
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
-                Destroy(enemy); // 생성된 holde 안에 들어온 적은 소멸한다.
+                Destroy(enemy.gameObject); // 생성된 holde 안에 들어온 적은 소멸한다.
             }
         }
     }

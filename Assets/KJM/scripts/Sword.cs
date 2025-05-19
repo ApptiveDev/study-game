@@ -9,8 +9,9 @@ namespace KJM
         Rigidbody2D rb;
         float positionY = 10f;
         float positionX = 3f;
-        float damage = 10f;
+        public float damage = 10f;
         float spinSpeed = 600f;
+
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();

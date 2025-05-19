@@ -10,7 +10,7 @@ namespace KJM
         GameObject target;
         Vector3 moveDir; // 이동방향 벡터
         float moveSpeed = 5f; //무기 이동 속도
-        float damage = 10f; //무기 데미지
+        public float damage = 10f; //무기 데미지
 
         private void Start()
         {

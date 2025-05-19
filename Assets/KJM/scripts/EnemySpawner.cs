@@ -37,8 +37,8 @@ namespace KJM
 
         Vector3 PickRandomPosition() // 랜덤 위치 반환
         {
-            float x = Random.Range(-4f, 4f);
-            float y = Random.Range(-4f, 4f);
+            float x = Random.Range(-5f, 5f);
+            float y = Random.Range(-5f, 5f);
 
             return new Vector3(x, y, 0);
         }

@@ -10,6 +10,9 @@ namespace KJM
     public class Inventory : MonoBehaviour
     {
         [SerializeField] private List<Button> choiceButtons; // 버튼 1,2,3 배열
+        [SerializeField] private FireZone fireZone;
+        [SerializeField] private Sword sword;
+        [SerializeField] private Arrow arrow;
         public static Inventory Instance { get; private set; }
         public List<string> weaponData = new List<string>();
         private GameObject isPanel;
@@ -44,9 +47,9 @@ namespace KJM
             {
                 loadingMessage.SetActive(false);
             }
-            weaponData.Add("sword");
-            weaponData.Add("arrow");
-            weaponData.Add("handbomb");
+            weaponData.Add("Sword");
+            weaponData.Add("Arrow");
+            weaponData.Add("HandBomb");
             loadingMessage.transform.Find("loadingText").GetComponent<TMP_Text>().text = "렌덤 선택중...";
         }
         public IEnumerator WaitRandomSelect()
@@ -63,6 +66,7 @@ namespace KJM
             yield return new WaitForSecondsRealtime(2f); //2초 기다리기
 
             loadingMessage.gameObject.SetActive(false);
+            loadingMessage.transform.Find("loadingText").GetComponent<TMP_Text>().text = "렌덤 선택중...";
             ShowInventory();
         }
 
@@ -92,18 +96,27 @@ namespace KJM
         public void UpgradeWeapon(int choice)
         {
             Debug.Log("버튼이 클릭되었습니다!");
-            Debug.Log("선택 옵션 : {choice}");
+            Debug.Log(choice);
             switch (choice)
             {
                 case 0:
                     changeWeapon();
                     break;
                 case 1:
+                    WeaponSpawner.Instance.weaponCnt += 1;
+                    Debug.Log($"weaponCont: {WeaponSpawner.Instance.weaponCnt}");
                     break;
-
                 case 2:
+                    IncDamage();
                     break;
+                default:
+                    break;
+            }
 
+            if (isPanel != null)
+            {
+                isPanel.SetActive(false);
+                Time.timeScale = 1f;
             }
 
         }
@@ -112,6 +125,27 @@ namespace KJM
         {
             WeaponSpawner spawner = Player.Instance.GetComponent<WeaponSpawner>();
             spawner.weapons[selectedIndexes] = newWeaponPrefab;
+            weaponData[selectedIndexes] = "Wand";
+        }
+
+        public void IncDamage()
+        {
+            var selectedWeapon = weaponData[selectedIndexes];
+            if (selectedWeapon == "Sword")
+            {
+                sword.damage += 10;
+                Debug.Log($"damage: {sword.damage}");
+            }
+            else if (selectedWeapon == "Arrow")
+            {
+                arrow.damage += 10;
+                Debug.Log($"damage: {arrow.damage}");
+            }
+            else if (selectedWeapon == "HandBomb")
+            {
+                fireZone.damage += 10;
+                Debug.Log($"damage: {fireZone.damage}");
+            }
         }
     }
 

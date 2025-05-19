@@ -6,6 +6,7 @@ namespace KJM
     {
         public float damage = 10f;
         public float duration = 5f;
+
         void Start()
         {
             Destroy(gameObject, duration);

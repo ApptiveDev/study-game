@@ -15,7 +15,7 @@ namespace JWGR
         [SerializeField] GameObject gameOverPanel;
         [SerializeField] GameObject levelManager;
         public float moveSpeed = 3f;
-        public float health = 100f;
+        public float HP = 100f;
         public int Level = 0;
         public int minExp = 0;
         public int maxExp = 0;
@@ -82,12 +82,12 @@ namespace JWGR
                 {
                     if (!collisionObject.GetComponent<enemyInfo>().isRange)
                     {
-                        health -= collisionObject.GetComponent<enemyInfo>().damage;
+                        HP -= collisionObject.GetComponent<enemyInfo>().damage;
                     }
                 }
                 if (collisionObject.gameObject.CompareTag("EnemyWeapon"))
                 {
-                    health -= collisionObject.GetComponent<ItemData>().damage;
+                    HP -= collisionObject.GetComponent<ItemData>().damage;
                     Destroy(collision.gameObject); //오브젝트를 지운다.
                 }
                 else if (collisionObject.gameObject.CompareTag("Exp"))
@@ -96,7 +96,7 @@ namespace JWGR
                     Destroy(collision.gameObject);
                 }
 
-                if (health <= 0)
+                if (HP <= 0)
                 {
                     gameOverPanel.SetActive(true);
                     Time.timeScale = 0f;

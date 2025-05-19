@@ -13,11 +13,12 @@ namespace JWGR
         [SerializeField] GameObject arrowObject;
         private GameObject weapon;
         private GameObject clone;
+        private enemyInfo info;
         public float checkDelay = 0.2f;
         public float spawnDelay = 2f;
         public float currentDelay = 0f;
         public float attackRange = 10f;
-        public float health = 100f;
+        public float HP = 100f;
         public float speed = 1f;
         private Vector3 dirVector;
 
@@ -30,6 +31,7 @@ namespace JWGR
         private void Start()
         {
             player = GameObject.Find("Player");
+            info = GetComponent<enemyInfo>();
             spawnDelay = arrowObject.GetComponent<ItemData>().speed;
             StartCoroutine(ChangeState());
         }
@@ -97,8 +99,8 @@ namespace JWGR
                 weapon = collision.gameObject;
                 if (weapon.gameObject.CompareTag("weapon")) // 충돌한 상대가 무기일 때
                 {
-                    health -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
-                    if (health <= 0) // 체력이 0 이하인 경우
+                    info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
+                    if (info.HP <= 0) // 체력이 0 이하인 경우
                     {
                         clone = Instantiate(exp, transform.position, Quaternion.identity);
                         clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
@@ -113,8 +115,8 @@ namespace JWGR
                 }
                 if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때
                 {
-                    health -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
-                    if (health <= 0) // 체력이 0 이하인 경우
+                    info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
+                    if (info.HP <= 0) // 체력이 0 이하인 경우
                     {
                         Instantiate(exp);
                         exp.GetComponent<SpriteRenderer>().sortingOrder = 6;

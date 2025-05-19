@@ -10,6 +10,7 @@ namespace JWGR
         private Transform target; // 타겟의 트랜스폼
         public GameObject player;
         private Vector3 moveDir; // 이동 방향 벡터
+        public bool canSpawn = false;
         public float moveSpeed = 3f; // 화살의 이동 속도
 
         private void Start()
@@ -32,6 +33,15 @@ namespace JWGR
 
         private void Update()
         {
+            if (gameObject.activeSelf)
+            {
+                canSpawn = true;
+            }
+            else
+            {
+                canSpawn = false;
+            }
+
             if (target == null) // 타겟이 없다면, 화살을 지운다.
             {
                 Destroy(gameObject);

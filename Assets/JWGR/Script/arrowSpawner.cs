@@ -18,8 +18,10 @@ namespace JWGR
         {
             while (true)
             {
-                if (arrowObject != null)
+                if (arrowObject.GetComponent<arrow>().canSpawn)
                 {
+                    SoundManage.instance.PlaySFX(SoundManage.ESfx.SFX_ARROW);
+
                     spawnDelay = arrowObject.GetComponent<ItemData>().speed;
                     Instantiate(arrowObject, transform.position, Quaternion.identity);
                     yield return new WaitForSeconds(spawnDelay);

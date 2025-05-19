@@ -18,7 +18,7 @@ namespace JWGR
         {
             while (true)
             {
-                if (arrowObject.activeSelf)
+                if (arrowObject != null)
                 {
                     spawnDelay = arrowObject.GetComponent<ItemData>().speed;
                     Instantiate(arrowObject, transform.position, Quaternion.identity);

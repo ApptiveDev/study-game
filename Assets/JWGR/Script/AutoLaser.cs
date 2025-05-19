@@ -20,17 +20,6 @@ namespace JWGR
             laserRenderer = GetComponent<SpriteRenderer>();
             FPRenderer = firePoint.GetComponent<SpriteRenderer>();
             StartCoroutine(Summon());
-
-            if (laserPartPrefab == null)
-            {
-                Debug.LogError("Laser Prefab이 할당되지 않았습니다!");
-                enabled = false;
-            }
-            if (firePoint.transform == null)
-            {
-                Debug.LogError("Fire Point가 할당되지 않았습니다!");
-                enabled = false;
-            }
         }
 
         private void Update()
@@ -49,7 +38,7 @@ namespace JWGR
 
         private void FireLaser()
         {
-            if (laserObj.activeSelf)
+            if (laserObj != null)
             {
                 laserObj = Instantiate(laserPartPrefab, firePoint.transform.position, firePoint.transform.rotation);
                 laserObj.transform.transform.localScale = new Vector3(0f, laserWidth, 1f);

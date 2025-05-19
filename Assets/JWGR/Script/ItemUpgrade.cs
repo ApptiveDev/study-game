@@ -14,14 +14,6 @@ namespace JWGR
             weaponLevel = itemData.weaponLevel;
             if (weaponLevel <= 0)
             {
-                //if (itemData.parent != null)
-                //{
-                //    itemData.parent.SetActive(false);
-                //}
-                //else
-                //{
-                //    gameObject.SetActive(false);
-                //}
                 gameObject.SetActive(false);
             }
         }
@@ -31,14 +23,6 @@ namespace JWGR
             itemData = GetComponent<ItemData>();
             itemData.weaponLevel += 1;  
             weaponLevel = itemData.weaponLevel;
-            //if (itemData.parent != null)
-            //{
-            //    itemData.parent.SetActive(true);
-            //}
-            //else
-            //{
-            //    gameObject.SetActive(true);
-            //}
             if (weaponLevel == 1)
             {
                 gameObject.SetActive(true);

@@ -13,10 +13,10 @@ namespace JWGR
 
         public void SetInfo(string desc, string name, string state, Sprite icon)
         {
-            ItemDesc.text = desc;
-            ItemName.text = name;
-            ItemState.text = state;
-            ItemImg.sprite = icon;
+            if (ItemDesc.text != null) ItemDesc.text = desc;
+            if (ItemName.text != null) ItemName.text = name;
+            if (ItemState.text != null) ItemState.text = state;
+            if (ItemImg.sprite != null) ItemImg.sprite = icon;
         }
     }
 }

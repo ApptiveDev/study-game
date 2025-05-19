@@ -125,7 +125,7 @@ MonoBehaviour:
   - 1
   - 0.6
   - 0.3
-  parent: {fileID: 0}
+  spawnerName: Blaser
 --- !u!114 &7581781448354514665
 MonoBehaviour:
   m_ObjectHideFlags: 0

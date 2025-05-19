@@ -28,6 +28,7 @@ namespace KJM
             }
             //firezone 활성화
             Instantiate(fireZone, transform.position, Quaternion.identity);
+            SoundManager.Instance.BombSound();
             Destroy(gameObject); // 화염병 삭제
         }
     }

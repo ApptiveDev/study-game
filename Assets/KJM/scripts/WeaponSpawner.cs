@@ -43,6 +43,7 @@ namespace KJM
             GameObject weapon = weapons[randomIndex];
             for (int i = 0; i < weaponCnt; i++)
             {
+                SoundManager.Instance.PlayWeaponSound(weapon.tag);
                 GameObject shootWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
             }
             

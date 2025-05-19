@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3913313024391920028}
   m_Layer: 0
   m_Name: fireZone
-  m_TagString: Untagged
+  m_TagString: FireZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78a7a31f828d2e4d85364b0f64c30f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   duration: 5
 --- !u!50 &791665201712173581
 Rigidbody2D:

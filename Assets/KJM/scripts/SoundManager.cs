@@ -10,6 +10,7 @@ namespace KJM
         public AudioClip arrowClip;
         public AudioClip bombClip;
         public AudioClip WandClip;
+        public AudioClip FireZoneClip;
         private AudioSource sound;
 
         private void Awake()
@@ -33,13 +34,13 @@ namespace KJM
 
             switch (weaponName)
             {
-                case "sword":
+                case "Sword":
                     clip = swordClip;
                     break;
-                case "arrow":
+                case "Arrow":
                     clip = arrowClip;
                     break;
-                case "bomb":
+                case "Bomb":
                     clip = bombClip;
                     break;
                 case "Wand":
@@ -50,6 +51,11 @@ namespace KJM
             {
                 sound.PlayOneShot(clip);
             }
+        }
+        public void BombSound()
+        {
+            AudioClip clip = FireZoneClip;
+            sound.PlayOneShot(clip);
         }
     }
 }

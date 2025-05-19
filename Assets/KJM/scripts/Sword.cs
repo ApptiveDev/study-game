@@ -25,10 +25,10 @@ namespace KJM
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
+            EnemyDamage enemy = collision.GetComponent<EnemyDamage>();
             if (enemy != null)
             {
-                enemy.health -= damage;
+                enemy.TakeDamage(damage);
             }
         }
     }

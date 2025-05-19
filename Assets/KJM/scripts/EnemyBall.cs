@@ -32,6 +32,7 @@ namespace KJM
         {
             if (collision.CompareTag("Player"))
             {
+                Debug.Log("attacked!");
                 Player.Instance.Health.health -= 10;
                 Destroy(gameObject);
             }

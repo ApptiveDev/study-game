@@ -14,10 +14,10 @@ namespace KJM
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
+            EnemyDamage enemy = collision.GetComponent<EnemyDamage>();
             if (enemy != null)
             {
-                enemy.health -= damage * Time.deltaTime;
+                enemy.TakeTimeDamage(damage);
             }
         }
     }

@@ -6,7 +6,7 @@ namespace KJM
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] GameObject enemyObject;
+        [SerializeField] public GameObject[] enemyObjects;
 
         float curTime = 0;
 
@@ -14,7 +14,7 @@ namespace KJM
         {
             for (int i = 0; i < 5; i++)
             {
-                MakeRandomEnemy();
+                MakeDefaultEnemy();
             }
             StartCoroutine(MakeRandomEnemy2());
         }
@@ -27,12 +27,22 @@ namespace KJM
                 MakeRandomEnemy();
             }
         }
-
+        //기본 적 생성
+        void MakeDefaultEnemy()
+        {
+            GameObject newEnemy = enemyObjects[0];
+            Instantiate(newEnemy);
+            newEnemy.transform.position = PickRandomPosition();
+            newEnemy.GetComponent<SpriteRenderer>().color = PickRandomColor();
+        }
+        // 원거리 공격 적과 기본 적 렌덤으로 생성
         void MakeRandomEnemy()
         {
-            GameObject newEnemy = Instantiate(enemyObject);
-            enemyObject.transform.position = PickRandomPosition();
-            enemyObject.GetComponent<SpriteRenderer>().color = PickRandomColor();
+            int randomIndex = Random.Range(0, enemyObjects.Length);
+            GameObject newEnemy = enemyObjects[randomIndex];
+            Instantiate(newEnemy);
+            newEnemy.transform.position = PickRandomPosition();
+            newEnemy.GetComponent<SpriteRenderer>().color = PickRandomColor();
         }
 
         Vector3 PickRandomPosition() // 랜덤 위치 반환

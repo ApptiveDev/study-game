@@ -3,13 +3,21 @@ using UnityEngine;
 
 namespace KJM
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, EnemyDamage
     {
         [SerializeField]GameObject Coin;
         public float health = 50f;
         float moveDistance = 0.003f;
         float enemySpeed = 1f;
 
+        public void TakeDamage(float damage)
+        {
+            health -= damage;
+        }
+         public void TakeTimeDamage(float damage)
+        {
+            health -= damage * Time.deltaTime;
+        }
         private void Start()
         {
             StartCoroutine(MoveEnemy());

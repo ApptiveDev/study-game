@@ -9,7 +9,7 @@ namespace KJM
         ATTACK,
         DEATH,
     }
-    public class RangeEnemy : MonoBehaviour
+    public class RangeEnemy : MonoBehaviour, EnemyDamage
     {
         EnemyState state;
         float CurrentTime = 0;
@@ -18,7 +18,15 @@ namespace KJM
         [SerializeField] private GameObject EnemyBall;
         [SerializeField] GameObject Coin;
         public float health = 50f;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+       
+        public void TakeDamage(float damage)
+        {
+            health -= damage;
+        }
+        public void TakeTimeDamage(float damage)
+        {
+            health -= damage * Time.deltaTime;
+        }
         void Start()
         {
             StartCoroutine(CheckState());
@@ -69,7 +77,7 @@ namespace KJM
         void ShootWeapon()
         {
             CurrentTime += Time.deltaTime;
-            if (CurrentTime > 5f)
+            if (CurrentTime > 3f)
             {
                 Instantiate(EnemyBall,transform.position, Quaternion.identity);
                 CurrentTime = 0;

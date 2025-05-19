@@ -6,7 +6,7 @@ namespace AJH
     public class bossAI : MonoBehaviour, IDamageable
     {
         [Header("기본 스탯")]
-        [SerializeField] private float maxHealth = 100f;
+        [SerializeField] private float maxHealth = 200f;
         [SerializeField] private float currentHealth;
 
         [Header("끌어당김 세기")]
@@ -14,7 +14,7 @@ namespace AJH
 
         [Header("2페이즈 발사 패턴")]
         [SerializeField] private GameObject[] projectilePrefabs;
-        [SerializeField] private float fireInterval = 4f;
+        [SerializeField] private float fireInterval = 2f;
         [SerializeField] private float projectileSpeed = 5f;
         public Transform Transform => transform;
         private Transform playerTransform;
@@ -31,6 +31,7 @@ namespace AJH
         private BossState currentState; // 현재 상태
         void Start()
         {
+            
             currentHealth = maxHealth;
             currentState = BossState.Phase1; // 초기 상태 설정
             playerTransform = player.Instance.transform; // 플레이어의 Transform을 가져옴
@@ -44,8 +45,8 @@ namespace AJH
         {
             while (true)
             {
-                if (currentHealth >= 50) currentState = BossState.Phase1;
-                else if (currentHealth < 50) currentState = BossState.Phase2;
+                if (currentHealth >= 100) currentState = BossState.Phase1;
+                else if (currentHealth < 100) currentState = BossState.Phase2;
                 else if (currentHealth <= 0) currentState = BossState.Dead;
 
                 yield return new WaitForSeconds(0.1f); // 0.1초마다 상태 체크
@@ -68,6 +69,7 @@ namespace AJH
                 GameManager.instance.kill++; // 경험치 증가
                 // Instantiate(GameManager.instance.expPrefab[expIdx], transform.position, Quaternion.identity);
                 currentState = BossState.Dead; // 상태를 Dead로 변경
+                BGMManager.instance.PlayDefaultBGM();
                 Destroy(gameObject); // 적이 죽으면 오브젝트 삭제
 
             }

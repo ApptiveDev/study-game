@@ -143,7 +143,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -189,7 +189,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!114 &-9086322377307172963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c1192679bbeaa4c8e02f9b6fb7c66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   currentHealth: 0
-  pullForce: 5
+  pullForce: 7
   projectilePrefabs:
   - {fileID: 2972003857552269473, guid: 15225838fca2ca24998fc543de6342de, type: 3}
   - {fileID: 2130671592872357932, guid: 10ec493fd09b91f438a3c1297134660c, type: 3}

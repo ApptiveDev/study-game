@@ -18,6 +18,7 @@ namespace AJH{
         public int kill;
         public int[] nextExp = { 3, 5, 10, 30, 60, 100, 150 };
         public GameObject[] expPrefab;
+        [SerializeField] private GameObject bossPrefab;
         public levelUp levelUpUI;
 
         void Awake()
@@ -43,8 +44,16 @@ namespace AJH{
                 // 그렇게 하니까 뭔가 이상하게 동작함...
                 level++;
                 levelUpUI.Show();
+                if (level == 3)
+                {
+                    Instantiate(bossPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                    BGMManager.instance.PlayBossBGM();
+                }
+                
             }
+
         }
+
         public void GetWeight(float damage)
         {
             weight += damage;

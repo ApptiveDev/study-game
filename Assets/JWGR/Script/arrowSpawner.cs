@@ -14,17 +14,16 @@ namespace JWGR
             StartCoroutine(Spawn());
         }
 
-        private void Update()
-        {
-            spawnDelay = arrowObject.GetComponent<ItemData>().speed;
-        }
-
         private IEnumerator Spawn()
         {
             while (true)
             {
-                Instantiate(arrowObject, transform.position, Quaternion.identity);
-                yield return new WaitForSeconds(spawnDelay);
+                if (arrowObject.activeSelf)
+                {
+                    spawnDelay = arrowObject.GetComponent<ItemData>().speed;
+                    Instantiate(arrowObject, transform.position, Quaternion.identity);
+                    yield return new WaitForSeconds(spawnDelay);
+                }
             }
         }
     }

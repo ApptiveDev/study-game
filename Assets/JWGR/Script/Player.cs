@@ -13,6 +13,7 @@ namespace JWGR
         // 변수 선언.
         [SerializeField] Slider expBar;
         [SerializeField] GameObject gameOverPanel;
+        [SerializeField] GameObject levelManager;
         public float moveSpeed = 3f;
         public float health = 100f;
         public int Level = 0;
@@ -25,6 +26,7 @@ namespace JWGR
         // 게임이 작동하기 시작할 때 함수 실행.
         private void Awake()
         {
+            levelManager.GetComponent<levelManage>().CloseLevelUpPanel();
             transform.position = Vector3.zero;
             render = gameObject.GetComponent<SpriteRenderer>();
             gameOverPanel.SetActive(false);
@@ -66,6 +68,7 @@ namespace JWGR
                 tempExp -= maxExp;
                 maxExp = 5 * (int)Math.Pow(2, Level);
                 expBar.maxValue = maxExp;
+                levelManager.GetComponent<levelManage>().OpenLevelUpPanel();
             }
             expBar.value = tempExp;
         }
@@ -77,7 +80,15 @@ namespace JWGR
                 collisionObject = collision.gameObject;
                 if (collisionObject.gameObject.CompareTag("Enemy")) // 충돌한 상대가 적일 때
                 {
-                    health -= collisionObject.GetComponent<enemyInfo>().damage;
+                    if (!collisionObject.GetComponent<enemyInfo>().isRange)
+                    {
+                        health -= collisionObject.GetComponent<enemyInfo>().damage;
+                    }
+                }
+                if (collisionObject.gameObject.CompareTag("EnemyWeapon"))
+                {
+                    health -= collisionObject.GetComponent<ItemData>().damage;
+                    Destroy(collision.gameObject); //오브젝트를 지운다.
                 }
                 else if (collisionObject.gameObject.CompareTag("Exp"))
                 {
@@ -88,7 +99,7 @@ namespace JWGR
                 if (health <= 0)
                 {
                     gameOverPanel.SetActive(true);
-                    Time.timeScale = 1f;
+                    Time.timeScale = 0f;
                 }
             }
         }

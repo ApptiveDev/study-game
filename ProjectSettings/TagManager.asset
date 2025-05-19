@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - piercingWeapon
   - Exp
+  - EnemyWeapon
+  - Spawner
   layers:
   - Default
   - TransparentFX

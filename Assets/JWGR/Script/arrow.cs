@@ -47,7 +47,7 @@ namespace JWGR
 
             // 일정 거리 이상 이동하면 화살을 제거 (선택 사항)
             float distanceToStart = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToStart > 50f) // 예시 거리: 20
+            if (distanceToStart > 20f) // 예시 거리: 20
             {
                 Destroy(gameObject);
             }
@@ -55,12 +55,12 @@ namespace JWGR
 
         private Transform FindClosestEnemy()
         {
-            enemyAI[] enemies = FindObjectsOfType<enemyAI>();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             float closestDistanceSqr = Mathf.Infinity;
             Transform closestEnemy = null;
 
             // 현재 위치에서 가장 가까운 적을 찾습니다.
-            foreach (enemyAI enemy in enemies)
+            foreach (GameObject enemy in enemies)
             {
                 Vector3 directionToTarget = enemy.transform.position - transform.position;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;

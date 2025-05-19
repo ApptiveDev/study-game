@@ -67,12 +67,12 @@ namespace JWGR
 
         private Transform FindClosestEnemy()
         {
-            enemyAI[] enemies = FindObjectsOfType<enemyAI>();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             float closestDistanceSqr = Mathf.Infinity;
             Transform closestEnemy = null;
 
             // 현재 위치에서 가장 가까운 적을 찾습니다.
-            foreach (enemyAI enemy in enemies)
+            foreach (GameObject enemy in enemies)
             {
                 Vector3 directionToTarget = enemy.transform.position - transform.position;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;

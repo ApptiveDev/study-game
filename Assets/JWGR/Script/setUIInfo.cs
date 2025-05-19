@@ -2,18 +2,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class setUIInfo : MonoBehaviour
+namespace JWGR
 {
-    [SerializeField] Text ItemDesc;
-    [SerializeField] Text ItemName;
-    [SerializeField] Text ItemState;
-    [SerializeField] Image ItemImg;
-
-    public void SetInfo(string desc, string name, string state, Sprite icon)
+    public class setUIInfo : MonoBehaviour
     {
-        ItemDesc.text = desc;
-        ItemName.text = name;
-        ItemState.text = state;
-        ItemImg.sprite = icon;
+        [SerializeField] Text ItemDesc;
+        [SerializeField] Text ItemName;
+        [SerializeField] Text ItemState;
+        [SerializeField] Image ItemImg;
+
+        public void SetInfo(string desc, string name, string state, Sprite icon)
+        {
+            ItemDesc.text = desc;
+            ItemName.text = name;
+            ItemState.text = state;
+            ItemImg.sprite = icon;
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace JWGR
     {
         public int id;
         public float damage = 10f;
+        public bool isRange = false;
     }
 }

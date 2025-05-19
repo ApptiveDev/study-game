@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5847167874352010844}
   - component: {fileID: 545783013067510054}
   - component: {fileID: 5714279175523829130}
+  - component: {fileID: 7581781448354514665}
   - component: {fileID: 9021103872732403030}
   - component: {fileID: 3004166836579047355}
   m_Layer: 0
@@ -105,11 +106,18 @@ MonoBehaviour:
   itemType: 1
   itemId: 2
   itemName: "\uB808\uC774\uC800 \uAC74"
-  itemDesc: 
-  itemIcon: {fileID: 6406610894217221568, guid: 0554a0e3d58ac2445b200bf4ec8ecb89, type: 3}
+  itemDesc: "\uC801\uC744 \uAD00\uD1B5\uD558\uBA70 \uB0A0\uC544\uAC00\uB294 \uB808\uC774\uC800"
+  itemState: New!
+  itemIcon: {fileID: -7732088958185314511, guid: 8fef219e1a248994088abd858d979a7d, type: 3}
+  itemDescs:
+  - "\uBC1C\uC0AC\uC18D\uB3C4\uAC00 25% \uBE68\uB77C\uC9C4\uB2E4"
+  - "\uBC1C\uC0AC\uC18D\uB3C4\uAC00 33% \uBE68\uB77C\uC9C4\uB2E4"
+  - "\uBC1C\uC0AC\uC18D\uB3C4\uAC00 40% \uBE68\uB77C\uC9C4\uB2E4"
+  - "\uBC1C\uC0AC\uC18D\uB3C4\uAC00 50% \uBE68\uB77C\uC9C4\uB2E4"
+  weaponLevel: 0
   damage: 20
   count: 0
-  speed: 1
+  speed: 2
   damages: []
   counts: 
   speeds:
@@ -117,6 +125,19 @@ MonoBehaviour:
   - 1
   - 0.6
   - 0.3
+  parent: {fileID: 0}
+--- !u!114 &7581781448354514665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313782174879039919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a08752d26e6bf4da41f99fa3b765f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &9021103872732403030
 Rigidbody2D:
   serializedVersion: 5
@@ -174,7 +195,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

@@ -35,7 +35,7 @@ namespace JWGR
 
         private void Update()
         {
-            fireRate = laserObj.GetComponent<ItemData>().speed;
+            fireRate = laserPartPrefab.GetComponent<ItemData>().speed;
         }
 
         private IEnumerator Summon()
@@ -49,21 +49,24 @@ namespace JWGR
 
         private void FireLaser()
         {
-            laserObj = Instantiate(laserPartPrefab, firePoint.transform.position, firePoint.transform.rotation);
-            laserObj.transform.transform.localScale = new Vector3(0f, laserWidth, 1f);
-            float maxLength = GetLaserMaxLength(firePoint.transform.right);
+            if (laserObj.activeSelf)
+            {
+                laserObj = Instantiate(laserPartPrefab, firePoint.transform.position, firePoint.transform.rotation);
+                laserObj.transform.transform.localScale = new Vector3(0f, laserWidth, 1f);
+                float maxLength = GetLaserMaxLength(firePoint.transform.right);
 
-            if (playerRenderer.flipX)
-            {
-                laserRenderer.flipX = true;
-                FPRenderer.flipX = true;
-                LeanTween.scaleX(laserObj, -maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
-            }
-            else
-            {
-                laserRenderer.flipX = false;
-                FPRenderer.flipX = false;
-                LeanTween.scaleX(laserObj, maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
+                if (playerRenderer.flipX)
+                {
+                    laserRenderer.flipX = true;
+                    FPRenderer.flipX = true;
+                    LeanTween.scaleX(laserObj, -maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
+                }
+                else
+                {
+                    laserRenderer.flipX = false;
+                    FPRenderer.flipX = false;
+                    LeanTween.scaleX(laserObj, maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
+                }
             }
         }
 

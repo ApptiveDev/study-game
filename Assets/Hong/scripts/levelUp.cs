@@ -11,15 +11,17 @@ namespace AJH{
             rect = GetComponent<RectTransform>();
             weapon = GetComponentsInChildren<weaponButton>(true);
         }
-        
+
         public void Show()
         {
             rect.localScale = Vector3.one;
+            GameManager.instance.Stop();
         }
 
         public void Hide()
         {
             rect.localScale = Vector3.zero; // UI 비활성화
+            GameManager.instance.Resume();
         }
 
         public void Select(int index)

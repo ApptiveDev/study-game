@@ -25,12 +25,11 @@ namespace AJH{
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            // 충돌한 대상이 enemyAI 스크립트를 가지고 있으면
-            var enemy = col.collider.GetComponent<enemyAI>();
-            if (enemy != null)
+            IDamageable damageable = col.gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                // 체력 차감
-                enemy.TakeDamage(damage);
+                damageable.TakeDamage(damage); // 데미지 적용
+                Destroy(gameObject); // 오브젝트 삭제
             }
         }
     }

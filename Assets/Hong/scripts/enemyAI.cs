@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AJH{
-    public class enemyAI : MonoBehaviour
+    public class enemyAI : MonoBehaviour, IDamageable
     {
         [Header("추격 속도")]
         public float moveSpeed = 2f;
@@ -14,8 +14,8 @@ namespace AJH{
         [Header("몹 데미지")]
         [SerializeField] private float damage = 1f;
         [SerializeField] private int expIdx;
-        
 
+        public Transform Transform => transform;
         private Transform playerTransform;
         private SpriteRenderer spriteRenderer;
         private Vector2 knockback;   // 현재 남아 있는 넉백 벡터

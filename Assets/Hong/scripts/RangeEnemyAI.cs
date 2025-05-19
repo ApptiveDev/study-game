@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 namespace AJH{
-    public class RangeEnemyAI : MonoBehaviour
+    public class RangeEnemyAI : MonoBehaviour, IDamageable
     {
-        public enum EnemyState 
+        public enum EnemyState
         {
             Chase,
             Attack,
@@ -24,7 +24,8 @@ namespace AJH{
         [SerializeField] private int expIdx;
         [SerializeField] private float attackRange = 4f; // 공격 범위
         [SerializeField] private GameObject attackPrefab; // 공격 프리팹
-        
+
+        public Transform Transform => transform;
 
         private Transform playerTransform;
         private SpriteRenderer spriteRenderer;
@@ -40,21 +41,24 @@ namespace AJH{
             spriteRenderer = GetComponent<SpriteRenderer>();
             currentState = EnemyState.Chase;
             StartCoroutine(checkState());
-            StartCoroutine(AttackPlayer());       
-            }
+            StartCoroutine(AttackPlayer());
+        }
 
 
         void Update()
         {
-            if (currentState == EnemyState.Chase) {
+            if (currentState == EnemyState.Chase)
+            {
                 ChasePlayer();
             }
         }
 
-        private IEnumerator checkState() {
-            while(true) {
+        private IEnumerator checkState()
+        {
+            while (true)
+            {
 
-                if (Vector2.Distance(playerTransform.position, transform.position) < attackRange )
+                if (Vector2.Distance(playerTransform.position, transform.position) < attackRange)
                 {
                     currentState = EnemyState.Attack;
                 }
@@ -67,7 +71,8 @@ namespace AJH{
         }
 
 
-        private void ChasePlayer() {
+        private void ChasePlayer()
+        {
             Vector2 chaseDir = (playerTransform.position - transform.position).normalized;
             Vector2 velocity = chaseDir * moveSpeed + knockback;
             transform.position += (Vector3)(velocity * Time.deltaTime);
@@ -78,16 +83,20 @@ namespace AJH{
         }
 
 
-        private IEnumerator AttackPlayer() {
-            while(true) {
-                if (currentState == EnemyState.Attack) {
+        private IEnumerator AttackPlayer()
+        {
+            while (true)
+            {
+                if (currentState == EnemyState.Attack)
+                {
                     SpawnCheese();
                 }
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
 
-        private void SpawnCheese() {
+        private void SpawnCheese()
+        {
             Instantiate(attackPrefab, transform.position, Quaternion.identity);
         }
 
@@ -112,6 +121,12 @@ namespace AJH{
                 GameManager.instance.GetWeight(damage); // 플레이어에게 데미지
             }
         }
+
+        public void AddKnockback(Vector2 force)
+        {
+            knockback += force;
+        }
+
     }
 
 }

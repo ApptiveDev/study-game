@@ -16,7 +16,7 @@ namespace AJH{
         [SerializeField] private float bounceStrength = 2f;
 
         // 충돌 중인 적별로 "다음 데미지 시각" 저장
-        private Dictionary<enemyAI, float> _nextDamageTime = new Dictionary<enemyAI, float>();
+        private Dictionary<IDamageable, float> _nextDamageTime = new Dictionary<IDamageable, float>();
 
         void Update()
         {
@@ -26,7 +26,7 @@ namespace AJH{
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            var enemy = other.GetComponent<enemyAI>();
+            var enemy = other.GetComponent<IDamageable>();
             if (enemy == null) return;
 
             DealDamageAndBounce(enemy);
@@ -35,7 +35,7 @@ namespace AJH{
 
         void OnTriggerStay2D(Collider2D other)
         {
-            var enemy = other.GetComponent<enemyAI>();
+            var enemy = other.GetComponent<IDamageable>();
             if (enemy == null) return;
 
             // 틱 간격이 지났으면 다시 피해와 넉백
@@ -48,18 +48,18 @@ namespace AJH{
 
         void OnTriggerExit2D(Collider2D other)
         {
-            var enemy = other.GetComponent<enemyAI>();
+            var enemy = other.GetComponent<IDamageable>();
             if (enemy != null)
                 _nextDamageTime.Remove(enemy);
         }
 
-        private void DealDamageAndBounce(enemyAI enemy)
+        private void DealDamageAndBounce(IDamageable enemy)
         {
             // 데미지 적용
             enemy.TakeDamage(damagePerTick);
 
             // 넉백 적용: 방향 계산 후 enemyAI 내부로 전달
-            Vector2 dir = (enemy.transform.position - transform.position).normalized;
+            Vector2 dir = (enemy.Transform.position - transform.position).normalized;
             enemy.AddKnockback(dir * bounceStrength);
         }
     }

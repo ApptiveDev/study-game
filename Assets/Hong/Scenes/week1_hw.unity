@@ -370,6 +370,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2000669404}
+        m_TargetAssemblyTypeName: levelUp, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &109802743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,6 +962,18 @@ MonoBehaviour:
       - m_Target: {fileID: 353808238}
         m_TargetAssemblyTypeName: AJH.weaponButton, Assembly-CSharp
         m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2000669404}
+        m_TargetAssemblyTypeName: levelUp, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1675,67 +1699,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711738037}
   m_CullTransparentMesh: 1
---- !u!1001 &796139347
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1555330682239094693, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_Name
-      value: Wine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.1491
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.4609
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460634803663645566, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2894831122490452431, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
 --- !u!1 &865501774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,6 +1898,7 @@ MonoBehaviour:
   - {fileID: 6824853706760563593, guid: 91de5d4dbb4c9744d8b418a0e23daa36, type: 3}
   - {fileID: 538755974052676859, guid: a4137a1701a42d64db0ac861a2e7ff3f, type: 3}
   - {fileID: 8519406816299569149, guid: 1239e4558270cee4e8cae8c78d18926f, type: 3}
+  levelUpUI: {fileID: 2000669404}
 --- !u!4 &884938738
 Transform:
   m_ObjectHideFlags: 0
@@ -11145,6 +11109,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 2401981141125938500, guid: 78a6626bfd4628f43b1bced960cfb485, type: 3}
   - {fileID: 1937236790444728321, guid: a2809517eb69b4040b2589078b55216c, type: 3}
+  - {fileID: 1555330682239094693, guid: 743f193fdf5aa2b4e9d870c8ba9c4085, type: 3}
   spawnInterval: 2
 --- !u!4 &1441424656
 Transform:
@@ -16231,6 +16196,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2000669404}
+        m_TargetAssemblyTypeName: levelUp, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1853906265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16501,6 +16478,7 @@ GameObject:
   - component: {fileID: 2000669401}
   - component: {fileID: 2000669403}
   - component: {fileID: 2000669402}
+  - component: {fileID: 2000669404}
   m_Layer: 5
   m_Name: LevelUP
   m_TagString: Untagged
@@ -16517,7 +16495,7 @@ RectTransform:
   m_GameObject: {fileID: 2000669400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 376280407}
@@ -16567,6 +16545,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000669400}
   m_CullTransparentMesh: 1
+--- !u!114 &2000669404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000669400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4986b3c1cb151f342a9c6227fc1788c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2041844145
 GameObject:
   m_ObjectHideFlags: 0
@@ -20883,4 +20873,3 @@ SceneRoots:
   - {fileID: 277693114}
   - {fileID: 865501777}
   - {fileID: 1944204708}
-  - {fileID: 796139347}

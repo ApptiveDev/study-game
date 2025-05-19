@@ -17,15 +17,16 @@ namespace AJH {
         }
 
         void chooseTarget() {
-            enemyAI[] enemy = FindObjectsOfType<enemyAI>();
+            GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy"); // enemy 태그를 가진 오브젝트 찾기
             if (enemy.Length != 0)
             {
                 int index = Random.Range(0, enemy.Length);
                 target = enemy[index].gameObject; // enemyAI 스크립트가 붙은 오브젝트를 찾음
                 moveDirection = (target.transform.position - transform.position).normalized; // 이동 방향 계산
-                
+
             }
-            else {
+            else
+            {
                 moveDirection = Vector2.right;
             }
         }
@@ -43,11 +44,11 @@ namespace AJH {
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            enemyAI enemy = collision.GetComponent<enemyAI>();
-            if (enemy != null)
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                enemy.TakeDamage(damage); // 이 오브젝트 삭제
-                Destroy(gameObject); // 적에게 닿으면 오브젝트 삭제
+                damageable.TakeDamage(damage); // 데미지 적용
+                Destroy(gameObject); // 오브젝트 삭제
             }
         }
     }

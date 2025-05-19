@@ -210,3 +210,4 @@ MonoBehaviour:
   - {fileID: 2130671592872357932, guid: 10ec493fd09b91f438a3c1297134660c, type: 3}
   fireInterval: 4
   projectileSpeed: 5
+  healthBarPrefab: {fileID: 2115684728740699564, guid: bee09e4996448c44faf6c0990e1ff1a2, type: 3}

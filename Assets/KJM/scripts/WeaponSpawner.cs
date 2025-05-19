@@ -38,6 +38,7 @@ namespace KJM
         }
         void ShootWeapon()
         {
+            Debug.Log("ShootWeapon ½ÇÇàµÊ");
             //·£´ý ¼±ÅÃ
             int randomIndex = Random.Range(0, weapons.Length);
             GameObject weapon = weapons[randomIndex];

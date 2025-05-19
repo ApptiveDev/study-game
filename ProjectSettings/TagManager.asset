@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Arrow
+  - Bomb
+  - Sword
+  - FireZone
+  - Wand
   layers:
   - Default
   - TransparentFX

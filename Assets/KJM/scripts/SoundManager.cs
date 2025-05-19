@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace KJM
 {
@@ -25,7 +26,7 @@ namespace KJM
                 Destroy(gameObject);
                 return;
             }
-
+            sound = GetComponent<AudioSource>();
         }
 
         public void PlayWeaponSound(string weaponName)

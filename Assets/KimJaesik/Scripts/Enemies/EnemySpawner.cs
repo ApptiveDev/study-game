@@ -30,12 +30,6 @@ namespace KJS
             StartCoroutine(AutoSpawn());
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         private IEnumerator AutoSpawn()
         {
             while (true)

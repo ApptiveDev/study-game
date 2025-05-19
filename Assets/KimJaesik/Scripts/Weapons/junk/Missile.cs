@@ -65,7 +65,7 @@ namespace KJS
             }
         }
 
-        void FireBullets()
+        private void FireBullets()
         {
             float[] angles = { -30f, -15f, 0f, 15f, 30f };
 
@@ -76,7 +76,7 @@ namespace KJS
             }
         }
 
-        void FindAndSetTarget()
+        private void FindAndSetTarget()
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 

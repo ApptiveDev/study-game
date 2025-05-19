@@ -17,19 +17,19 @@ namespace KJS
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        void Start()
+        private void Start()
         {
             player = PlayerController.Instance.gameObject.transform;
             Destroy(gameObject, lifeTime);
         }
 
-        void Update()
+        private void Update()
         {
             if (player == null) return;
             movement();
         }
 
-        void movement()
+        private void movement()
         {
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime; if (player == null) return;

@@ -11,10 +11,20 @@ namespace KJS
         [SerializeField] public float castTime = 0.2f;
         [SerializeField] private float rotationSpeed = 5f;
 
+        public AudioClip fireSfx;
+        public AudioSource audioSource;
+
         void Start()
         {
             StartCoroutine(FindTargetRoutine());
             StartCoroutine(FireRoutine());
+
+            if (audioSource == null && fireSfx != null)
+            {
+                // 자동으로 AudioSource 추가
+                audioSource = gameObject.AddComponent<AudioSource>();
+                audioSource.playOnAwake = false;
+            }
         }
 
         void Update()
@@ -68,6 +78,10 @@ namespace KJS
                 if (enemy != null)
                 {
                     Instantiate(bulletPrefab, transform.position, transform.rotation);
+                    if (fireSfx != null && audioSource != null)
+                    {
+                        audioSource.PlayOneShot(fireSfx);
+                    }
                 }
 
                 yield return new WaitForSeconds(castTime);

@@ -8,7 +8,7 @@ namespace KJS
         public GameObject missilePrefab;
         public float castTime = 3f;
 
-        void Start()
+        private void Start()
         {
             StartCoroutine(AutoFire());
         }
@@ -22,7 +22,7 @@ namespace KJS
             }
         }
 
-        void FireMissiles()
+        private void FireMissiles()
         {
             Instantiate(missilePrefab, transform.position, transform.rotation * Quaternion.Euler(0, 0, -45f));
             Instantiate(missilePrefab, transform.position, transform.rotation * Quaternion.Euler(0, 0, -135f));

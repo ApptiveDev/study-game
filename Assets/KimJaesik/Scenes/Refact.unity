@@ -212,8 +212,8 @@ GameObject:
   m_Component:
   - component: {fileID: 238813487}
   - component: {fileID: 238813488}
-  - component: {fileID: 238813489}
   - component: {fileID: 238813490}
+  - component: {fileID: 238813489}
   m_Layer: 5
   m_Name: Turret Medium 2 R
   m_TagString: Untagged
@@ -300,111 +300,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 238813486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e049d3f78e48d4d8d4efc0ea9f3dcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 55f5559fa8c0e9d408b468a4ebb023ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2322413112627398784, guid: 35cfbf336bf6e1540b54ca241a01e4f5, type: 3}
-  castTime: 0.2
-  rotationSpeed: 5
-  fireSfx: {fileID: 8300000, guid: 24b9a900faf421d4b817b12dbcebcf2e, type: 3}
-  audioSource: {fileID: 238813490}
---- !u!82 &238813490
-AudioSource:
+  rotateSpeed: 5
+  tracker: {fileID: 238813490}
+--- !u!114 &238813490
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238813486}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2553af3773a806543ad2f5d573199d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackInterval: 0.3
+  maxTrackingRange: 10
+  currentTarget: {fileID: 0}
 --- !u!1 &338522087
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &897132888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,8 +602,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1001168076}
   - component: {fileID: 1001168077}
-  - component: {fileID: 1001168078}
+  - component: {fileID: 1001168080}
   - component: {fileID: 1001168079}
+  - component: {fileID: 1001168078}
   m_Layer: 5
   m_Name: Turret Medium 2 L
   m_TagString: Untagged
@@ -775,111 +691,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1001168075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e049d3f78e48d4d8d4efc0ea9f3dcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 48087b0c4e81a6a4dba26adb5506fd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2322413112627398784, guid: 35cfbf336bf6e1540b54ca241a01e4f5, type: 3}
-  castTime: 0.2
-  rotationSpeed: 5
-  fireSfx: {fileID: 8300000, guid: 24b9a900faf421d4b817b12dbcebcf2e, type: 3}
-  audioSource: {fileID: 1001168079}
---- !u!82 &1001168079
-AudioSource:
+  projectilePrefab: {fileID: 0}
+  castTime: 1
+  canFire: 1
+  attackDataTemplate: {fileID: 0}
+--- !u!114 &1001168079
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001168075}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f5559fa8c0e9d408b468a4ebb023ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 5
+  tracker: {fileID: 1001168080}
+--- !u!114 &1001168080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001168075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2553af3773a806543ad2f5d573199d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackInterval: 0.3
+  maxTrackingRange: 10
+  currentTarget: {fileID: 0}
 --- !u!1 &1003900286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,7 +1052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1391022008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,9 +1526,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1527712125}
   - component: {fileID: 1527712124}
-  - component: {fileID: 1527712129}
   - component: {fileID: 1527712130}
   - component: {fileID: 1527712131}
+  - component: {fileID: 1527712134}
+  - component: {fileID: 1527712133}
+  - component: {fileID: 1527712132}
+  - component: {fileID: 1527712135}
+  - component: {fileID: 1527712136}
   m_Layer: 3
   m_Name: Player Frigate
   m_TagString: Player
@@ -1762,27 +1613,6 @@ Transform:
   - {fileID: 35543216}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1527712129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527712123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c67db98e1425fe47948f6d4aa85914a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 8
-  acceleration: 15
-  deceleration: 10
-  turnSpeed: 200
-  turnLerpSpeed: 5
-  baseExpToNextLevel: 5
-  expGrowthFactor: 1.5
-  levelUpPanel: {fileID: 1528454317}
-  weaponUIManager: {fileID: 1528454321}
 --- !u!50 &1527712130
 Rigidbody2D:
   serializedVersion: 5
@@ -1895,6 +1725,80 @@ PolygonCollider2D:
       - {x: 0.06, y: -0.35}
       - {x: 0.04, y: -0.78999996}
   m_UseDelaunayMesh: 0
+--- !u!114 &1527712132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527712123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad30966210a6e34b89fc5d1e5003917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseExpToNextLevel: 5
+  expGrowthFactor: 1.5
+  weaponUIManager: {fileID: 0}
+--- !u!114 &1527712133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527712123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474f963c47ed2244993481fe45b75862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 5
+  exp: {fileID: 1527712132}
+--- !u!114 &1527712134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527712123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccf1d2aeeb303e42ab3330226e03d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 12
+  acceleration: 10
+  deceleration: 5
+  turnSpeed: 30
+  turnLerpSpeed: 5
+--- !u!114 &1527712135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527712123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775726ab72fa87c4a940b83397331a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+--- !u!114 &1527712136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527712123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2553af3773a806543ad2f5d573199d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackInterval: 0.3
+  maxTrackingRange: 20
+  currentTarget: {fileID: 0}
 --- !u!1 &1528454317
 GameObject:
   m_ObjectHideFlags: 0

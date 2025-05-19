@@ -44,12 +44,12 @@ namespace KJS
         [SerializeField] private GameObject levelUpPanel;
         [SerializeField] private WeaponUIManager weaponUIManager;
 
-        void Start()
+        private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
         }
 
-        void Awake()
+        private void Awake()
         {
             if (_instance == null)
             {
@@ -57,19 +57,19 @@ namespace KJS
             }
         }
 
-        void Update()
+        private void Update()
         {
             moveInput = Input.GetAxisRaw("Vertical");
             turnInput = Input.GetAxis("Horizontal");
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             HandleMovement();
             HandleRotation();
         }
 
-        void HandleMovement()
+        private void HandleMovement()
         {
             if (moveInput > 0)
             {
@@ -89,7 +89,7 @@ namespace KJS
             rb.linearVelocity = transform.up * currentSpeed;
         }
 
-        void HandleRotation()
+        private void HandleRotation()
         {
             float targetTurnSpeed = -turnInput * turnSpeed;
             currentTurnSpeed = Mathf.Lerp(currentTurnSpeed, targetTurnSpeed, turnLerpSpeed * Time.fixedDeltaTime);
@@ -97,7 +97,7 @@ namespace KJS
             rb.MoveRotation(rb.rotation + currentTurnSpeed * Time.fixedDeltaTime);
         }
 
-        void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("ExpObj"))
             {
@@ -106,7 +106,7 @@ namespace KJS
             }
         }
 
-        void GainExp(int expAmount)
+        private void GainExp(int expAmount)
         {
             exp += expAmount;
             while (exp >= expToNextLevel)
@@ -116,7 +116,7 @@ namespace KJS
             }
         }
 
-        void LevelUp()
+        private void LevelUp()
         {
             level++;
             expToNextLevel = Mathf.RoundToInt(baseExpToNextLevel * Mathf.Pow(expGrowthFactor, level - 1));

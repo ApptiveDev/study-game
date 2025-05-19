@@ -46,7 +46,7 @@ public class WeaponUIManager : MonoBehaviour
         panel.SetActive(true);
     }
 
-    void OnSelectWeapon(WeaponData selected)
+    private void OnSelectWeapon(WeaponData selected)
     {
         selected.ActivateWeapon();
         selected.UpgradeWeapon();
@@ -54,7 +54,7 @@ public class WeaponUIManager : MonoBehaviour
         panel.SetActive(false); // ∆–≥Œ ¥›±‚ °Ê OnDisable() »£√‚µ 
     }
 
-    void ClearPanels()
+    private void ClearPanels()
     {
         foreach (Transform child in panelParent.transform)
         {

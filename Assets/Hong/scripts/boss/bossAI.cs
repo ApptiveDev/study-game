@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.UI;
@@ -7,8 +8,9 @@ namespace AJH
     public class bossAI : MonoBehaviour, IDamageable
     {
         [Header("기본 스탯")]
-        [SerializeField] private float maxHealth = 200f;
-        [SerializeField] private float currentHealth;
+        [SerializeField] public float maxHealth = 500f;
+        [SerializeField] public float currentHealth;
+        [SerializeField] private float phaseChangeHealth = 250f; // 2페이즈로 바뀌는 체력
 
         [Header("끌어당김 세기")]
         [SerializeField] private float pullForce = 5f;
@@ -18,9 +20,8 @@ namespace AJH
         [SerializeField] private float fireInterval = 2f;
         [SerializeField] private float projectileSpeed = 5f;
 
-        [Header("UI")]
-        [SerializeField] private GameObject healthBarPrefab;
-        private Slider healthBarSlider;
+
+
         public Transform Transform => transform;
         private Transform playerTransform;
         private Vector2 knockback;
@@ -40,10 +41,7 @@ namespace AJH
             currentHealth = maxHealth;
             currentState = BossState.Phase1; // 초기 상태 설정
             playerTransform = player.Instance.transform; // 플레이어의 Transform을 가져옴
-            GameObject hb = Instantiate(healthBarPrefab, transform.position, Quaternion.identity);
-            healthBarSlider = hb.GetComponent<Slider>();
-            healthBarSlider.maxValue = maxHealth;
-            healthBarSlider.value = currentHealth;
+            
 
             StartCoroutine(checkState());
             StartCoroutine(FireRadialProjectiles());
@@ -55,8 +53,8 @@ namespace AJH
         {
             while (true)
             {
-                if (currentHealth >= 100) currentState = BossState.Phase1;
-                else if (currentHealth < 100) currentState = BossState.Phase2;
+                if (currentHealth >= phaseChangeHealth) currentState = BossState.Phase1;
+                else if (currentHealth < phaseChangeHealth) currentState = BossState.Phase2;
                 else if (currentHealth <= 0) currentState = BossState.Dead;
 
                 yield return new WaitForSeconds(0.1f); // 0.1초마다 상태 체크
@@ -71,17 +69,16 @@ namespace AJH
 
         public void TakeDamage(float damage)
         {
-            Debug.Log(currentHealth);
             currentHealth -= damage;
-            healthBarSlider.value = currentHealth; // 체력바 업데이트
+            BossHealthUI ui = FindObjectOfType<BossHealthUI>();
+            if (ui != null) ui.setBossHealth();
 
             if (currentHealth <= 0)
             {
                 GameManager.instance.kill++; // 경험치 증가
-                // Instantiate(GameManager.instance.expPrefab[expIdx], transform.position, Quaternion.identity);
                 currentState = BossState.Dead; // 상태를 Dead로 변경
                 BGMManager.instance.PlayDefaultBGM();
-                Destroy(healthBarSlider.gameObject); // 체력바 삭제
+                ui.Hide();
                 Destroy(gameObject); // 적이 죽으면 오브젝트 삭제
 
             }

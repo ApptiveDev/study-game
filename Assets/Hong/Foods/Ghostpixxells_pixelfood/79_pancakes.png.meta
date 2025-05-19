@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      79_pancakes_0: 4065782940691347251
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

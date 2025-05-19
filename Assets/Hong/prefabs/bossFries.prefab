@@ -202,12 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c1192679bbeaa4c8e02f9b6fb7c66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 500
   currentHealth: 0
+  phaseChangeHealth: 250
   pullForce: 7
   projectilePrefabs:
   - {fileID: 2972003857552269473, guid: 15225838fca2ca24998fc543de6342de, type: 3}
   - {fileID: 2130671592872357932, guid: 10ec493fd09b91f438a3c1297134660c, type: 3}
-  fireInterval: 4
+  fireInterval: 2
   projectileSpeed: 5
-  healthBarPrefab: {fileID: 2115684728740699564, guid: bee09e4996448c44faf6c0990e1ff1a2, type: 3}

@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      21_bagel_dish_0: -1231356082813145520
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

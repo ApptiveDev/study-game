@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 namespace AJH{
 
@@ -46,8 +47,16 @@ namespace AJH{
                 levelUpUI.Show();
                 if (level == 3)
                 {
-                    Instantiate(bossPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                    GameObject boss = Instantiate(bossPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     BGMManager.instance.PlayBossBGM();
+                    BossHealthUI bossUI = FindObjectOfType<BossHealthUI>(true);
+                    bossAI bossScript = boss.GetComponent<bossAI>();
+                    
+                    if (bossUI != null && bossScript != null)
+                    {
+                        bossUI.SetBoss(bossScript);
+                    }
+
                 }
                 
             }

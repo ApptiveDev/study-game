@@ -20,8 +20,16 @@ namespace AJH {
             GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy"); // enemy 태그를 가진 오브젝트 찾기
             if (enemy.Length != 0)
             {
-                int index = Random.Range(0, enemy.Length);
-                target = enemy[index].gameObject; // enemyAI 스크립트가 붙은 오브젝트를 찾음
+                while (true)
+                {
+                    int index = Random.Range(0, enemy.Length);
+                    if (enemy[index] != null)
+                    {
+                        target = enemy[index].gameObject; // enemyAI 스크립트가 붙은 오브젝트를 찾음
+                        break;
+                    } 
+                    
+                }
                 moveDirection = (target.transform.position - transform.position).normalized; // 이동 방향 계산
 
             }

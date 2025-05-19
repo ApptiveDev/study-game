@@ -18,7 +18,7 @@ MonoBehaviour:
   itemDescription:
   - "\uC801\uC744 \uD5A5\uD574 \uD1A0\uC0AC\uBB3C\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
   - "\uD1A0\uC0AC\uBB3C\uC744 2\uAC1C \uBC1C\uC0AC\uD569\uB2C8\uB2E4. \uC18C\uD658
-    \uAC04\uACA9 : 4, \uB370\uBBF8\uC9C0 : 10"
+    \uAC04\uACA9 : 3, \uB370\uBBF8\uC9C0 : 10"
   - "\uD1A0\uC0AC\uBB3C\uC744 3\uAC1C \uBC1C\uC0AC\uD569\uB2C8\uB2E4. \uC18C\uD658
     \uAC04\uACA9 : 2, \uB370\uBBF8\uC9C0 : 20"
   itemIcon: {fileID: 752672252, guid: 9b08db40a52faa841af4b3b44b1bbcd0, type: 3}
@@ -31,7 +31,7 @@ MonoBehaviour:
   - 20
   counts: 010000000200000003000000
   intervals:
-  - 8
-  - 4
+  - 5
+  - 3
   - 2
   projectile: {fileID: 5996847182863808560, guid: 1a08f48a871a99b49969ac2c9dd1c389, type: 3}

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KJM
@@ -38,10 +36,10 @@ namespace KJM
 
         private void OnTriggerEnter2D(Collider2D collision) // 충돌했을 때
         {
-            Enemy enemy = collision.GetComponent<Enemy>(); // 적의 Enemy 스크립트 참조.
-            if (enemy.gameObject == target) // 충돌한 상대가 내가 목표하는 적일 때,
+            EnemyDamage enemy = collision.GetComponent<EnemyDamage>(); // 적의 Enemy 인터페이스.
+            if (collision.gameObject == target) // 충돌한 상대가 내가 목표하는 적일 때,
             {
-                enemy.health -= damage; // 충돌한 적의 체력을 데미지만큼 감소시키는 코드
+                enemy.TakeDamage(damage); // 충돌한 적의 체력을 데미지만큼 감소시키는 코드
                 Destroy(gameObject);
             }
 

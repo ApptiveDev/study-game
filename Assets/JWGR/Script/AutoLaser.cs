@@ -14,7 +14,6 @@ namespace JWGR
         public float laserWidth = 5f; // 레이저의 너비 (사각형 스프라이트의 초기 Y 스케일)
         private SpriteRenderer laserRenderer;
         private SpriteRenderer FPRenderer;
-        private bool canSpawn = false;
 
         private void Start()
         {
@@ -32,41 +31,39 @@ namespace JWGR
         {
             while (true)
             {
-                if (laserObj.activeSelf)
+                if (laserPartPrefab.GetComponent<ItemData>().canSpawn)
                 {
-                    canSpawn = true;
+                    gameObject.SetActive(true);
+                    FireLaser();
                 }
                 else
                 {
-                    canSpawn = false;
+                    gameObject.SetActive(false);
                 }
-                FireLaser();
+                
                 yield return new WaitForSeconds(fireRate);
             }
         }
 
         private void FireLaser()
         {
-            if (canSpawn)
+            SoundManage.instance.PlaySFX(SoundManage.ESfx.SFX_LASER);
+
+            laserObj = Instantiate(laserPartPrefab, firePoint.transform.position, firePoint.transform.rotation);
+            laserObj.transform.transform.localScale = new Vector3(0f, laserWidth, 1f);
+            float maxLength = GetLaserMaxLength(firePoint.transform.right);
+
+            if (playerRenderer.flipX)
             {
-                SoundManage.instance.PlaySFX(SoundManage.ESfx.SFX_LASER);
-
-                laserObj = Instantiate(laserPartPrefab, firePoint.transform.position, firePoint.transform.rotation);
-                laserObj.transform.transform.localScale = new Vector3(0f, laserWidth, 1f);
-                float maxLength = GetLaserMaxLength(firePoint.transform.right);
-
-                if (playerRenderer.flipX)
-                {
-                    laserRenderer.flipX = true;
-                    FPRenderer.flipX = true;
-                    LeanTween.scaleX(laserObj, -maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
-                }
-                else
-                {
-                    laserRenderer.flipX = false;
-                    FPRenderer.flipX = false;
-                    LeanTween.scaleX(laserObj, maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
-                }
+                laserRenderer.flipX = true;
+                FPRenderer.flipX = true;
+                LeanTween.scaleX(laserObj, -maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
+            }
+            else
+            {
+                laserRenderer.flipX = false;
+                FPRenderer.flipX = false;
+                LeanTween.scaleX(laserObj, maxLength, drawDuration).setOnComplete(() => Destroy(laserObj));
             }
         }
 

@@ -671,6 +671,7 @@ MonoBehaviour:
     \uACF5\uACA9\uD558\uB294 "
   itemState: New!
   itemIcon: {fileID: -1693522828559675622, guid: 34a4195ed493eb4439596aeb6d21ce65, type: 3}
+  canSpawn: 0
   itemDescs:
   - "\uACF5\uACA9\uB825 33% \uC99D\uAC00"
   - "\uACF5\uACA9\uB825 40% \uC99D\uAC00"
@@ -7322,7 +7323,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -7355,7 +7356,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1247365326
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,16 +5,16 @@ namespace JWGR
 {
     public class ItemUpgrade : MonoBehaviour
     {
-        private int weaponLevel = 0;
+        private int level = 0;
         private ItemData itemData;
 
         void Start()
         {
             itemData = GetComponent<ItemData>();
-            weaponLevel = itemData.weaponLevel;
-            if (weaponLevel <= 0)
+            level = itemData.weaponLevel;
+            if (level <= 0)
             {
-                gameObject.SetActive(false);
+                gameObject.GetComponent<ItemData>().canSpawn = false;
             }
         }
 
@@ -22,34 +22,34 @@ namespace JWGR
         {
             itemData = GetComponent<ItemData>();
             itemData.weaponLevel += 1;  
-            weaponLevel = itemData.weaponLevel;
-            if (weaponLevel == 1)
+            level = itemData.weaponLevel;
+            if (level == 1)
             {
-                gameObject.SetActive(true);
+                gameObject.GetComponent<ItemData>().canSpawn = true;
             }
-            else if (weaponLevel >= 2)
+            else if (level >= 2)
             {
-                if (weaponLevel < itemData.damages.Length)
+                if (level < itemData.damages.Length)
                 {
-                    itemData.damage = itemData.damages[weaponLevel - 2];
+                    itemData.damage = itemData.damages[level - 2];
                 }
-                if (weaponLevel < itemData.counts.Length)
+                if (level < itemData.counts.Length)
                 {
-                    itemData.count = itemData.counts[weaponLevel - 2];
+                    itemData.count = itemData.counts[level - 2];
                 }
-                if (weaponLevel < itemData.speeds.Length)
+                if (level < itemData.speeds.Length)
                 {
-                    itemData.speed = itemData.speeds[weaponLevel - 2];
+                    itemData.speed = itemData.speeds[level - 2];
                 }
             }
 
-            if (weaponLevel < itemData.itemDescs.Length)
+            if (level < itemData.itemDescs.Length)
             {
-                itemData.itemDesc = itemData.itemDescs[weaponLevel - 1];
+                itemData.itemDesc = itemData.itemDescs[level - 1];
             }
-            if (weaponLevel > 0)
+            if (level > 0)
             {
-                itemData.itemState = "Lv." + weaponLevel.ToString();
+                itemData.itemState = "Lv." + level.ToString();
             }
             else
             {

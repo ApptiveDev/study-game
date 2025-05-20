@@ -17,9 +17,19 @@ namespace JWGR
 
         private void Update()
         {
-            AroundObject();
-            transform.Rotate(new Vector3(0, 0, -1f * rotateSpeed * Time.deltaTime));
-            dirVector = DirToObect(player);
+            if (GetComponent<ItemData>().canSpawn)
+            {
+                Debug.Log("WTF");
+                gameObject.SetActive(true);
+                AroundObject();
+                transform.Rotate(new Vector3(0, 0, -1f * rotateSpeed * Time.deltaTime));
+                dirVector = DirToObect(player);
+            }
+            else
+            {
+                Debug.Log(1);
+                gameObject.SetActive(false);
+            }
         }
 
         private void AroundObject()

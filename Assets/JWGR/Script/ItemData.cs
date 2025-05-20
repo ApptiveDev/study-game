@@ -13,6 +13,7 @@ namespace JWGR
         public string itemDesc = "";
         public string itemState = "new!";
         public Sprite itemIcon = null;
+        public bool canSpawn = false;
         public string[] itemDescs = new string[0];
 
         [Header("# Level Info")]
@@ -23,5 +24,10 @@ namespace JWGR
         public float[] damages = new float[0];
         public int[] counts = new int[0];
         public float[] speeds = new float[0];
+
+        void Awake ()
+        {
+            weaponLevel = 0;
+        }
     }
 }

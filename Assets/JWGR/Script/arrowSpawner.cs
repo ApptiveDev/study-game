@@ -18,14 +18,19 @@ namespace JWGR
         {
             while (true)
             {
-                if (arrowObject.GetComponent<arrow>().canSpawn)
+                if (arrowObject.GetComponent<ItemData>().canSpawn)
                 {
+                    gameObject.SetActive(true);
                     SoundManage.instance.PlaySFX(SoundManage.ESfx.SFX_ARROW);
 
                     spawnDelay = arrowObject.GetComponent<ItemData>().speed;
                     Instantiate(arrowObject, transform.position, Quaternion.identity);
-                    yield return new WaitForSeconds(spawnDelay);
                 }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+                yield return new WaitForSeconds(spawnDelay);
             }
         }
     }

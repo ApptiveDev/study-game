@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace KJM
 {
-    public class Boss : MonoBehaviour, EnemyDamage
+    public class Boss : MonoBehaviour, IEnemyDamage
     {
         [SerializeField] GameObject Coin;
         public float health = 200f;

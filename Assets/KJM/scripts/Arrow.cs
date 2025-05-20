@@ -36,7 +36,7 @@ namespace KJM
 
         private void OnTriggerEnter2D(Collider2D collision) // 충돌했을 때
         {
-            EnemyDamage enemy = collision.GetComponent<EnemyDamage>(); // 적의 Enemy 인터페이스.
+            IEnemyDamage enemy = collision.GetComponent<IEnemyDamage>(); // 적의 Enemy 인터페이스.
             if (collision.gameObject == target) // 충돌한 상대가 내가 목표하는 적일 때,
             {
                 enemy.TakeDamage(damage); // 충돌한 적의 체력을 데미지만큼 감소시키는 코드

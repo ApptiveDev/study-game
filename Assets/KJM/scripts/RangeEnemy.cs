@@ -1,24 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 
 namespace KJM
 {
-    public enum EnemyState
+/*    public enum EnemyState
     {
         MOVE,
         ATTACK,
         DEATH,
-    }
-    public class RangeEnemy : MonoBehaviour, EnemyDamage
+    }*/
+    public class RangeEnemy : MonoBehaviour, IEnemyDamage
     {
-        EnemyState state;
-        float CurrentTime = 0;
-        private float ATTACK_RANGE = 5;
-        private float check_delay = 0.4f;
+/*        EnemyState state;*/
+/*        float CurrentTime = 0;
+        private float ATTACK_RANGE = 5;*/
+/*        private float check_delay = 0.4f;*/
         [SerializeField] private GameObject EnemyBall;
         [SerializeField] GameObject Coin;
         public float health = 50f;
-       
+        public IEnemyState curState;
+
         public void TakeDamage(float damage)
         {
             health -= damage;
@@ -29,11 +31,17 @@ namespace KJM
         }
         void Start()
         {
-            StartCoroutine(CheckState());
+            curState = new MoveState();
+            curState.EnterState(this);
+           /* StartCoroutine(CheckState());*/
                 
         }
-
-        public IEnumerator CheckState()
+        public void ChangeState(IEnemyState newState)
+        {
+            newState.EnterState(this);
+            curState = newState;
+        }
+       /* public IEnumerator CheckState()
         {
             while (true)
             {
@@ -50,10 +58,18 @@ namespace KJM
 
                 yield return new WaitForSeconds(check_delay);
             }
-        }
+        }*/
         private void Update()
         {
-            if (state == EnemyState.MOVE)
+            curState.ExecuteAction();
+            curState.ExitState();
+            if (health <= 0)
+            {
+                Vector3 deathPosition = transform.position;
+                Destroy(gameObject); // 적 게임 오브젝트를 지운다.
+                Instantiate(Coin, deathPosition, Quaternion.identity);
+            }
+           /* if (state == EnemyState.MOVE)
             {
                 MoveToPlayer();
             }
@@ -66,15 +82,15 @@ namespace KJM
                 Vector3 deathPosition = transform.position;
                 Destroy(gameObject); // 적 게임 오브젝트를 지운다.
                 Instantiate(Coin, deathPosition, Quaternion.identity);
-            }
+            }*/
         }
 
-        void MoveToPlayer()
+       /* void MoveToPlayer()
         {
             transform.position = Vector3.MoveTowards(transform.position, Player.Instance.transform.position, 1.5f * Time.deltaTime);
-        }
+        }*/
 
-        void ShootWeapon()
+      /*  void ShootWeapon()
         {
             CurrentTime += Time.deltaTime;
             if (CurrentTime > 3f)
@@ -82,7 +98,12 @@ namespace KJM
                 Instantiate(EnemyBall,transform.position, Quaternion.identity);
                 CurrentTime = 0;
             }
+        }*/
+        public void SpawnCrystal()
+        {
+            Instantiate(EnemyBall, transform.position, Quaternion.identity);
         }
+ 
     }
 
 }

@@ -701,6 +701,7 @@ MonoBehaviour:
   enemyObjects:
   - {fileID: 5407154429859040325, guid: 6bcb80f91da94a448b49598d6b89f048, type: 3}
   - {fileID: 7683901435691427901, guid: 9a972bc49f40e7b47be870effd4e9320, type: 3}
+  boss: {fileID: -8653719598885068355, guid: 915314de5349eeb419150fdbda9374dc, type: 3}
 --- !u!4 &764614925
 Transform:
   m_ObjectHideFlags: 0
@@ -803,7 +804,7 @@ RectTransform:
   m_GameObject: {fileID: 950223645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 747083263}
@@ -811,7 +812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -9}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 196.6064, y: 74.6489}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &950223647
@@ -1474,7 +1475,7 @@ RectTransform:
   m_GameObject: {fileID: 1759504990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1576786821}
@@ -1482,7 +1483,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -6.0000153}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
   m_SizeDelta: {x: 356.3716, y: -36.236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759504992
@@ -1897,9 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bc9776522a12c468e52f80df689dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleSprite: {fileID: 21300000, guid: 72e8962db63a09143a3939c930367db2, type: 3}
-  deadSprite: {fileID: 21300000, guid: 0e5b5eda3ff6d39418149746659dfb5e, type: 3}
-  health: 200
+  health: 100
   Restart: {fileID: 950223647}
 --- !u!61 &2050495194
 BoxCollider2D:
@@ -2348,11 +2347,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6623057780934804118, guid: c096d600e408fbb46b62bc7a028791b2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6623057780934804118, guid: c096d600e408fbb46b62bc7a028791b2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623057780934804118, guid: c096d600e408fbb46b62bc7a028791b2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6623057780934804118, guid: c096d600e408fbb46b62bc7a028791b2, type: 3}
       propertyPath: m_LocalPosition.x

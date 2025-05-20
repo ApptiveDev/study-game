@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace KJM
 {
-    public interface EnemyDamage
+    public interface IEnemyDamage
     {
         void TakeDamage(float damage);
 

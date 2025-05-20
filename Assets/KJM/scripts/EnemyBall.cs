@@ -34,6 +34,7 @@ namespace KJM
             {
                 Debug.Log("attacked!");
                 Player.Instance.Health.health -= 10;
+                Debug.Log(Player.Instance.Health.health);
                 Destroy(gameObject);
             }
         }

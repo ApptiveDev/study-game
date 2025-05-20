@@ -24,11 +24,11 @@ namespace KJM
         //외부에서 읽을수만 있고 수정은 하지 못한다.
         public PlayerMovement Movement { get; private set; }
         public PlayerHealth Health { get; private set; }
-        public SpriteRenderer Renderer { get; private set; }
+       /* public SpriteRenderer Renderer { get; private set; }*/
 
         private void Start()
         {
-            Renderer = GetComponent<SpriteRenderer>();
+           /* Renderer = GetComponent<SpriteRenderer>();*/
             Movement = GetComponent<PlayerMovement>();
             Health = GetComponent<PlayerHealth>();
         }

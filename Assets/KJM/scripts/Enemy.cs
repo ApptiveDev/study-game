@@ -27,13 +27,11 @@ namespace KJM
         {
             while (health > 0)
             {
-                if (Player.Instance.Renderer.sprite != Player.Instance.Health.GetDeadSprite())
-                {
                     Vector3 playerPosition = Player.Instance.transform.position;
                     Vector3 curPosition = transform.position;
 
                     transform.position = Vector3.MoveTowards(curPosition, playerPosition, enemySpeed * Time.deltaTime);
-                }
+                
                 yield return null;
             }
             /*MakeCoin();*/

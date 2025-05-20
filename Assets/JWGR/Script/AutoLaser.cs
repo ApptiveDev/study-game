@@ -14,24 +14,29 @@ namespace JWGR
         public float laserWidth = 5f; // 레이저의 너비 (사각형 스프라이트의 초기 Y 스케일)
         private SpriteRenderer laserRenderer;
         private SpriteRenderer FPRenderer;
+        private ItemData itemData;
 
         private void Start()
         {
             laserRenderer = GetComponent<SpriteRenderer>();
             FPRenderer = firePoint.GetComponent<SpriteRenderer>();
+            itemData = laserPartPrefab.GetComponent<ItemData>();
             StartCoroutine(Summon());
         }
 
         private void Update()
         {
-            fireRate = laserPartPrefab.GetComponent<ItemData>().speed;
+            if (itemData != null)
+            {
+                fireRate = itemData.speed;
+            }
         }
 
         private IEnumerator Summon()
         {
             while (true)
             {
-                if (laserPartPrefab.GetComponent<ItemData>().canSpawn)
+                if (itemData != null && itemData.canSpawn)
                 {
                     gameObject.SetActive(true);
                     FireLaser();
@@ -40,7 +45,7 @@ namespace JWGR
                 {
                     gameObject.SetActive(false);
                 }
-                
+
                 yield return new WaitForSeconds(fireRate);
             }
         }
@@ -69,12 +74,6 @@ namespace JWGR
 
         private float GetLaserMaxLength(Vector3 direction)
         {
-            //if (Camera.main != null)
-            //{
-            //    Vector3 targetViewportPoint = Camera.main.ViewportToWorldPoint(new Vector3(direction.x > 0 ? 1f : 0f, 0.5f, 0f));
-            //    return Vector3.Distance(firePoint.transform.position, new Vector3(targetViewportPoint.x, firePoint.transform.position.y, 0f));
-            //}
-            //return 100f;
             return 100f;
         }
     }

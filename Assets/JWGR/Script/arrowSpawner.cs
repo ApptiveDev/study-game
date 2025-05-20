@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace JWGR
 {
@@ -8,9 +8,11 @@ namespace JWGR
     {
         [SerializeField] GameObject arrowObject;
         public float spawnDelay = 2f;
+        private ItemData itemData;
 
         private void Start()
         {
+            itemData = arrowObject.GetComponent<ItemData>();
             StartCoroutine(Spawn());
         }
 
@@ -18,12 +20,11 @@ namespace JWGR
         {
             while (true)
             {
-                if (arrowObject.GetComponent<ItemData>().canSpawn)
+                if (itemData != null && itemData.canSpawn)
                 {
                     gameObject.SetActive(true);
                     SoundManage.instance.PlaySFX(SoundManage.ESfx.SFX_ARROW);
-
-                    spawnDelay = arrowObject.GetComponent<ItemData>().speed;
+                    spawnDelay = itemData.speed;
                     Instantiate(arrowObject, transform.position, Quaternion.identity);
                 }
                 else

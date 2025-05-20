@@ -17,16 +17,11 @@ namespace JWGR
         [SerializeField] List<GameObject> weaponList = new List<GameObject>();
         [SerializeField] List<GameObject> weaponInUI = new List<GameObject>();
         [SerializeField] private string[] weaponTags = { "weapon", "piercingWeapon" };
+        private Dictionary<GameObject, int> currentWeaponLevels = new Dictionary<GameObject, int>(); // 현재 무기 레벨 저장
 
         private void Start()
         {
-            //weaponList.Clear();  // 혹시 에디터에서 미리 넣어놨다면 초기화
-
-            //foreach (string tag in weaponTags)
-            //{
-            //    GameObject[] foundWeapons = GameObject.FindGameObjectsWithTag(tag);
-            //    weaponList.AddRange(foundWeapons);
-            //}
+            // 필요하다면 무기 리스트 초기화 코드 추가
         }
 
         public void OpenLevelUpPanel()
@@ -34,7 +29,8 @@ namespace JWGR
             levelUpPanel.SetActive(true);
             Time.timeScale = 0f;
 
-            weaponInUI.Clear(); // 매번 초기화
+            weaponInUI.Clear();
+            currentWeaponLevels.Clear(); // 패널 열 때마다 현재 레벨 정보 초기화
 
             List<int> randomIndices = Enumerable.Range(0, weaponList.Count)
                                                 .OrderBy(x => Random.value)
@@ -43,30 +39,46 @@ namespace JWGR
 
             foreach (int index in randomIndices)
             {
-                weaponInUI.Add(weaponList[index]); // 뽑은 인덱스 사용
+                GameObject selectedWeapon = weaponList[index];
+                weaponInUI.Add(selectedWeapon);
+                currentWeaponLevels[selectedWeapon] = selectedWeapon.GetComponent<ItemData>().weaponLevel; // 현재 레벨 저장
             }
 
             setUIInfo select0UI = select0.GetComponent<setUIInfo>();
             setUIInfo select1UI = select1.GetComponent<setUIInfo>();
             setUIInfo select2UI = select2.GetComponent<setUIInfo>();
 
-            select0.GetComponent<selectedButton>().weapon = weaponInUI[0];
-            select1.GetComponent<selectedButton>().weapon = weaponInUI[1];
-            select2.GetComponent<selectedButton>().weapon = weaponInUI[2];
+            selectedButton button0 = select0.GetComponent<selectedButton>();
+            selectedButton button1 = select1.GetComponent<selectedButton>();
+            selectedButton button2 = select2.GetComponent<selectedButton>();
+
+            button0.weapon = weaponInUI[0];
+            button1.weapon = weaponInUI[1];
+            button2.weapon = weaponInUI[2];
 
             ItemData itemData0 = weaponInUI[0].GetComponent<ItemData>();
             ItemData itemData1 = weaponInUI[1].GetComponent<ItemData>();
             ItemData itemData2 = weaponInUI[2].GetComponent<ItemData>();
-            
-            // ItemData의 정보를 SetInfo 함수의 인수로 전달합니다.
+
             select0UI.SetInfo(itemData0.itemDesc, itemData0.itemName, itemData0.itemState, itemData0.itemIcon);
             select1UI.SetInfo(itemData1.itemDesc, itemData1.itemName, itemData1.itemState, itemData1.itemIcon);
-            select2UI.SetInfo(itemData2.itemDesc, itemData2.itemName, itemData2.itemState, itemData2.itemIcon);            
+            select2UI.SetInfo(itemData2.itemDesc, itemData2.itemName, itemData2.itemState, itemData2.itemIcon);
         }
-        
+
         public void CloseLevelUpPanel()
         {
             levelUpPanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+
+        public void UpgradeSelectedWeapon(GameObject selectedWeapon)
+        {
+            if (currentWeaponLevels.ContainsKey(selectedWeapon))
+            {
+                ItemData itemData = selectedWeapon.GetComponent<ItemData>();
+                itemData.weaponLevel = currentWeaponLevels[selectedWeapon] + 1;
+                selectedWeapon.GetComponent<ItemUpgrade>().Upgrades(); // 실제 업그레이드 적용 및 저장
+            }
         }
     }
 }

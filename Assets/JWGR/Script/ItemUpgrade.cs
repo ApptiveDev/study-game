@@ -8,55 +8,55 @@ namespace JWGR
         private int level = 0;
         private ItemData itemData;
 
-        void Start()
+        void Awake()
         {
             itemData = GetComponent<ItemData>();
-            level = itemData.weaponLevel;
-            if (level <= 0)
-            {
-                //gameObject.GetComponent<ItemData>().canSpawn = false;
-                gameObject.SetActive(false);
-            }
+            ResetLevel(); // 게임 시작 시 레벨 초기화
+        }
+
+        private void ResetLevel()
+        {
+            level = 0;
+            itemData.weaponLevel = level;
         }
 
         public void Upgrades()
         {
             itemData = GetComponent<ItemData>();
-            itemData.weaponLevel += 1;  
+            itemData.weaponLevel += 1;
             level = itemData.weaponLevel;
-            if (level == 1)
+            ApplyLevel();
+        }
+
+        private void ApplyLevel()
+        {
+            itemData.canSpawn = level >= 1; // 레벨이 1 이상이면 활성화
+            //if (level >= 1)
+            //{
+            //    gameObject.SetActive (true);
+            //}
+
+            if (level >= 2)
             {
-                //gameObject.GetComponent<ItemData>().canSpawn = true;
-                gameObject.SetActive(true);
-            }
-            else if (level >= 2)
-            {
-                if (level < itemData.damages.Length)
+                if (level - 2 < itemData.damages.Length)
                 {
                     itemData.damage = itemData.damages[level - 2];
                 }
-                if (level < itemData.counts.Length)
+                if (level - 2 < itemData.counts.Length)
                 {
                     itemData.count = itemData.counts[level - 2];
                 }
-                if (level < itemData.speeds.Length)
+                if (level - 2 < itemData.speeds.Length)
                 {
                     itemData.speed = itemData.speeds[level - 2];
                 }
             }
 
-            if (level < itemData.itemDescs.Length)
+            if (level - 1 < itemData.itemDescs.Length)
             {
                 itemData.itemDesc = itemData.itemDescs[level - 1];
             }
-            if (level > 0)
-            {
-                itemData.itemState = "Lv." + level.ToString();
-            }
-            else
-            {
-                itemData.itemState = "New!";
-            }
+            itemData.itemState = level > 0 ? "Lv." + level.ToString() : "New!";
         }
     }
 }

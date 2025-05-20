@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using UnityEngine;
 
 namespace JWGR
@@ -9,26 +10,26 @@ namespace JWGR
         public float rotateSpeed = 400f;
         public float radius = 10f;
         private Vector3 dirVector = Vector3.zero;
+        private ItemData itemData;
 
         private void Start()
         {
+            itemData = GetComponent<ItemData>();
             transform.position = player.transform.position + new Vector3(radius, 0, 0);
         }
 
         private void Update()
         {
-            if (GetComponent<ItemData>().canSpawn)
+            if (itemData != null && itemData.canSpawn)
             {
-                Debug.Log("WTF");
-                gameObject.SetActive(true);
                 AroundObject();
                 transform.Rotate(new Vector3(0, 0, -1f * rotateSpeed * Time.deltaTime));
                 dirVector = DirToObect(player);
+                gameObject.SetActive(true); // 활성화
             }
             else
             {
-                Debug.Log(1);
-                gameObject.SetActive(false);
+                gameObject.SetActive(false); // 비활성화
             }
             //AroundObject();
             //transform.Rotate(new Vector3(0, 0, -1f * rotateSpeed * Time.deltaTime));

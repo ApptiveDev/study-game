@@ -30,6 +30,9 @@ namespace JWGR
                 Debug.Log(1);
                 gameObject.SetActive(false);
             }
+            //AroundObject();
+            //transform.Rotate(new Vector3(0, 0, -1f * rotateSpeed * Time.deltaTime));
+            //dirVector = DirToObect(player);
         }
 
         private void AroundObject()

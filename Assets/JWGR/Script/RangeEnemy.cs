@@ -104,6 +104,7 @@ namespace JWGR
                     {
                         clone = Instantiate(exp, transform.position, Quaternion.identity);
                         clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        EventManage.countKill += 1;
                         Destroy(gameObject); //오브젝트를 지운다.
                                              //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끈다.
                                              //gameObject.SetActive(false); // 본인 오브젝트도 끈다.

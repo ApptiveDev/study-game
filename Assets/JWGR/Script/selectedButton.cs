@@ -28,7 +28,11 @@ namespace JWGR
         public void OnClick()
         {
             Time.timeScale = 1.0f;
-            weapon.GetComponent<ItemUpgrade>().Upgrades();
+            ItemUpgrade itemUpgrade = weapon.GetComponent<ItemUpgrade>();
+            if (itemUpgrade != null)
+            {
+                itemUpgrade.Upgrades();
+            }
             levelManager.GetComponent<levelManage>().CloseLevelUpPanel();
         }
     }

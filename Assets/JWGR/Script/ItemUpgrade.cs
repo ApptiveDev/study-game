@@ -14,7 +14,8 @@ namespace JWGR
             level = itemData.weaponLevel;
             if (level <= 0)
             {
-                gameObject.GetComponent<ItemData>().canSpawn = false;
+                //gameObject.GetComponent<ItemData>().canSpawn = false;
+                gameObject.SetActive(false);
             }
         }
 
@@ -25,7 +26,8 @@ namespace JWGR
             level = itemData.weaponLevel;
             if (level == 1)
             {
-                gameObject.GetComponent<ItemData>().canSpawn = true;
+                //gameObject.GetComponent<ItemData>().canSpawn = true;
+                gameObject.SetActive(true);
             }
             else if (level >= 2)
             {

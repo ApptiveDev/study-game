@@ -22,39 +22,41 @@ namespace JWGR
 
         public void Upgrades()
         {
-            itemData = GetComponent<ItemData>();
             itemData.weaponLevel += 1;
+            level = itemData.weaponLevel;
+            ApplyLevel();
+        }
+
+        public void StartSet()
+        {
             level = itemData.weaponLevel;
             ApplyLevel();
         }
 
         private void ApplyLevel()
         {
-            itemData.canSpawn = level >= 1; // 레벨이 1 이상이면 활성화
-            //if (level >= 1)
-            //{
-            //    gameObject.SetActive (true);
-            //}
-
-            if (level >= 2)
+            //itemData.canSpawn = level >= 1; // 레벨이 1 이상이면 활성화
+            if (level >= 1)
             {
-                if (level - 2 < itemData.damages.Length)
-                {
-                    itemData.damage = itemData.damages[level - 2];
-                }
-                if (level - 2 < itemData.counts.Length)
-                {
-                    itemData.count = itemData.counts[level - 2];
-                }
-                if (level - 2 < itemData.speeds.Length)
-                {
-                    itemData.speed = itemData.speeds[level - 2];
-                }
+                itemData.canSpawn = true; // Object 활성화
             }
 
-            if (level - 1 < itemData.itemDescs.Length)
+            if (level < itemData.damages.Length)
             {
-                itemData.itemDesc = itemData.itemDescs[level - 1];
+                itemData.damage = itemData.damages[level];
+            }
+            if (level < itemData.counts.Length)
+            {
+                itemData.count = itemData.counts[level];
+            }
+            if (level < itemData.speeds.Length)
+            {
+                itemData.speed = itemData.speeds[level];
+            }
+
+            if (level < itemData.itemDescs.Length)
+            {
+                itemData.itemDesc = itemData.itemDescs[level];
             }
             itemData.itemState = level > 0 ? "Lv." + level.ToString() : "New!";
         }

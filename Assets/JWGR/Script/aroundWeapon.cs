@@ -25,11 +25,13 @@ namespace JWGR
                 AroundObject();
                 transform.Rotate(new Vector3(0, 0, -1f * rotateSpeed * Time.deltaTime));
                 dirVector = DirToObect(player);
-                gameObject.SetActive(true); // 활성화
+                gameObject.GetComponent<SpriteRenderer>().enabled = true; // 활성화
+                gameObject.GetComponent<CircleCollider2D>().enabled = true;
             }
             else
             {
-                gameObject.SetActive(false); // 비활성화
+                gameObject.GetComponent<SpriteRenderer>().enabled = false; // 비활성화
+                gameObject.GetComponent<CircleCollider2D>().enabled = false;
             }
             //AroundObject();
             //transform.Rotate(new Vector3(0, 0, -1f * rotateSpeed * Time.deltaTime));

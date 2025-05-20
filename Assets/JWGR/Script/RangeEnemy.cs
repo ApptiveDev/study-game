@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using JWGR;
 using UnityEngine.Scripting.APIUpdating;
+using Unity.VisualScripting;
 
 namespace JWGR
 {
@@ -64,13 +65,13 @@ namespace JWGR
             }
         }
 
-        private void Move()
+        public void Move()
         {
             dirVector = DirToObect(player);
             transform.position += (-dirVector.normalized * speed * Time.deltaTime);
         }
 
-        private void Attack()
+        public void Attack()
         {
             //매 프레임 시간을 잰다.
             currentDelay += Time.deltaTime;
@@ -97,30 +98,33 @@ namespace JWGR
             if (collision.gameObject != null)
             {
                 weapon = collision.gameObject;
-                if (weapon.gameObject.CompareTag("weapon")) // 충돌한 상대가 무기일 때
+                if (weapon.gameObject.GetComponent<SpriteRenderer>().enabled)
                 {
-                    info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
-                    if (info.HP <= 0) // 체력이 0 이하인 경우
+                    if (weapon.gameObject.CompareTag("weapon")) // 충돌한 상대가 무기일 때
                     {
-                        clone = Instantiate(exp, transform.position, Quaternion.identity);
-                        clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
-                        EventManage.countKill += 1;
-                        Destroy(gameObject); //오브젝트를 지운다.
-                                             //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끈다.
-                                             //gameObject.SetActive(false); // 본인 오브젝트도 끈다.
+                        info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
+                        if (info.HP <= 0) // 체력이 0 이하인 경우
+                        {
+                            clone = Instantiate(exp, transform.position, Quaternion.identity);
+                            clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                            EventManage.countKill += 1;
+                            Destroy(gameObject); //오브젝트를 지운다.
+                                                 //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끈다.
+                                                 //gameObject.SetActive(false); // 본인 오브젝트도 끈다.
+                        }
+                        if (weapon.name != "Sickle")
+                        {
+                            Destroy(collision.gameObject);
+                        }
                     }
-                    if (weapon.name != "Sickle")
+                    if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때
                     {
-                        Destroy(collision.gameObject);
-                    }
-                }
-                if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때
-                {
-                    info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
-                    if (info.HP <= 0) // 체력이 0 이하인 경우
-                    {
-                        Instantiate(exp);
-                        exp.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
+                        if (info.HP <= 0) // 체력이 0 이하인 경우
+                        {
+                            Instantiate(exp);
+                            exp.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        }
                     }
                 }
             }

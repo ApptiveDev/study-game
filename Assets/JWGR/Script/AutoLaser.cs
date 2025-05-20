@@ -38,12 +38,12 @@ namespace JWGR
             {
                 if (itemData != null && itemData.canSpawn)
                 {
-                    gameObject.SetActive(true);
+                    gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     FireLaser();
                 }
                 else
                 {
-                    gameObject.SetActive(false);
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 }
 
                 yield return new WaitForSeconds(fireRate);

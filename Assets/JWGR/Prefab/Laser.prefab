@@ -109,7 +109,9 @@ MonoBehaviour:
   itemDesc: "\uC801\uC744 \uAD00\uD1B5\uD558\uBA70 \uB0A0\uC544\uAC00\uB294 \uB808\uC774\uC800"
   itemState: New!
   itemIcon: {fileID: -7732088958185314511, guid: 8fef219e1a248994088abd858d979a7d, type: 3}
+  canSpawn: 0
   itemDescs:
+  - "\uC801\uC744 \uAD00\uD1B5\uD558\uBA70 \uB0A0\uC544\uAC00\uB294 \uB808\uC774\uC800"
   - "\uBC1C\uC0AC\uC18D\uB3C4\uAC00 25% \uBE68\uB77C\uC9C4\uB2E4"
   - "\uBC1C\uC0AC\uC18D\uB3C4\uAC00 33% \uBE68\uB77C\uC9C4\uB2E4"
   - "\uBC1C\uC0AC\uC18D\uB3C4\uAC00 40% \uBE68\uB77C\uC9C4\uB2E4"
@@ -121,11 +123,11 @@ MonoBehaviour:
   damages: []
   counts: 
   speeds:
+  - 2
   - 1.5
   - 1
   - 0.6
   - 0.3
-  spawnerName: Blaser
 --- !u!114 &7581781448354514665
 MonoBehaviour:
   m_ObjectHideFlags: 0

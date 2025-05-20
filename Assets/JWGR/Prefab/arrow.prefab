@@ -125,7 +125,10 @@ MonoBehaviour:
     \uCFE0\uB098\uC774"
   itemState: new!
   itemIcon: {fileID: 4913392216989790293, guid: 20b169d636bfe4945a1c4f4e11a2da05, type: 3}
+  canSpawn: 0
   itemDescs:
+  - "\uAC00\uC7A5 \uAC00\uAE4C\uC6B4 \uC801\uC5D0\uAC8C\uB85C \uB0A0\uC544\uAC00\uB294
+    \uCFE0\uB098\uC774"
   - "\uBC1C\uC0AC \uC18D\uB3C4\uAC00 25% \uBE68\uB77C\uC9C4\uB2E4"
   - "\uBC1C\uC0AC \uC18D\uB3C4\uAC00 33% \uBE68\uB77C\uC9C4\uB2E4"
   - "\uBC1C\uC0AC \uC18D\uB3C4\uAC00 40% \uBE68\uB77C\uC9C4\uB2E4"
@@ -137,6 +140,7 @@ MonoBehaviour:
   damages: []
   counts: 
   speeds:
+  - 1
   - 0.7
   - 0.5
   - 0.3

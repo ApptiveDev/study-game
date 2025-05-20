@@ -39,30 +39,33 @@ namespace JWGR
             if (collision.gameObject != null)
             {
                 weapon = collision.gameObject;
-                if (weapon.gameObject.CompareTag("weapon")) // 충돌한 상대가 무기일 때
+                if (weapon.gameObject.GetComponent<SpriteRenderer>().enabled)
                 {
-                    info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
-                    if (info.HP <= 0) // 체력이 0 이하인 경우
+                    if (weapon.gameObject.CompareTag("weapon")) // 충돌한 상대가 무기일 때
                     {
-                        clone = Instantiate(exp, transform.position, Quaternion.identity);
-                        clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
-                        EventManage.countKill += 1;
-                        Destroy(gameObject); //오브젝트를 지운다.
+                        info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
+                        if (info.HP <= 0) // 체력이 0 이하인 경우
+                        {
+                            clone = Instantiate(exp, transform.position, Quaternion.identity);
+                            clone.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                            EventManage.countKill += 1;
+                            Destroy(gameObject); //오브젝트를 지운다.
+                        }
+                        if (weapon.name != "Sickle")
+                        {
+                            Destroy(collision.gameObject);
+                        }
                     }
-                    if (weapon.name != "Sickle")
+                    if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때
                     {
-                        Destroy(collision.gameObject);
-                    }
-                }
-                if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때
-                {
-                    info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
-                    if (info.HP <= 0) // 체력이 0 이하인 경우
-                    {
-                        SoundManage.instance.StopBGM();
-                        SoundManage.instance.PlayBGM(SoundManage.EBgm.BGM_GAME);
-                        for (int i = 0; i <= 10; i++) Instantiate(exp);
-                        exp.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
+                        if (info.HP <= 0) // 체력이 0 이하인 경우
+                        {
+                            SoundManage.instance.StopBGM();
+                            SoundManage.instance.PlayBGM(SoundManage.EBgm.BGM_GAME);
+                            for (int i = 0; i <= 10; i++) Instantiate(exp);
+                            exp.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        }
                     }
                 }
             }

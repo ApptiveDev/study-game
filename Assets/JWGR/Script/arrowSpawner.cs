@@ -22,14 +22,9 @@ namespace JWGR
             {
                 if (itemData != null && itemData.canSpawn)
                 {
-                    gameObject.SetActive(true);
                     SoundManage.instance.PlaySFX(SoundManage.ESfx.SFX_ARROW);
                     spawnDelay = itemData.speed;
                     Instantiate(arrowObject, transform.position, Quaternion.identity);
-                }
-                else
-                {
-                    gameObject.SetActive(false);
                 }
                 yield return new WaitForSeconds(spawnDelay);
             }

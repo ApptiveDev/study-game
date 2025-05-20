@@ -7,7 +7,8 @@ namespace KJM
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] public GameObject[] enemyObjects;
-
+        public GameObject boss;
+        float bossSpawn = 20f;
         float curTime = 0;
 
         private void Start()
@@ -17,6 +18,7 @@ namespace KJM
                 MakeDefaultEnemy();
             }
             StartCoroutine(MakeRandomEnemy2());
+            StartCoroutine(MakeBoss());
         }
 
         private IEnumerator MakeRandomEnemy2()
@@ -43,6 +45,15 @@ namespace KJM
             Instantiate(newEnemy);
             newEnemy.transform.position = PickRandomPosition();
             newEnemy.GetComponent<SpriteRenderer>().color = PickRandomColor();
+        }
+
+        private IEnumerator MakeBoss()
+        {
+            yield return new WaitForSeconds(bossSpawn);
+
+            Instantiate(boss);
+            boss.transform.position = PickRandomPosition();
+            boss.GetComponent<SpriteRenderer>().color = PickRandomColor();
         }
 
         Vector3 PickRandomPosition() // 랜덤 위치 반환

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1abce78b30e76ae408e6841935df0e75
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 282022
+  packageName: 2D Animated Skeletons
+  packageVersion: 1.0
+  assetPath: Assets/KJM/Animator/skeleton with sword.controller
+  uploadId: 730889

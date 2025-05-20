@@ -53,7 +53,6 @@ namespace KJM
 
             Instantiate(boss);
             boss.transform.position = PickRandomPosition();
-            boss.GetComponent<SpriteRenderer>().color = PickRandomColor();
         }
 
         Vector3 PickRandomPosition() // 랜덤 위치 반환

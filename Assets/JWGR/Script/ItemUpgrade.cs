@@ -8,12 +8,6 @@ namespace JWGR
         private int level = 0;
         private ItemData itemData;
 
-        void Awake()
-        {
-            itemData = GetComponent<ItemData>();
-            ResetLevel(); // 게임 시작 시 레벨 초기화
-        }
-
         private void ResetLevel()
         {
             level = 0;
@@ -22,6 +16,7 @@ namespace JWGR
 
         public void Upgrades()
         {
+            itemData = GetComponent<ItemData>();
             itemData.weaponLevel += 1;
             level = itemData.weaponLevel;
             ApplyLevel();
@@ -29,7 +24,9 @@ namespace JWGR
 
         public void StartSet()
         {
-            level = itemData.weaponLevel;
+            itemData = GetComponent<ItemData>();
+            level = 0;
+            itemData.weaponLevel = level;
             ApplyLevel();
         }
 
@@ -39,6 +36,10 @@ namespace JWGR
             if (level >= 1)
             {
                 itemData.canSpawn = true; // Object 활성화
+            }
+            else
+            {
+                itemData.canSpawn = false;
             }
 
             if (level < itemData.damages.Length)

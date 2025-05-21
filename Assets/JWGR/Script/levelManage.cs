@@ -17,6 +17,7 @@ namespace JWGR
         [SerializeField] List<GameObject> weaponList = new List<GameObject>();
         [SerializeField] List<GameObject> weaponInUI = new List<GameObject>();
         [SerializeField] private string[] weaponTags = { "weapon", "piercingWeapon" };
+        private bool firstTrun = true;
 
         private void Start()
         {
@@ -58,9 +59,11 @@ namespace JWGR
             ItemData itemData1 = weaponInUI[1].GetComponent<ItemData>();
             ItemData itemData2 = weaponInUI[2].GetComponent<ItemData>();
 
-            weaponInUI[0].GetComponent<ItemUpgrade>().StartSet();
-            weaponInUI[1].GetComponent<ItemUpgrade>().StartSet();
-            weaponInUI[2].GetComponent<ItemUpgrade>().StartSet();
+            if (firstTrun)
+            {
+                foreach (GameObject i in weaponList) { i.GetComponent<ItemUpgrade>().StartSet(); }
+                firstTrun = false;
+            }
 
             // ItemData의 정보를 SetInfo 함수의 인수로 전달합니다.
             select0UI.SetInfo(itemData0.itemDesc, itemData0.itemName, itemData0.itemState, itemData0.itemIcon);

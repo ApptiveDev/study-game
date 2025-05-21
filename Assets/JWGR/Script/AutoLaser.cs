@@ -26,9 +26,14 @@ namespace JWGR
 
         private void Update()
         {
-            if (itemData != null)
+            if (itemData != null && itemData.canSpawn)
             {
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
                 fireRate = itemData.speed;
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
 
@@ -38,12 +43,7 @@ namespace JWGR
             {
                 if (itemData != null && itemData.canSpawn)
                 {
-                    gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     FireLaser();
-                }
-                else
-                {
-                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 }
 
                 yield return new WaitForSeconds(fireRate);

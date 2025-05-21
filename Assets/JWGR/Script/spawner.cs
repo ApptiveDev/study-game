@@ -43,8 +43,8 @@ namespace JWGR
 
         private Vector3 PickRandomPosition()
         {
-            float x = Random.Range(-3f, 3f);
-            float y = Random.Range(-3f, 3f);
+            float x = Random.Range(player.transform.position.x - 3f, player.transform.position.x + 3f);
+            float y = Random.Range(player.transform.position.y - 3f, player.transform.position.y + 3f);
 
             return new Vector3(x, y, 0);
         }

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.Animations;
 
 namespace JWGR
 {
@@ -20,6 +21,7 @@ namespace JWGR
         public int minExp = 0;
         public int maxExp = 0;
         public int tempExp = 0;
+        private Animator animator;
         private GameObject collisionObject;
         private SpriteRenderer render;
 
@@ -29,6 +31,7 @@ namespace JWGR
             levelManager.GetComponent<levelManage>().CloseLevelUpPanel();
             transform.position = Vector3.zero;
             render = gameObject.GetComponent<SpriteRenderer>();
+            animator = gameObject.GetComponent<Animator>();
             gameOverPanel.SetActive(false);
         }
 
@@ -54,6 +57,15 @@ namespace JWGR
             else if (h > 0)
             {
                 render.flipX = false;
+            }
+
+            if (dirVector.sqrMagnitude > float.Epsilon)
+            {
+                animator.SetBool("isMove", true);
+            }
+            else
+            {
+                animator.SetBool("isMove", false);
             }
 
             // Transform에 이동방향*속도 할당. detaTime을 곱해줘 자연스러운 움직임 구현.

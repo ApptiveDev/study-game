@@ -16,6 +16,7 @@ namespace JWGR
             if (SoundManage.instance != null)
             {
                 SoundManage.instance.PlayBGM(SoundManage.EBgm.BGM_GAME);
+                
             }
         }
 

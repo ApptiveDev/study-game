@@ -8,7 +8,6 @@ namespace JWGR
     public class selectedButton : MonoBehaviour
     {
         [SerializeField] Button button; // Inspector 창에서 버튼을 연결하거나, GetComponent로 찾을 수 있습니다.
-        [SerializeField] GameObject levelManager;
         public GameObject weapon;
         void Start()
         {
@@ -33,7 +32,7 @@ namespace JWGR
             {
                 itemUpgrade.Upgrades();
             }
-            levelManager.GetComponent<levelManage>().CloseLevelUpPanel();
+            levelManage.instance.GetComponent<levelManage>().CloseLevelUpPanel();
         }
     }
 }

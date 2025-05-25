@@ -13,10 +13,12 @@ namespace JWGR
 
         // 변수 선언.
         [SerializeField] Slider expBar;
+        [SerializeField] Slider hpBar;
         [SerializeField] GameObject gameOverPanel;
-        [SerializeField] GameObject levelManager;
         public float moveSpeed = 3f;
-        public float HP = 100f;
+        public float tempHP = 100f;
+        public float maxHP = 100f;
+        public int money = 0;
         public int Level = 0;
         public int minExp = 0;
         public int maxExp = 0;
@@ -28,7 +30,7 @@ namespace JWGR
         // 게임이 작동하기 시작할 때 함수 실행.
         private void Awake()
         {
-            levelManager.GetComponent<levelManage>().CloseLevelUpPanel();
+            levelManage.instance.CloseLevelUpPanel();
             transform.position = Vector3.zero;
             render = gameObject.GetComponent<SpriteRenderer>();
             animator = gameObject.GetComponent<Animator>();
@@ -40,6 +42,7 @@ namespace JWGR
         {
             Move();
             ManageExp();
+            ManageHP();
         }
 
         // 이동 함수.
@@ -80,9 +83,15 @@ namespace JWGR
                 tempExp -= maxExp;
                 maxExp = 5 * (int)Math.Pow(2, Level);
                 expBar.maxValue = maxExp;
-                levelManager.GetComponent<levelManage>().OpenLevelUpPanel();
+                levelManage.instance.OpenLevelUpPanel();
             }
             expBar.value = tempExp;
+        }
+
+        private void ManageHP()
+        {
+            hpBar.maxValue = maxHP;
+            hpBar.value = tempHP;
         }
 
         private void OnTriggerEnter2D(Collider2D collision) // 충돌했을 때
@@ -94,12 +103,12 @@ namespace JWGR
                 {
                     if (!collisionObject.GetComponent<enemyInfo>().isRange)
                     {
-                        HP -= collisionObject.GetComponent<enemyInfo>().damage;
+                        tempHP -= collisionObject.GetComponent<enemyInfo>().damage;
                     }
                 }
                 if (collisionObject.gameObject.CompareTag("EnemyWeapon"))
                 {
-                    HP -= collisionObject.GetComponent<ItemData>().damage;
+                    tempHP -= collisionObject.GetComponent<ItemData>().damage;
                     Destroy(collision.gameObject); //오브젝트를 지운다.
                 }
                 else if (collisionObject.gameObject.CompareTag("Exp"))
@@ -108,8 +117,9 @@ namespace JWGR
                     Destroy(collision.gameObject);
                 }
 
-                if (HP <= 0)
+                if (tempHP <= 0)
                 {
+                    hpBar.value = tempHP;
                     gameOverPanel.SetActive(true);
                     Time.timeScale = 0f;
                 }

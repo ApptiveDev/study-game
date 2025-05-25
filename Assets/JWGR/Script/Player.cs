@@ -14,6 +14,7 @@ namespace JWGR
         // 변수 선언.
         [SerializeField] Slider expBar;
         [SerializeField] Slider hpBar;
+        [SerializeField] Text moneyText;
         [SerializeField] GameObject gameOverPanel;
         public float moveSpeed = 3f;
         public float tempHP = 100f;
@@ -35,6 +36,17 @@ namespace JWGR
             render = gameObject.GetComponent<SpriteRenderer>();
             animator = gameObject.GetComponent<Animator>();
             gameOverPanel.SetActive(false);
+            StartCoroutine(GetCoin());
+        }
+
+        private IEnumerator GetCoin()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5f);
+                money += 50;
+                moneyText.text = money.ToString() + " G";
+            }
         }
 
         // 물리 엔진 업데이트.

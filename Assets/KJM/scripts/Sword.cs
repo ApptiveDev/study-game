@@ -11,6 +11,7 @@ namespace KJM
         float positionX = 3f;
         public float damage = 10f;
         float spinSpeed = 600f;
+        public int cnt = 1;
 
         void Start()
         {

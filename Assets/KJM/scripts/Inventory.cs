@@ -26,7 +26,7 @@ namespace KJM
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
+/*                DontDestroyOnLoad(gameObject);*/
             }
             else
             {
@@ -103,7 +103,7 @@ namespace KJM
                     changeWeapon();
                     break;
                 case 1:
-                    WeaponSpawner.Instance.weaponCnt += 1;
+                    WeaponSpawner.Instance.weaponCnts[selectedIndexes] += 1;
                     Debug.Log($"weaponCont: {WeaponSpawner.Instance.weaponCnt}");
                     break;
                 case 2:

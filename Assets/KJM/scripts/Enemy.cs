@@ -18,6 +18,14 @@ namespace KJM
         {
             health -= damage * Time.deltaTime;
         }
+        public void DestroyEnemy()
+        {
+            Destroy(gameObject);
+        }
+        public Vector3 EnemyPosition()
+        {
+            return transform.position;
+        }
         private void Start()
         {
             StartCoroutine(MoveEnemy());

@@ -9,6 +9,7 @@ namespace KJM
         Vector3 moveDir; // 이동방향 벡터
         float moveSpeed = 5f; //무기 이동 속도
         public float damage = 10f; //무기 데미지
+        public int cnt = 1;
 
         private void Start()
         {

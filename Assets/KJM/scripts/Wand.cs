@@ -9,6 +9,7 @@ namespace KJM
         private Vector3 targetPos;
         private float moveSpeed = 4f;
         public GameObject Holes; //È¦ ¹ß»ý
+        public int cnt = 1;
 
         private void Start()
         {

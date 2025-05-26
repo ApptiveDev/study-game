@@ -10,6 +10,7 @@ namespace KJM
         public GameObject boss;
         float bossSpawn = 20f;
         float curTime = 0;
+        float delay = 2f;
 
         private void Start()
         {
@@ -25,7 +26,7 @@ namespace KJM
         {
             while (true)
             {
-                yield return new WaitForSeconds(2.5f);
+                yield return new WaitForSeconds(delay);
                 MakeRandomEnemy();
             }
         }
@@ -49,10 +50,14 @@ namespace KJM
 
         private IEnumerator MakeBoss()
         {
-            yield return new WaitForSeconds(bossSpawn);
-
-            Instantiate(boss);
-            boss.transform.position = PickRandomPosition();
+            while (true)
+            {
+                yield return new WaitForSeconds(bossSpawn);
+                delay -= 0.5f;
+                if (delay <= 0) delay = 0.5f;
+                Instantiate(boss);
+                boss.transform.position = PickRandomPosition();
+            }
         }
 
         Vector3 PickRandomPosition() // 랜덤 위치 반환

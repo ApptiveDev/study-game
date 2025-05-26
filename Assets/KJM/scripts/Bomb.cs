@@ -8,6 +8,7 @@ namespace KJM
         private Vector3 targetPos;
         private float moveSpeed = 5f;
         public GameObject fireZone; // È­¿°Áö´ë
+        public int cnt;
 
 
         private void Start()

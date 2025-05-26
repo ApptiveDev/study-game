@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 namespace AJH{
 
@@ -21,6 +22,7 @@ namespace AJH{
         [SerializeField] private GameObject bossPrefab;
         [SerializeField] private CanvasGroup gameOverPanel;
         [SerializeField] private CanvasGroup UIcanvas;
+        [SerializeField] private Text gameOverText;
         public levelUp levelUpUI;
 
 
@@ -62,6 +64,7 @@ namespace AJH{
             // 게임 오버 처리
             UIcanvas.alpha = 0;
             gameOverPanel.alpha = 1;
+            gameOverText.text = $"열심히 참아서 {kill * 3}원을 벌었습니다.";
             BGMManager.instance.playGameOverBGM();
             IsLive = false;
             player.transform.localScale = new Vector3(3f, 3f, 1f);

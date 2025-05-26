@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - weapon
   - Enemy
-  - Arrow
-  - Bomb
-  - Sword
-  - FireZone
-  - Wand
+  - piercingWeapon
+  - Exp
+  - EnemyWeapon
+  - Spawner
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 06cbdea1493344043bf8b90522d97308
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - icon: {fileID: 2800000, guid: d4743ba2e2a59f946b2125c074582ce7, type: 3}
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: a186f8a87ca4f4d3aa864638ad5dfb65, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 188718
+  packageName: Top-Down 2D RPG Assets Pack
+  packageVersion: 1.0
+  assetPath: Assets/TopDown 2D RPG BE3/ReadMe/Scripts/ReadmeBE3.cs
+  uploadId: 417218

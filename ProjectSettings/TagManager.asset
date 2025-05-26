@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Ground
-  - Area
+  - weapon
   - Enemy
-  - Weapon
+  - piercingWeapon
+  - Exp
+  - EnemyWeapon
+  - Spawner
   layers:
   - Default
   - TransparentFX

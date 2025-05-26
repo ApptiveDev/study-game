@@ -4,8 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - enemyObject: {fileID: 5407154429859040325, guid: 6bcb80f91da94a448b49598d6b89f048, type: 3}
-  - player: {instanceID: 0}
+  - boss: {fileID: -8653719598885068355, guid: 915314de5349eeb419150fdbda9374dc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

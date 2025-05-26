@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: -8653719598885068355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.969904, y: -4.8295727, z: 0}
+  m_LocalPosition: {x: -2.1763043, y: -2.614726, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e5bd3691c5fe14cb4f57d5389c136c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coin: {fileID: 7352995621931735335, guid: f61082b4a60272e4cbaf3382a34c07f3, type: 3}
   health: 20
+  Coin: {fileID: 7352995621931735335, guid: f61082b4a60272e4cbaf3382a34c07f3, type: 3}
 --- !u!1 &-8596930853604061233
 GameObject:
   m_ObjectHideFlags: 0

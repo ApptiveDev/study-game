@@ -10,10 +10,11 @@ namespace KJM
         float moveSpeed = 5f; //무기 이동 속도
         public float damage = 10f; //무기 데미지
         public int cnt = 1;
+        EnemyDamage enemy;
 
         private void Start()
         {
-            Enemy enemy = FindAnyObjectByType<Enemy>();
+            enemy = FindAnyObjectByType<EnemyDamage>();
 
             if (enemy != null)
             {
@@ -37,7 +38,6 @@ namespace KJM
 
         private void OnTriggerEnter2D(Collider2D collision) // 충돌했을 때
         {
-            IEnemyDamage enemy = collision.GetComponent<IEnemyDamage>(); // 적의 Enemy 인터페이스.
             if (collision.gameObject == target) // 충돌한 상대가 내가 목표하는 적일 때,
             {
                 enemy.TakeDamage(damage); // 충돌한 적의 체력을 데미지만큼 감소시키는 코드

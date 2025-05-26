@@ -14,7 +14,7 @@ namespace KJM
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            IEnemyDamage enemy = collision.GetComponent<IEnemyDamage>();
+            EnemyDamage enemy = collision.GetComponent<EnemyDamage>();
             if (enemy != null)
             {
                 enemy.TakeTimeDamage(damage);

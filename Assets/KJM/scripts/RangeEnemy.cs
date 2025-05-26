@@ -10,7 +10,7 @@ namespace KJM
         ATTACK,
         DEATH,
     }*/
-    public class RangeEnemy : MonoBehaviour, IEnemyDamage
+    public class RangeEnemy : EnemyDamage
     {
 /*        EnemyState state;*/
 /*        float CurrentTime = 0;
@@ -18,27 +18,8 @@ namespace KJM
 /*        private float check_delay = 0.4f;*/
         [SerializeField] private GameObject EnemyBall;
         [SerializeField] GameObject Coin;
-        public float health = 50f;
         public IEnemyState curState;
 
-        public void TakeDamage(float damage)
-        {
-            health -= damage;
-        }
-        public void TakeTimeDamage(float damage)
-        {
-            health -= damage * Time.deltaTime;
-        }
-
-        public void DestroyEnemy()
-        {
-            Destroy(gameObject);
-        }
-
-        public Vector3 EnemyPosition()
-        {
-            return transform.position;
-        }
         void Start()
         {
             curState = new MoveState();

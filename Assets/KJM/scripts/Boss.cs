@@ -3,30 +3,10 @@ using UnityEngine;
 
 namespace KJM
 {
-    public class Boss : MonoBehaviour, IEnemyDamage
+    public class Boss : EnemyDamage
     {
         [SerializeField] GameObject Coin;
-        public float health = 200f;
 
-        public void TakeDamage(float damage)
-        {
-            health -= damage;
-            Debug.Log($"Boss Health : {health}");
-        }
-        public void TakeTimeDamage(float damage)
-        {
-            health -= damage * Time.deltaTime;
-            Debug.Log($"Boss Health : {health}");
-        }
-        public void DestroyEnemy()
-        {
-            Destroy(gameObject);
-        }
-
-        public Vector3 EnemyPosition()
-        {
-            return transform.position;
-        }
         private void Update()
         {
             if (health <= 0)

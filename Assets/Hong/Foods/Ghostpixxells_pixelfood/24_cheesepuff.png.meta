@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      24_cheesepuff_0: 8126645460103407953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

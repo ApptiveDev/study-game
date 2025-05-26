@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      22_cheesecake_0: 3960459469847764286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

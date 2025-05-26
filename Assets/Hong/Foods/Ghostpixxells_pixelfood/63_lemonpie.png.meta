@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      63_lemonpie_0: 842514566835485325
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

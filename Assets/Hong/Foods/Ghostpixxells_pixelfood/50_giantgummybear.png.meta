@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      50_giantgummybear_0: 1157579191003698376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

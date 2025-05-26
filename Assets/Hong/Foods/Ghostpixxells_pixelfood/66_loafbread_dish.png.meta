@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      66_loafbread_dish_0: 5714418463404235612
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

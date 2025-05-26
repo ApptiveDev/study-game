@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      14_bacon_dish_0: -7180199569640334435
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      41_eggsalad_bowl_0: -8816823686919378518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

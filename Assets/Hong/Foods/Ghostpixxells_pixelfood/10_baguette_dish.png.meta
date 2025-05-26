@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      10_baguette_dish_0: 8380737618623826692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

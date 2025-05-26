@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      68_macncheese_dish_0: -1542208627128850331
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

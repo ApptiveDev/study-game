@@ -4,13 +4,6 @@ using UnityEngine.PlayerLoop;
 namespace AJH{
     public class RangeEnemyAI : MonoBehaviour, IDamageable
     {
-        public enum EnemyState
-        {
-            Chase,
-            Attack,
-            Dead
-        }
-
         [Header("추격 속도")]
         public float moveSpeed = 1f;
         [Header("체력")]
@@ -31,47 +24,65 @@ namespace AJH{
         private SpriteRenderer spriteRenderer;
         private Vector2 knockback;   // 현재 남아 있는 넉백 벡터
 
-        private EnemyState currentState; // 현재 상태
-        // Update is called once per frame
-        void Start()
+        public IEnemyState currentEnemyState;
+        public Coroutine attackCoroutine;
+
+        private void Start()
         {
             if (player.Instance != null)
                 playerTransform = player.Instance.transform; // 플레이어의 Transform을 가져옴
 
             spriteRenderer = GetComponent<SpriteRenderer>();
-            currentState = EnemyState.Chase;
-            StartCoroutine(checkState());
-            StartCoroutine(AttackPlayer());
+            // currentState = EnemyState.Chase;
+            // StartCoroutine(checkState());
+            // StartCoroutine(AttackPlayer());
+            currentEnemyState = new MoveState();
+            currentEnemyState.EnterState(this);
         }
 
 
-        void Update()
+        private void Update()
         {
-            if (currentState == EnemyState.Chase)
-            {
-                ChasePlayer();
-            }
+            // if (currentState == EnemyState.Chase)
+            // {
+            //     ChasePlayer();
+            // }
+
+            currentEnemyState.ExecuteState();
+            currentEnemyState.ExitState();
         }
 
-        private IEnumerator checkState()
+        // private IEnumerator checkState()
+        // {
+        //     while (true)
+        //     {
+
+        //         if (Vector2.Distance(playerTransform.position, transform.position) < attackRange)
+        //         {
+        //             currentState = EnemyState.Attack;
+        //         }
+        //         else
+        //         {
+        //             currentState = EnemyState.Chase;
+        //         }
+        //         yield return new WaitForSeconds(0.1f); // 0.1초마다 상태 체크
+        //     }
+        // }
+
+
+        public bool IsClose()
         {
-            while (true)
-            {
-
-                if (Vector2.Distance(playerTransform.position, transform.position) < attackRange)
-                {
-                    currentState = EnemyState.Attack;
-                }
-                else
-                {
-                    currentState = EnemyState.Chase;
-                }
-                yield return new WaitForSeconds(0.1f); // 0.1초마다 상태 체크
-            }
+            if (Vector2.Distance(playerTransform.position, transform.position) < attackRange) return true;
+            else return false;
         }
 
+        public void ChangeState(IEnemyState newState)
+        {
+            newState.EnterState(this);
+            currentEnemyState = newState;
+        }
 
-        private void ChasePlayer()
+        public void ChasePlayer()
         {
             Vector2 chaseDir = (playerTransform.position - transform.position).normalized;
             Vector2 velocity = chaseDir * moveSpeed + knockback;
@@ -83,14 +94,11 @@ namespace AJH{
         }
 
 
-        private IEnumerator AttackPlayer()
+        public IEnumerator AttackPlayer()
         {
             while (true)
             {
-                if (currentState == EnemyState.Attack)
-                {
-                    SpawnCheese();
-                }
+                SpawnCheese();
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
@@ -108,7 +116,6 @@ namespace AJH{
             {
                 GameManager.instance.kill++; // 경험치 증가
                 Instantiate(GameManager.instance.expPrefab[expIdx], transform.position, Quaternion.identity);
-                currentState = EnemyState.Dead; // 상태를 Dead로 변경
                 Destroy(gameObject); // 적이 죽으면 오브젝트 삭제
 
             }

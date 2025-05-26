@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      35_donut_dish_0: 5310060569336858883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

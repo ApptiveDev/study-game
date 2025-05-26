@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      76_pudding_dish_0: 8722072848766645262
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

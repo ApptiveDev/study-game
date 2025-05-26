@@ -16,10 +16,10 @@ namespace JWGR
         [SerializeField] Slider hpBar;
         [SerializeField] Text moneyText;
         [SerializeField] GameObject gameOverPanel;
-        public float moveSpeed = 3f;
-        public float tempHP = 100f;
-        public float maxHP = 100f;
-        public int money = 0;
+        public static float moveSpeed = 3f;
+        public static float tempHP = 100f;
+        public static float maxHP = 100f;
+        public static int money = 1000;
         public int Level = 0;
         public int minExp = 0;
         public int maxExp = 0;
@@ -31,6 +31,7 @@ namespace JWGR
         // 게임이 작동하기 시작할 때 함수 실행.
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             levelManage.instance.CloseLevelUpPanel();
             transform.position = Vector3.zero;
             render = gameObject.GetComponent<SpriteRenderer>();

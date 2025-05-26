@@ -15,11 +15,14 @@ namespace AJH{
         public float maxWeight = 100f;
         public int level;
         public int exp;
-        public int kill;
+        public int kill = 0;
         public int[] nextExp = { 3, 5, 10, 30, 60, 100, 150 };
         public GameObject[] expPrefab;
         [SerializeField] private GameObject bossPrefab;
+        [SerializeField] private CanvasGroup gameOverPanel;
+        [SerializeField] private CanvasGroup UIcanvas;
         public levelUp levelUpUI;
+
 
         void Awake()
         {
@@ -54,11 +57,29 @@ namespace AJH{
 
         }
 
+        private void GameOver()
+        {
+            // 게임 오버 처리
+            UIcanvas.alpha = 0;
+            gameOverPanel.alpha = 1;
+            BGMManager.instance.playGameOverBGM();
+            IsLive = false;
+            player.transform.localScale = new Vector3(3f, 3f, 1f);
+            Time.timeScale = 0;
+
+
+        }
+
+
         public void GetWeight(float damage)
         {
             weight += damage;
             // player.GetComponent
             // 이거 무게 늘면 커지는거 추후 구현 예정
+            if (weight >= maxWeight)
+            {
+                GameOver();
+            }
         }
 
         public void Stop()

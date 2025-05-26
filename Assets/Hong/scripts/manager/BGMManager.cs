@@ -8,6 +8,7 @@ namespace AJH
         public AudioSource bgmSource;
         public AudioClip defaultBGM;
         public AudioClip bossBGM;
+        public AudioClip gameOverBGM;
 
 
         private void Awake()
@@ -30,6 +31,15 @@ namespace AJH
             bgmSource.Stop();
             bgmSource.clip = clip;
             bgmSource.Play();
+        }
+
+        public void playGameOverBGM()
+        {
+            // 게임 오버 BGM 재생 로직 추가 필요
+            // 예시로 기본 BGM을 재생하도록 설정
+            bgmSource.loop = false; // 게임 오버 BGM은 반복하지 않음
+            PlayBGM(gameOverBGM);
+
         }
 
         public void PlayDefaultBGM()

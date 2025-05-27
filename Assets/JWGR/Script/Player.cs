@@ -9,7 +9,7 @@ namespace JWGR
 {
     public class Player : MonoBehaviour
     {
-        public static Player Instance { get; private set; }
+        public static Player instance { get; private set; }
 
         // 변수 선언.
         [SerializeField] Slider expBar;
@@ -19,7 +19,7 @@ namespace JWGR
         public static float moveSpeed = 3f;
         public static float tempHP = 100f;
         public static float maxHP = 100f;
-        public static int money = 1000;
+        public static int money = 0;
         public int Level = 0;
         public int minExp = 0;
         public int maxExp = 0;
@@ -31,13 +31,22 @@ namespace JWGR
         // 게임이 작동하기 시작할 때 함수 실행.
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
             levelManage.instance.CloseLevelUpPanel();
             transform.position = Vector3.zero;
             render = gameObject.GetComponent<SpriteRenderer>();
             animator = gameObject.GetComponent<Animator>();
             gameOverPanel.SetActive(false);
             StartCoroutine(GetCoin());
+            moneyText.text = money.ToString() + " G";
         }
 
         private IEnumerator GetCoin()

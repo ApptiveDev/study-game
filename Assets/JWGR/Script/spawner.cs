@@ -7,12 +7,27 @@ namespace JWGR
 {
     public class spawner : MonoBehaviour
     {
+        public spawner instance;
+
         // 원 변수를 유니티에서 볼 수 있게 직렬화한 후, 프리팹을 참조시켜 준다.
         [SerializeField] GameObject[] enemyObject;
         [SerializeField] GameObject player;
         //public List<GameObject> prefabList = new List<GameObject>();
 
         //float curTime = 0;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {

@@ -4,41 +4,41 @@ namespace AJH{
     public class PoolManager : MonoBehaviour
     {
 
-        public static PoolManager Instance;
-        int poolCount = 20;
-        [SerializeField] private GameObject poolObject;
-        [SerializeField] List<GameObject> poolObjectList = new List<GameObject>();
+        // public static PoolManager Instance;
+        // int poolCount = 20;
+        // [SerializeField] private GameObject poolObject;
+        // [SerializeField] List<GameObject> poolObjectList = new List<GameObject>();
 
 
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+        // private void Awake()
+        // {
+        //     if (Instance == null)
+        //     {
+        //         Instance = this;
+        //     }
+        //     else
+        //     {
+        //         Destroy(gameObject);
+        //     }
 
-            for (int i = 0; i < poolCount; i++)
-            {
-                GameObject pooledObject = Instantiate(poolObject, transform);
-                pooledObject.SetActive(false);
-                poolObjectList.Add(pooledObject);
-            }
-        }
+        //     for (int i = 0; i < poolCount; i++)
+        //     {
+        //         GameObject pooledObject = Instantiate(poolObject, transform);
+        //         pooledObject.SetActive(false);
+        //         poolObjectList.Add(pooledObject);
+        //     }
+        // }
 
 
-        public GameObject GetObject()
-        {
-            GameObject pooledObject = poolObjectList[0];
-            pooledObject.SetActive(true);
-            pooledObject.transform.SetParent(null);
-            poolObjectList.RemoveAt(0);
-            return pooledObject;
+        // public GameObject GetObject()
+        // {
+        //     GameObject pooledObject = poolObjectList[0];
+        //     pooledObject.SetActive(true);
+        //     pooledObject.transform.SetParent(null);
+        //     poolObjectList.RemoveAt(0);
+        //     return pooledObject;
 
-        }
+        // }
         // public GameObject[] prefabs;
 
         // List<GameObject>[] pools;    

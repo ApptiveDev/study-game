@@ -38,6 +38,12 @@ namespace AJH{
             var enemy = other.GetComponent<IDamageable>();
             if (enemy == null) return;
 
+            if (!_nextDamageTime.ContainsKey(enemy))
+            {
+                _nextDamageTime[enemy] = Time.time + tickInterval;
+                return;
+            }
+
             // 틱 간격이 지났으면 다시 피해와 넉백
             if (Time.time >= _nextDamageTime[enemy])
             {

@@ -4,17 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - weapon
+  - Projectile
   - Enemy
-  - piercingWeapon
-  - Exp
-  - EnemyWeapon
-  - Spawner
+  - Target
+  - ExpObj
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Objects
   - Water
   - UI
   - 
@@ -46,6 +44,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Objects
+    uniqueID: 3270466357
+    locked: 0
+  - name: AddOn
+    uniqueID: 359300903
     locked: 0
   m_RenderingLayers:
   - Default

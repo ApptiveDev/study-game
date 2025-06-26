@@ -4453,7 +4453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acf531278437714b8fac1bb82c61cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 229986902}
+  characterSprite: {fileID: 1388817978}
   character: {fileID: 229986901}
   fadePanel: {fileID: 294558685}
   moveDuration: 1
@@ -18476,7 +18476,7 @@ Transform:
   m_GameObject: {fileID: 1388817976}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.56, z: 8.45}
+  m_LocalPosition: {x: 0, y: -3.4, z: 8.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

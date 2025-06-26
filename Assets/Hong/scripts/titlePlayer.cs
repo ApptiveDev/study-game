@@ -18,26 +18,26 @@ public class titlePlayer : MonoBehaviour
     // }
     public void OnStartButtonClicked()
     {
-        StartCoroutine(playerMove(false));
+        StartCoroutine(playerMove(true));
     }
 
     public void OnShopButtonClicked()
     {
-        StartCoroutine(playerMove(true));
+        StartCoroutine(playerMove(false));
     }
 
 
-    private IEnumerator playerMove(bool isLeft)
+    private IEnumerator playerMove(bool isStart)
     {
         // Move the character to the right
         animator.SetFloat("speed", 3f); // Set the animation speed to 1 to play the walking animation
         Vector3 startPosition = character.position;
         Vector3 endPosition;
-        if (isLeft) endPosition = startPosition + new Vector3(-5f, 0f, 0f);
+        if (isStart) endPosition = startPosition + new Vector3(5f, 0f, 0f);
         else
         {
             characterSprite.flipX = true; // Ensure the character is facing right
-            endPosition = startPosition + new Vector3(5f, 0f, 0f);
+            endPosition = startPosition + new Vector3(-5f, 0f, 0f);
         }
         float elapsedTime = 0f;
 
@@ -61,7 +61,7 @@ public class titlePlayer : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        if (!isLeft) yield return StartCoroutine(LoadSceneAsync("week1_hw"));
+        if (isStart) yield return StartCoroutine(LoadSceneAsync("week1_hw"));
         else yield return StartCoroutine(LoadSceneAsync("shop"));
     }
     // Update is called once per frame

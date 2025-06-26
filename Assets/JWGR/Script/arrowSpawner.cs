@@ -7,6 +7,7 @@ namespace JWGR
     public class arrowSpawner : MonoBehaviour
     {
         [SerializeField] GameObject arrowObject;
+        private GameObject arrowPool;
         public float spawnDelay = 2f;
         private ItemData itemData;
 
@@ -24,7 +25,9 @@ namespace JWGR
                 {
                     SoundManage.instance.PlaySFX(SoundManage.ESfx.SFX_ARROW);
                     spawnDelay = itemData.speed;
-                    Instantiate(arrowObject, transform.position, Quaternion.identity);
+                    //Instantiate(arrowObject, transform.position, Quaternion.identity);
+                    arrowPool = ObjPool.instance.GetObject();
+                    arrowPool.SetActive(true);
                 }
                 yield return new WaitForSeconds(spawnDelay);
             }

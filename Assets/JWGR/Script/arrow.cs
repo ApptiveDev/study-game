@@ -26,7 +26,7 @@ namespace JWGR
             else
             {
                 // 적이 없다면 즉시 화살을 제거하거나 다른 동작을 수행할 수 있습니다.
-                Destroy(gameObject);
+                // Destroy(gameObject);
             }
         }
 
@@ -71,6 +71,23 @@ namespace JWGR
                 }
             }
             return closestEnemy;
+        }
+
+        private void OnEnable()
+        {
+            player = GameObject.Find("Player");
+            transform.position = player.transform.position;
+            target = FindClosestEnemy(); // 가장 가까운 적을 찾습니다.
+
+            if (target != null)
+            {
+                moveDir = (target.position - transform.position).normalized; // 초기 이동 방향 벡터를 계산하고 정규화합니다.
+            }
+            else
+            {
+                // 적이 없다면 즉시 화살을 제거하거나 다른 동작을 수행할 수 있습니다.
+                // Destroy(gameObject);
+            }
         }
     }
 }

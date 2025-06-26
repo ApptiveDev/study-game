@@ -31,15 +31,6 @@ namespace JWGR
         // 게임이 작동하기 시작할 때 함수 실행.
         private void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
             levelManage.instance.CloseLevelUpPanel();
             transform.position = Vector3.zero;
             render = gameObject.GetComponent<SpriteRenderer>();

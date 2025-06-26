@@ -16,19 +16,6 @@ namespace JWGR
 
         //float curTime = 0;
 
-        private void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
         private void Start()
         {
             StartCoroutine(Spawn());

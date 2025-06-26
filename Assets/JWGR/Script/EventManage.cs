@@ -6,9 +6,24 @@ namespace JWGR
 {
     public class EventManage : MonoBehaviour
     {
+        public static EventManage instance;
+
         public static int countKill = 0;
         public GameObject boss;
         private bool bossSpawned = false; // 보스가 이미 스폰되었는지 확인
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {

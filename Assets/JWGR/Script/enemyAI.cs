@@ -10,6 +10,7 @@ namespace JWGR
     {
         [SerializeField] GameObject player;
         [SerializeField] GameObject exp;
+        private SpriteRenderer render;
         private GameObject weapon;
         private GameObject clone;
         private enemyInfo info;
@@ -21,11 +22,20 @@ namespace JWGR
         {
             player = GameObject.Find("Player");
             info = GetComponent<enemyInfo>();
+            render = GetComponent<SpriteRenderer>();
         }
 
         private void FixedUpdate()
         {
             dirVector = DirToObect(player);
+            if (dirVector.x < 0)
+            {
+                render.flipX = false;
+            }
+            else if (dirVector.x > 0)
+            {
+                render.flipX = true;
+            }
             transform.position += (-dirVector.normalized * speed * Time.deltaTime);
         }
         
@@ -56,7 +66,8 @@ namespace JWGR
                         }
                         if (weapon.name != "Sickle")
                         {
-                            Destroy(collision.gameObject);
+                            ObjPool.instance.ReturnObject(weapon);
+                            // Destroy(collision.gameObject);
                         }
                     }
                     if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 관통 무기일 때

@@ -102,6 +102,18 @@ namespace JWGR
                 {
                     if (weapon.gameObject.CompareTag("weapon")) // 충돌한 상대가 무기일 때
                     {
+                        //if (info == null)
+                        //{
+                        //    Debug.Log("No Info");
+                        //}
+                        //else if (weapon == null)
+                        //{
+                        //    Debug.Log("No weapon");
+                        //}
+                        //else if (weapon.GetComponent<ItemData>() == null)
+                        //{
+                        //    Debug.Log("No ItemData");
+                        //}
                         info.HP -= weapon.GetComponent<ItemData>().damage; // 체력을 무기의 고유 데미지만큼 감소시키는 코드
                         if (info.HP <= 0) // 체력이 0 이하인 경우
                         {
@@ -114,7 +126,8 @@ namespace JWGR
                         }
                         if (weapon.name != "Sickle")
                         {
-                            Destroy(collision.gameObject);
+                            ObjPool.instance.ReturnObject(weapon);
+                            // Destroy(collision.gameObject);
                         }
                     }
                     if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때

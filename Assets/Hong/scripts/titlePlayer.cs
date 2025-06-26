@@ -62,7 +62,7 @@ public class titlePlayer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         if (isStart) yield return StartCoroutine(LoadSceneAsync("week1_hw"));
-        else yield return StartCoroutine(LoadSceneAsync("shop"));
+        else yield return StartCoroutine(LoadSceneAsync("Shop"));
     }
     // Update is called once per frame
     private IEnumerator LoadSceneAsync(string sceneName)

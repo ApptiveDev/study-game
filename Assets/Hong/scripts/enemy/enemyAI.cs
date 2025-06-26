@@ -63,6 +63,7 @@ namespace AJH{
             if (health <= 0)
             {
                 GameManager.instance.kill++; // 경험치 증가
+                GameManager.instance.currentMoney += 3;
                 Instantiate(GameManager.instance.expPrefab[expIdx], transform.position, Quaternion.identity);
                 Destroy(gameObject); // 적이 죽으면 오브젝트 삭제
 

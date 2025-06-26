@@ -78,6 +78,7 @@ namespace AJH
             if (currentHealth <= 0)
             {
                 GameManager.instance.kill++; // 경험치 증가
+                GameManager.instance.currentMoney += 6;
                 // Instantiate(GameManager.instance.expPrefab[expIdx], transform.position, Quaternion.identity);
                 currentState = BossState.Dead; // 상태를 Dead로 변경
                 BGMManager.instance.PlayDefaultBGM();

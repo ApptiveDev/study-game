@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -17,6 +18,9 @@ namespace AJH{
         public int level;
         public int exp;
         public int kill = 0;
+        public float totalMoney = 0f; // 총 벌어들인 돈
+        public float currentMoney = 0f;
+        public float moneyIncrease = 0f; // 돈 증가량
         public int[] nextExp = { 3, 5, 10, 30, 60, 100, 150 };
         public GameObject[] expPrefab;
         [SerializeField] private GameObject bossPrefab;
@@ -26,13 +30,17 @@ namespace AJH{
         public levelUp levelUpUI;
 
 
-        void Awake()
+        private void Awake()
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
-        void Start()
+        private void Start()
         {
+            if (PlayerPrefs.HasKey("TotalMoney")) totalMoney = PlayerPrefs.GetFloat("TotalMoney");
+            else totalMoney = 0f;
+            
             levelUpUI.Select(0);
         }
 
@@ -64,12 +72,21 @@ namespace AJH{
             // 게임 오버 처리
             UIcanvas.alpha = 0;
             gameOverPanel.alpha = 1;
-            gameOverText.text = $"열심히 참아서 {kill * 3}원을 벌었습니다.";
+            currentMoney += math.round(currentMoney * moneyIncrease); // 이번 라운드에 번 돈
+            totalMoney += currentMoney;
+
+            PlayerPrefs.SetFloat("TotalMoney", totalMoney);
+            PlayerPrefs.Save();
+
+            gameOverText.text = $"열심히 참아서 {currentMoney}원을 벌었습니다.";
             BGMManager.instance.playGameOverBGM();
             IsLive = false;
             player.transform.localScale = new Vector3(3f, 3f, 1f);
-            Time.timeScale = 0;
 
+            Time.timeScale = 0;
+            currentMoney = 0f; // 다음 라운드에 번 돈 초기화
+            exp = 0; // 경험치 초기화
+            level = 0; // 레벨 초기화
 
         }
 

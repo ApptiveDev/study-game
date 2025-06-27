@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 53680581}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698937566}
+        m_TargetAssemblyTypeName: AJH.UpgradeManager, Assembly-CSharp
+        m_MethodName: GoToTitle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &53680581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2594,6 +2606,7 @@ MonoBehaviour:
     statText: {fileID: 1742793739}
     statData: {fileID: 11400000, guid: 47ef5cc441aacb043914fd2de3bd67a5, type: 2}
   totalMoneyText: {fileID: 125092362}
+  upgradeButton: {fileID: 53680580}
 --- !u!4 &1698937567
 Transform:
   m_ObjectHideFlags: 0

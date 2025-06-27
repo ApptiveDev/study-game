@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 139048025}
   - component: {fileID: 139048024}
   - component: {fileID: 139048023}
+  - component: {fileID: 139048026}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -537,6 +538,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139048021}
   m_CullTransparentMesh: 1
+--- !u!114 &139048026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139048021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca680250b4a47c4598e0a4eb2e2df46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statData: {fileID: 11400000, guid: 2bd1da76b87ac6e44b41fe63b300340e, type: 2}
+  upgradeButton: {fileID: 139048023}
+  upgradeCostText: {fileID: 1667227718}
+  upgradeStatText: {fileID: 802429995}
+  totalMoneyText: {fileID: 0}
 --- !u!1 &169277970
 GameObject:
   m_ObjectHideFlags: 0

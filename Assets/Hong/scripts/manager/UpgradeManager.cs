@@ -3,89 +3,109 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace AJH {
+    [System.Serializable]
+    public class UpgradeSlot
+    {
+        public Button button;
+        public Text costText;
+        public Text statText;
+        public StatData statData;
+    }
 
     public class UpgradeManager : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        public StatData statData; // 스탯 데이터
-        private moneyText moneyText; // 돈 텍스트 UI
-        public Button upgradeButton;
-        public Text upgradeCostText; // 업그레이드 비용 텍스트
-        public Text upgradeStatText; // 현재 스탯 텍스트
-
-
-        private int currentLevel; // 현재 업그레이드 레벨
-        private float[] values => statData.upgradeValues; // 레벨에 따른 값 배열
-        private int[] costs => statData.upgradeCosts; // 업그레이드 비용 배열
+        public UpgradeSlot[] slots;
+        public Text totalMoneyText;
 
         void Start()
         {
-            currentLevel = PlayerPrefs.GetInt(statData.statName + "_Level", 0);
-            UpdateUI();
+            foreach (var slot in slots)
+            {
+                int level = PlayerPrefs.GetInt(slot.statData.statName + "_Level", 0);
+                UpdateSlotUI(slot, level);
 
-            upgradeButton.onClick.AddListener(Upgrade);
+                slot.button.onClick.AddListener(() =>
+                {
+                    Upgrade(slot);
+                });
+            }
+
+            UpdateTotalMoney();
         }
 
-        // Update is called once per frame
-
-        private void Upgrade()
+        void Upgrade(UpgradeSlot slot)
         {
-            if (currentLevel >= values.Length) return;
-            float cost = costs[currentLevel];
+            int level = PlayerPrefs.GetInt(slot.statData.statName + "_Level", 0);
+            if (level >= slot.statData.upgradeValues.Length) return;
+
+            int cost = slot.statData.upgradeCosts[level];
             if (GameManager.instance.totalMoney >= cost)
             {
-                GameManager.instance.totalMoney -= cost; // 코인 차감
-                currentLevel++;
-                PlayerPrefs.SetInt(statData.statName + "_Level", currentLevel); // 레벨 저장
-                PlayerPrefs.SetFloat("TotalMoney", GameManager.instance.totalMoney); // 총 돈 저장
-                PlayerPrefs.Save(); // PlayerPrefs 저장
+                GameManager.instance.totalMoney -= cost;
+                PlayerPrefs.SetFloat("TotalMoney", GameManager.instance.totalMoney);
+                level++;
+                PlayerPrefs.SetInt(slot.statData.statName + "_Level", level);
+                PlayerPrefs.Save();
 
-                ApplyUpgrade();
-                UpdateUI();
+                ApplyUpgrade(slot.statData.statName, level);
+                UpdateSlotUI(slot, level);
+                UpdateTotalMoney();
             }
         }
 
-        void ApplyUpgrade()
+        void UpdateSlotUI(UpgradeSlot slot, int level)
         {
-            switch (statData.statName)
+            if (level >= slot.statData.upgradeValues.Length)
             {
-                case "Speed":
-                    player.Instance.moveSpeed = values[currentLevel]; // 플레이어 이동 속도 업그레이드
-                    break;
-                case "Defense":
-                    // Barrier 관련 로직 추가
-                    GameManager.instance.defense = values[currentLevel]; // 방어력 업그레이드
-                    break;
-                case "Gold":
-                    GameManager.instance.moneyIncrease = values[currentLevel]; // 돈 증가량 업그레이드
-                    break;
-                default:
-                    Debug.LogWarning("Unknown stat type: " + statData.statName);
-                    break;
-            }
-
-        }
-
-        private void UpdateUI()
-        {
-            moneyText.updateMoneyText(); // 돈 텍스트 업데이트
-            if (currentLevel >= values.Length)
-            {
-                upgradeButton.interactable = false; // 업그레이드 버튼 비활성화
-                upgradeCostText.text = "Max";
+                slot.costText.text = "Max";
+                slot.button.interactable = false;
             }
             else
             {
-                upgradeButton.interactable = true; // 업그레이드 버튼 활성화
-                upgradeCostText.text = $"{costs[currentLevel]}\\"; // 업그레이드 비용 텍스트 업데이트
-
+                slot.costText.text = slot.statData.upgradeCosts[level].ToString()+"\\";
+            }
+            float currentValue = slot.statData.upgradeValues[level];
+            float nextValue = level < slot.statData.upgradeValues.Length - 1 ? slot.statData.upgradeValues[level + 1] : currentValue;
+            switch (slot.statData.statName)
+            {
+                case "Speed":
+                    slot.statText.text = $"현재:{currentValue}->{nextValue}";
+                    break;
+                case "Defense":
+                    slot.statText.text = $"현재:{currentValue}->{nextValue}";
+                    break;
+                case "Gold":
+                    slot.statText.text = $"증가량:{(int)(nextValue*100)}%";
+                    break;
             }
         }
-        private void OnDestroy()
+
+        void UpdateTotalMoney()
         {
-            PlayerPrefs.SetInt(statData.statName + "_Level", currentLevel); // 레벨 저장
-            PlayerPrefs.Save(); // PlayerPrefs 저장
+            totalMoneyText.text = $"보유잔액: {GameManager.instance.totalMoney}\\";
+        }
+
+        void ApplyUpgrade(string statName, int level)
+        {
+            float value = 0f;
+            switch (statName)
+            {
+                case "Speed":
+                    value = Resources.Load<StatData>("Speed").upgradeValues[level - 1];
+                    player.Instance.moveSpeed = value;
+                    break;
+                case "Defense":
+                    value = Resources.Load<StatData>("Defense").upgradeValues[level - 1];
+                    GameManager.instance.defense = value;
+                    break;
+                case "Gold":
+                    value = Resources.Load<StatData>("Gold").upgradeValues[level - 1];
+                    GameManager.instance.moneyIncrease = value;
+                    break;
+            }
         }
     }
+
+    
     
 }

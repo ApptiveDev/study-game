@@ -426,9 +426,8 @@ GameObject:
   - component: {fileID: 139048025}
   - component: {fileID: 139048024}
   - component: {fileID: 139048023}
-  - component: {fileID: 139048026}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SpeedButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,23 +537,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139048021}
   m_CullTransparentMesh: 1
---- !u!114 &139048026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139048021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca680250b4a47c4598e0a4eb2e2df46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statData: {fileID: 11400000, guid: 2bd1da76b87ac6e44b41fe63b300340e, type: 2}
-  upgradeButton: {fileID: 139048023}
-  upgradeCostText: {fileID: 1667227718}
-  upgradeStatText: {fileID: 802429995}
-  totalMoneyText: {fileID: 0}
 --- !u!1 &169277970
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +718,135 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &278919408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278919410}
+  - component: {fileID: 278919409}
+  m_Layer: 0
+  m_Name: Bgm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &278919409
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278919408}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d3afda93a5f8d7142948075bb3f2ae5b, type: 3}
+  m_Resource: {fileID: 8300000, guid: d3afda93a5f8d7142948075bb3f2ae5b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.868
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &278919410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278919408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 478.61072, y: -4.8847036, z: -0.19483845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &289248855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1339,7 @@ GameObject:
   - component: {fileID: 676152150}
   - component: {fileID: 676152149}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,7 +1610,7 @@ GameObject:
   - component: {fileID: 860360056}
   - component: {fileID: 860360055}
   m_Layer: 5
-  m_Name: Button
+  m_Name: DefenseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1695,55 +1806,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 680291138}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1095687172
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1095687174}
-  - component: {fileID: 1095687173}
-  m_Layer: 0
-  m_Name: UpgradeManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1095687173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095687172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca680250b4a47c4598e0a4eb2e2df46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statData: {fileID: 0}
-  upgradeButton: {fileID: 0}
-  upgradeCostText: {fileID: 0}
-  upgradeStatText: {fileID: 0}
-  totalMoneyText: {fileID: 125092362}
---- !u!4 &1095687174
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095687172}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 439.69675, y: 289.32904, z: -0.68177295}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113104178
 GameObject:
@@ -2231,6 +2293,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682760629}
   m_CullTransparentMesh: 1
+--- !u!1 &1698937565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1698937567}
+  - component: {fileID: 1698937566}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1698937566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698937565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca680250b4a47c4598e0a4eb2e2df46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - button: {fileID: 139048023}
+    costText: {fileID: 1667227718}
+    statText: {fileID: 802429995}
+    statData: {fileID: 11400000, guid: 2bd1da76b87ac6e44b41fe63b300340e, type: 2}
+  - button: {fileID: 860360055}
+    costText: {fileID: 65164424}
+    statText: {fileID: 510957232}
+    statData: {fileID: 11400000, guid: 982b88385fadf5b40b2cebb7061b063e, type: 2}
+  - button: {fileID: 1785867738}
+    costText: {fileID: 2019977203}
+    statText: {fileID: 1742793739}
+    statData: {fileID: 11400000, guid: 47ef5cc441aacb043914fd2de3bd67a5, type: 2}
+  totalMoneyText: {fileID: 1907435654}
+--- !u!4 &1698937567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698937565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 478.61072, y: -4.8847036, z: -0.19483845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742793737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2443,7 @@ GameObject:
   - component: {fileID: 1785867739}
   - component: {fileID: 1785867738}
   m_Layer: 5
-  m_Name: Button
+  m_Name: GoldButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2875,7 +2995,7 @@ GameObject:
   - component: {fileID: 2123430448}
   - component: {fileID: 2123430447}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2948,4 +3068,5 @@ SceneRoots:
   - {fileID: 680291138}
   - {fileID: 1113104179}
   - {fileID: 334483102}
-  - {fileID: 1095687174}
+  - {fileID: 278919410}
+  - {fileID: 1698937567}

@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,10 +42,47 @@ namespace AJH{
 
         private void Start()
         {
-            if (PlayerPrefs.HasKey("TotalMoney")) totalMoney = PlayerPrefs.GetFloat("TotalMoney");
-            else totalMoney = 0f;
+            InitializeStatPrefs();
+            ApplyUpgradedStats();
             
             levelUpUI.Select(0);
+        }
+
+        private void InitializeStatPrefs()
+        {
+            string[] stats = { "Speed", "Defense", "Gold" };
+            foreach (string stat in stats)
+            {
+                if (!PlayerPrefs.HasKey(stat + "_Level"))
+                {
+                    PlayerPrefs.SetInt(stat + "_Level", 0);
+                }
+            }
+            if (!PlayerPrefs.HasKey("TotalMoney"))
+            {
+                PlayerPrefs.SetFloat("TotalMoney", 0f);
+            }
+        }
+        private void ApplyUpgradedStats()
+        {
+            int speedLevel = PlayerPrefs.GetInt("Speed_Level", 0);
+            int defenseLevel = PlayerPrefs.GetInt("Defense_Level", 0);
+            int goldLevel = PlayerPrefs.GetInt("Gold_Level", 0);
+
+            // Speed 스탯 적용
+            float[] speedValues = Resources.Load<StatData>("SpeedUpgradeData").upgradeValues;
+            if (speedLevel > 0)
+                player.moveSpeed = speedValues[speedLevel - 1];
+
+            // Defense 스탯 적용
+            float[] defValues = Resources.Load<StatData>("DefenseUpgradeData").upgradeValues;
+            if (defenseLevel > 0)
+                defense = defValues[defenseLevel - 1];
+
+            // Gold 스탯 적용
+            float[] goldValues = Resources.Load<StatData>("GoldUpgradeData").upgradeValues;
+            if (goldLevel > 0)
+                moneyIncrease = goldValues[goldLevel - 1];
         }
 
 
@@ -65,9 +103,20 @@ namespace AJH{
                     Instantiate(bossPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     BGMManager.instance.PlayBossBGM();
                 }
-                
+
             }
 
+        }
+        private IEnumerator WaitForEnterKey()
+        {
+            // 엔터 누를 때까지 대기
+            while (!Input.GetKeyDown(KeyCode.Return))
+            {
+                yield return null;
+            }
+
+            Time.timeScale = 1f; // 시간 재개
+            UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene"); // 타이틀로 전환
         }
 
         private void GameOver()
@@ -90,6 +139,7 @@ namespace AJH{
             currentMoney = 0f; // 다음 라운드에 번 돈 초기화
             exp = 0; // 경험치 초기화
             level = 0; // 레벨 초기화
+            StartCoroutine(WaitForEnterKey());
 
         }
 

@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      53_gingerbreadman_dish_0: -2966507787829237266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

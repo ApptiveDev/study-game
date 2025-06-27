@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20_bagel_0: -3252362642447589388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

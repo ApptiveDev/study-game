@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      89_salmon_dish_0: -794277777170206934
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

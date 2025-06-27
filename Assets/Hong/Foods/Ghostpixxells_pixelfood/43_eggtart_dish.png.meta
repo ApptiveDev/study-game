@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      43_eggtart_dish_0: 2989540523101878989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

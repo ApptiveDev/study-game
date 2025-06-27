@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      17_burger_napkin_0: 4697479264249782702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

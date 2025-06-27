@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      33_curry_dish_0: -7463561415026108531
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

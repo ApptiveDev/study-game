@@ -53,7 +53,7 @@ namespace JWGR
                         }
                         if (weapon.name != "Sickle")
                         {
-                            Destroy(collision.gameObject);
+                            ObjPool.instance.ReturnObject(weapon);
                         }
                     }
                     if (weapon.gameObject.CompareTag("piercingWeapon")) // 충돌한 상대가 무기일 때

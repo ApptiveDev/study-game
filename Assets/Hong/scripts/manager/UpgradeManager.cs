@@ -16,9 +16,12 @@ namespace AJH {
     {
         public UpgradeSlot[] slots;
         public Text totalMoneyText;
+        private float totalMoney = 0;
 
         void Start()
         {
+            InitializeStatPrefs();
+            UpdateTotalMoney();
             foreach (var slot in slots)
             {
                 int level = PlayerPrefs.GetInt(slot.statData.statName + "_Level", 0);
@@ -30,7 +33,6 @@ namespace AJH {
                 });
             }
 
-            UpdateTotalMoney();
         }
 
         void Upgrade(UpgradeSlot slot)
@@ -39,17 +41,16 @@ namespace AJH {
             if (level >= slot.statData.upgradeValues.Length) return;
 
             int cost = slot.statData.upgradeCosts[level];
-            if (GameManager.instance.totalMoney >= cost)
+            if (totalMoney >= cost)
             {
-                GameManager.instance.totalMoney -= cost;
+                totalMoney -= cost;
                 PlayerPrefs.SetFloat("TotalMoney", GameManager.instance.totalMoney);
                 level++;
                 PlayerPrefs.SetInt(slot.statData.statName + "_Level", level);
                 PlayerPrefs.Save();
 
-                ApplyUpgrade(slot.statData.statName, level);
-                UpdateSlotUI(slot, level);
                 UpdateTotalMoney();
+                UpdateSlotUI(slot, level);
             }
         }
 
@@ -62,10 +63,13 @@ namespace AJH {
             }
             else
             {
-                slot.costText.text = slot.statData.upgradeCosts[level].ToString()+"\\";
+                slot.costText.text = slot.statData.upgradeCosts[level].ToString() + "원";
             }
-            float currentValue = slot.statData.upgradeValues[level];
-            float nextValue = level < slot.statData.upgradeValues.Length - 1 ? slot.statData.upgradeValues[level + 1] : currentValue;
+            float currentValue = level > 0 ? slot.statData.upgradeValues[level - 1] : slot.statData.baseValue;
+            float nextValue = level < slot.statData.upgradeValues.Length
+                ? slot.statData.upgradeValues[level]
+                : currentValue;
+
             switch (slot.statData.statName)
             {
                 case "Speed":
@@ -75,33 +79,42 @@ namespace AJH {
                     slot.statText.text = $"현재:{currentValue}->{nextValue}";
                     break;
                 case "Gold":
-                    slot.statText.text = $"증가량:{(int)(nextValue*100)}%";
+                    slot.statText.text = $"증가량:{(int)(nextValue * 100)}%";
                     break;
             }
         }
 
         void UpdateTotalMoney()
         {
-            totalMoneyText.text = $"보유잔액: {GameManager.instance.totalMoney}\\";
+            
+            if (PlayerPrefs.HasKey("TotalMoney") == false)
+            {
+                PlayerPrefs.SetFloat("TotalMoney", 0f);
+            }
+            else
+            {
+                totalMoney = PlayerPrefs.GetFloat("TotalMoney");
+            }
+
+            totalMoneyText.text = $"보유잔액: {totalMoney}원";
         }
 
-        void ApplyUpgrade(string statName, int level)
+
+        
+
+        private void InitializeStatPrefs()
         {
-            float value = 0f;
-            switch (statName)
+            string[] stats = { "Speed", "Defense", "Gold" };
+            foreach (string stat in stats)
             {
-                case "Speed":
-                    value = Resources.Load<StatData>("Speed").upgradeValues[level - 1];
-                    player.Instance.moveSpeed = value;
-                    break;
-                case "Defense":
-                    value = Resources.Load<StatData>("Defense").upgradeValues[level - 1];
-                    GameManager.instance.defense = value;
-                    break;
-                case "Gold":
-                    value = Resources.Load<StatData>("Gold").upgradeValues[level - 1];
-                    GameManager.instance.moneyIncrease = value;
-                    break;
+                if (!PlayerPrefs.HasKey(stat + "_Level"))
+                {
+                    PlayerPrefs.SetInt(stat + "_Level", 0);
+                }
+            }
+            if (!PlayerPrefs.HasKey("TotalMoney"))
+            {
+                PlayerPrefs.SetFloat("TotalMoney", 0f);
             }
         }
     }

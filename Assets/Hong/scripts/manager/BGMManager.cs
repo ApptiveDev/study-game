@@ -16,12 +16,7 @@ namespace AJH
             if (instance == null)
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
                 PlayDefaultBGM();
-            }
-            else
-            {
-                Destroy(gameObject);
             }
         }
 
@@ -50,6 +45,10 @@ namespace AJH
         public void PlayBossBGM()
         {
             PlayBGM(bossBGM);
+        }
+        public void StopBGM()
+        {
+            bgmSource.Stop();
         }
     }
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba6a28443ef8c6b4bad805554850dad8, type: 3}
-  m_Name: StatData 2
+  m_Name: Defense
   m_EditorClassIdentifier: 
-  statType: 2
-  statName: Gold
+  statType: 1
+  statName: Defense
   baseValue: 0
   upgradeValues:
-  - 0.1
-  - 0.2
-  - 0.3
+  - 1
+  - 2
+  - 3
   upgradeCosts: 0a000000140000001e000000

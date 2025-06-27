@@ -21,7 +21,7 @@ namespace AJH{
         public int kill = 0;
 
         public float defense = 0; // 방어력
-        
+        [SerializeField] private StatData[] stats;
         public float totalMoney = 0f; // 총 벌어들인 돈
         public float currentMoney = 0f;
         public float moneyIncrease = 0f; // 돈 증가량
@@ -43,9 +43,9 @@ namespace AJH{
         private void Start()
         {
             InitializeStatPrefs();
+            levelUpUI.Select(0);
             ApplyUpgradedStats();
             
-            levelUpUI.Select(0);
         }
 
         private void InitializeStatPrefs()
@@ -63,26 +63,28 @@ namespace AJH{
                 PlayerPrefs.SetFloat("TotalMoney", 0f);
             }
         }
-        private void ApplyUpgradedStats()
+        public void ApplyUpgradedStats()
         {
             int speedLevel = PlayerPrefs.GetInt("Speed_Level", 0);
             int defenseLevel = PlayerPrefs.GetInt("Defense_Level", 0);
             int goldLevel = PlayerPrefs.GetInt("Gold_Level", 0);
 
-            // Speed 스탯 적용
-            float[] speedValues = Resources.Load<StatData>("SpeedUpgradeData").upgradeValues;
-            if (speedLevel > 0)
-                player.moveSpeed = speedValues[speedLevel - 1];
-
-            // Defense 스탯 적용
-            float[] defValues = Resources.Load<StatData>("DefenseUpgradeData").upgradeValues;
-            if (defenseLevel > 0)
-                defense = defValues[defenseLevel - 1];
-
-            // Gold 스탯 적용
-            float[] goldValues = Resources.Load<StatData>("GoldUpgradeData").upgradeValues;
-            if (goldLevel > 0)
-                moneyIncrease = goldValues[goldLevel - 1];
+            // stats 배열에서 인덱스 돌며 speed, defense, gold에 해당하는 StatData를 찾아서 적용
+            foreach (StatData stat in stats)
+            {
+                if (stat.statName == "Speed")
+                {
+                    player.moveSpeed = stat.upgradeValues[speedLevel];
+                }
+                else if (stat.statName == "Defense")
+                {
+                    defense = stat.upgradeValues[defenseLevel];
+                }
+                else if (stat.statName == "Gold")
+                {
+                    moneyIncrease = stat.upgradeValues[goldLevel];
+                }
+            }
         }
 
 
@@ -116,7 +118,9 @@ namespace AJH{
             }
 
             Time.timeScale = 1f; // 시간 재개
-            UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene"); // 타이틀로 전환
+            BGMManager.instance.StopBGM();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("title"); // 타이틀로 전환
+
         }
 
         private void GameOver()

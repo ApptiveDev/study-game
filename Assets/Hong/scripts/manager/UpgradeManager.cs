@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace AJH {
     [System.Serializable]
@@ -17,6 +18,7 @@ namespace AJH {
         public UpgradeSlot[] slots;
         public Text totalMoneyText;
         private float totalMoney = 0;
+        public Button upgradeButton;
 
         void Start()
         {
@@ -32,7 +34,15 @@ namespace AJH {
                     Upgrade(slot);
                 });
             }
+            upgradeButton.onClick.AddListener(() =>
+            {
+                GoToTitle();
+            });
 
+        }
+        public void GoToTitle()
+        {
+            SceneManager.LoadScene("title");
         }
 
         void Upgrade(UpgradeSlot slot)

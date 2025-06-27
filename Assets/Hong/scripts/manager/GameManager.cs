@@ -62,16 +62,8 @@ namespace AJH{
                 levelUpUI.Show();
                 if (level == 3)
                 {
-                    GameObject boss = Instantiate(bossPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                    Instantiate(bossPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     BGMManager.instance.PlayBossBGM();
-                    BossHealthUI bossUI = FindObjectOfType<BossHealthUI>(true);
-                    bossAI bossScript = boss.GetComponent<bossAI>();
-                    
-                    if (bossUI != null && bossScript != null)
-                    {
-                        bossUI.SetBoss(bossScript);
-                    }
-
                 }
                 
             }

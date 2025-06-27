@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ namespace AJH {
     {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         public StatData statData; // 스탯 데이터
+        private moneyText moneyText; // 돈 텍스트 UI
         public Button upgradeButton;
         public Text upgradeCostText; // 업그레이드 비용 텍스트
         public Text upgradeStatText; // 현재 스탯 텍스트
@@ -35,6 +37,7 @@ namespace AJH {
                 GameManager.instance.totalMoney -= cost; // 코인 차감
                 currentLevel++;
                 PlayerPrefs.SetInt(statData.statName + "_Level", currentLevel); // 레벨 저장
+                PlayerPrefs.SetFloat("TotalMoney", GameManager.instance.totalMoney); // 총 돈 저장
                 PlayerPrefs.Save(); // PlayerPrefs 저장
 
                 ApplyUpgrade();
@@ -49,8 +52,9 @@ namespace AJH {
                 case "Speed":
                     player.Instance.moveSpeed = values[currentLevel]; // 플레이어 이동 속도 업그레이드
                     break;
-                case "Barrier":
+                case "Defense":
                     // Barrier 관련 로직 추가
+                    GameManager.instance.defense = values[currentLevel]; // 방어력 업그레이드
                     break;
                 case "Gold":
                     GameManager.instance.moneyIncrease = values[currentLevel]; // 돈 증가량 업그레이드
@@ -59,10 +63,12 @@ namespace AJH {
                     Debug.LogWarning("Unknown stat type: " + statData.statName);
                     break;
             }
+
         }
 
-        void UpdateUI()
+        private void UpdateUI()
         {
+            moneyText.updateMoneyText(); // 돈 텍스트 업데이트
             if (currentLevel >= values.Length)
             {
                 upgradeButton.interactable = false; // 업그레이드 버튼 비활성화
@@ -71,13 +77,14 @@ namespace AJH {
             else
             {
                 upgradeButton.interactable = true; // 업그레이드 버튼 활성화
-                upgradeCostText.text = $"{costs[currentLevel]}원"; // 업그레이드 비용 텍스트 업데이트
-                
+                upgradeCostText.text = $"{costs[currentLevel]}\\"; // 업그레이드 비용 텍스트 업데이트
+
             }
         }
-        void Update()
+        private void OnDestroy()
         {
-
+            PlayerPrefs.SetInt(statData.statName + "_Level", currentLevel); // 레벨 저장
+            PlayerPrefs.Save(); // PlayerPrefs 저장
         }
     }
     

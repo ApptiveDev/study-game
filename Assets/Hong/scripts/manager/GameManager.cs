@@ -18,6 +18,9 @@ namespace AJH{
         public int level;
         public int exp;
         public int kill = 0;
+
+        public float defense = 0; // 방어력
+        
         public float totalMoney = 0f; // 총 벌어들인 돈
         public float currentMoney = 0f;
         public float moneyIncrease = 0f; // 돈 증가량
@@ -93,7 +96,7 @@ namespace AJH{
 
         public void GetWeight(float damage)
         {
-            weight += damage;
+            weight += damage - defense; // 방어력 적용
             // player.GetComponent
             // 이거 무게 늘면 커지는거 추후 구현 예정
             if (weight >= maxWeight)

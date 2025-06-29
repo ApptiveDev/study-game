@@ -7,6 +7,8 @@ namespace JWGR
     {
         public static GameManager instance;
 
+        public static int money = 0;
+
         private void Awake()
         {
             if (instance == null)

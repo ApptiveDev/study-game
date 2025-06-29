@@ -24,5 +24,8 @@ namespace JWGR
         public float[] damages = new float[0];
         public int[] counts = new int[0];
         public float[] speeds = new float[0];
+
+        [Header("# Status Info")]
+        public bool isActive = false;
     }
 }
